@@ -250,7 +250,6 @@
 		401A2537212DC5F80087BE9B /* MLWalletPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401A2536212DC5F80087BE9B /* MLWalletPasswordViewController.swift */; };
 		401F79C9212A505900B43D4C /* MLKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401F79C8212A505900B43D4C /* MLKeychain.swift */; };
 		401FC59E21366AA200F0BECD /* NSDate+MLCatrgory.m in Sources */ = {isa = PBXBuildFile; fileRef = 401FC59D21366AA200F0BECD /* NSDate+MLCatrgory.m */; };
-		401FC5A02136980000F0BECD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401FC59F2136980000F0BECD /* Assets.xcassets */; };
 		4020688321311F1800BD3A19 /* ARLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687D21311F1800BD3A19 /* ARLineChartView.m */; };
 		4020688421311F1800BD3A19 /* ARLineChartContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687E21311F1800BD3A19 /* ARLineChartContentView.m */; };
 		4020688521311F1800BD3A19 /* ARLineChartCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687F21311F1800BD3A19 /* ARLineChartCommon.m */; };
@@ -284,6 +283,7 @@
 		40C929D6212A8D20002AD7E2 /* MLManagerWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C929D5212A8D20002AD7E2 /* MLManagerWalletView.swift */; };
 		40C929D8212A8E0D002AD7E2 /* MLWalletViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C929D7212A8E0D002AD7E2 /* MLWalletViewCell.swift */; };
 		40D70F36212BC40500B0DB58 /* MLSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D70F35212BC40500B0DB58 /* MLSettingView.swift */; };
+		40D7FEB42137776900CA4EB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D7FEB32137776800CA4EB5 /* Assets.xcassets */; };
 		40F2042A212C4F6600FB8BDD /* MLTokenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F20429212C4F6600FB8BDD /* MLTokenViewCell.swift */; };
 		4E9A9D0820B2C52500180054 /* CoinTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A9D0720B2C52500180054 /* CoinTicker.swift */; };
 		4EEE540D207996EF007D300D /* TokensDataStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE540C207996EF007D300D /* TokensDataStoreTest.swift */; };
@@ -786,7 +786,6 @@
 		401F79C8212A505900B43D4C /* MLKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLKeychain.swift; sourceTree = "<group>"; };
 		401FC59C21366AA200F0BECD /* NSDate+MLCatrgory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+MLCatrgory.h"; sourceTree = "<group>"; };
 		401FC59D21366AA200F0BECD /* NSDate+MLCatrgory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MLCatrgory.m"; sourceTree = "<group>"; };
-		401FC59F2136980000F0BECD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../魅乐/trust-wallet-ios/Trust/Assets.xcassets"; sourceTree = "<group>"; };
 		4020687D21311F1800BD3A19 /* ARLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLineChartView.m; sourceTree = "<group>"; };
 		4020687E21311F1800BD3A19 /* ARLineChartContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLineChartContentView.m; sourceTree = "<group>"; };
 		4020687F21311F1800BD3A19 /* ARLineChartCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLineChartCommon.m; sourceTree = "<group>"; };
@@ -825,6 +824,7 @@
 		40C929D5212A8D20002AD7E2 /* MLManagerWalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLManagerWalletView.swift; sourceTree = "<group>"; };
 		40C929D7212A8E0D002AD7E2 /* MLWalletViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletViewCell.swift; sourceTree = "<group>"; };
 		40D70F35212BC40500B0DB58 /* MLSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSettingView.swift; sourceTree = "<group>"; };
+		40D7FEB32137776800CA4EB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40F20429212C4F6600FB8BDD /* MLTokenViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokenViewCell.swift; sourceTree = "<group>"; };
 		477899BEAA4489DA423E8857 /* Pods-TrustUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrustUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrustUITests/Pods-TrustUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		486727FADFF5D4F43B985920 /* Pods_OpenInTrust.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenInTrust.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1166,7 +1166,7 @@
 				2912CD061F6A830700C6CBE3 /* Info.plist */,
 				29AD8A071F93E1F0008E10E7 /* Trust.entitlements */,
 				296106CD1F777E410006164B /* LaunchScreen.storyboard */,
-				401FC59F2136980000F0BECD /* Assets.xcassets */,
+				40D7FEB32137776800CA4EB5 /* Assets.xcassets */,
 			);
 			path = Trust;
 			sourceTree = "<group>";
@@ -2865,7 +2865,7 @@
 				771AA966200D5F1900D25403 /* WordCollectionViewCell.xib in Resources */,
 				775DF43F203E38D3009CD082 /* NonFungibleTokenViewCell.xib in Resources */,
 				73DE7B3320987D8F00AE04E6 /* NonFungibleCollectionViewCell.xib in Resources */,
-				401FC5A02136980000F0BECD /* Assets.xcassets in Resources */,
+				40D7FEB42137776900CA4EB5 /* Assets.xcassets in Resources */,
 				7704836C20FE99B600837735 /* CoinViewCell.xib in Resources */,
 				296106CE1F777E410006164B /* LaunchScreen.storyboard in Resources */,
 				290B2B541F8F50030053C83E /* Localizable.strings in Resources */,

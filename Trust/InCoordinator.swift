@@ -115,8 +115,8 @@ class InCoordinator: Coordinator {
         showTabBar(for: initialWallet)
         checkDevice()
 
-        helpUsCoordinator.start()
-        addCoordinator(helpUsCoordinator)
+//        helpUsCoordinator.start()
+//        addCoordinator(helpUsCoordinator)
     }
 
     func showTabBar(for account: WalletInfo) {

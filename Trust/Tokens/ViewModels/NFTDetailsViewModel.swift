@@ -30,7 +30,7 @@ final class NFTDetailsViewModel {
     }
 
     var placeholder: UIImage? {
-        return R.image.launch_screen_logo()
+        return R.image.ml_launch_screen_logo()
     }
 
     var sendButtonTitle: String {

@@ -24,7 +24,7 @@ final class NonFungibleCollectionViewCell: UICollectionViewCell {
         subTitle.text = viewModel.annotation
         imageView.kf.setImage(
             with: viewModel.imagePath,
-            placeholder: R.image.launch_screen_logo()
+            placeholder: R.image.ml_launch_screen_logo()
         )
     }
 }
