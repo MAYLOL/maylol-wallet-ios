@@ -36,8 +36,8 @@ class WalletsCoordinator: RootCoordinator {
 //        return controller
 //    }()
 
-    lazy var walletController: MLManagerWalletViewController = {
-        let controller = MLManagerWalletViewController(keystore: keystore)
+    lazy var walletController: MLMyWalletViewController = {
+        let controller = MLMyWalletViewController(keystore: keystore)
         controller.delegate = self
         return controller
     }()
@@ -199,16 +199,16 @@ extension WalletsCoordinator: WalletInfoViewControllerDelegate {
     }
 }
 
-extension WalletsCoordinator: MLManagerWalletViewControllerDelegate {
-    func didSelectForInfo(wallet: WalletInfo, account: Account, in controller: MLManagerWalletViewController) {
+extension WalletsCoordinator: MLMyWalletViewControllerDelegate {
+    func didSelectForInfo(wallet: WalletInfo, account: Account, in controller: MLMyWalletViewController) {
 showWalletInfo(for: wallet, account: account, sender: controller.view)
     }
 
-    func didSelect(wallet: WalletInfo, account: Account, in controller: MLManagerWalletViewController) {
+    func didSelect(wallet: WalletInfo, account: Account, in controller: MLMyWalletViewController) {
                 delegate?.didSelect(wallet: wallet, in: self)
     }
 
-    func didDeleteAccount(account: WalletInfo, in viewController: MLManagerWalletViewController) {
+    func didDeleteAccount(account: WalletInfo, in viewController: MLMyWalletViewController) {
         viewController.fetch()
         //Remove Realm DB
         let db = RealmConfiguration.configuration(for: account)

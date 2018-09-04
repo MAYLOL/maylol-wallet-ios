@@ -25,7 +25,7 @@ class MLSendViewController: UIViewController {
         return .init(transfer: transfer, config: session.config, chainState: chainState, storage: storage, balance: balance)
     }()
 
-    var scanString: String?{
+    var scanString: String? {
         didSet {
            sendView.payAddressField.text = scanString
         }
@@ -39,7 +39,6 @@ class MLSendViewController: UIViewController {
 //        server: transfer.server,
 //        chainState: ChainState(server: transfer.server)
 //    )
-    
     weak var delegate: MLSendViewControllerDelegate?
     struct Values {
         static let address = "address"
@@ -47,7 +46,6 @@ class MLSendViewController: UIViewController {
     }
     lazy var sendView: MLSendView = {
         var sendView = MLSendView(frame: .zero)
-        sendView.viewModel = viewModel
         sendView.scanBtn.addTarget(self, action: #selector(scanAction(sender:)), for: UIControlEvents.touchUpInside)
         sendView.translatesAutoresizingMaskIntoConstraints = false
         return sendView
@@ -78,12 +76,16 @@ class MLSendViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         //        title = viewModel.title
         view.backgroundColor = viewModel.backgroundColor
+
+//         EtherNumberFormatter.full.number(from: sendView.customGasPriceField.text ?? "0", units: UnitConfiguration.gasPriceUnit)!
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
 
         sendView.nextBtn.addTarget(self, action: #selector(nextAction(sender:)), for: UIControlEvents.touchUpInside)
+        let gasPriseString = EtherNumberFormatter.full.string(from: defaultGasPriceBigInt, units: .gwei)
+        sendView.minerCostSlider.value = Float(gasPriseString)!
         refreshCoordinator()
         setup()
     }
@@ -139,7 +141,6 @@ class MLSendViewController: UIViewController {
             return displayError(error: Errors.invalidAddress)
         }
         viewModel.amount = sendView.transferAmountField.text ?? ""
-        
         let amountString = viewModel.amount
         let parsedValue: BigInt? = {
             switch transfer.type {
@@ -153,11 +154,10 @@ class MLSendViewController: UIViewController {
             return displayError(error: SendInputErrors.wrongInput)
         }
 
-
-        if (gasLimit > GasLimitConfiguration.max) {
+        if gasLimit > GasLimitConfiguration.max {
             return displayError(error: MLErrorType.gasTooHeightError)
         }
-        if (gasLimit < GasLimitConfiguration.min){
+        if gasLimit < GasLimitConfiguration.min {
             return displayError(error: MLErrorType.gasTooHeightError)
         }
 
@@ -182,12 +182,12 @@ class MLSendViewController: UIViewController {
 
     private let fullFormatter = EtherNumberFormatter.full
 
-    private var defaultGasLimit: BigInt{
+    private var defaultGasLimit: BigInt {
         return TransactionConfigurator.gasLimitPu(type: transfer.type)
     }
 
-    private var defaultGasPriceBigInt:BigInt {
-        return GasPriceConfiguration.max
+    private var defaultGasPriceBigInt: BigInt {
+        return min(max(chainState.gasPrice ?? GasPriceConfiguration.default, GasPriceConfiguration.min), GasPriceConfiguration.max)
     }
     private var gasLimit: BigInt {
         if sendView.superSelect {
@@ -210,69 +210,23 @@ class MLSendViewController: UIViewController {
         return gasPrice * gasLimit
     }
     private var gasViewModel: GasViewModel {
-        return GasViewModel(fee: totalFee, server: chainState.server, store:storage, formatter: fullFormatter)
+        return GasViewModel(fee: totalFee, server: chainState.server, store: storage, formatter: fullFormatter)
     }
     func refreshCoordinator() {
         refreshSendView()
         sendView.minerCostSlider.addTarget(self, action: #selector(costSlider(sender:)), for: UIControlEvents.valueChanged)
-
-//        print("gasLimit:",gasLimit)
-//        print("gasPrice:",gasPrice)
-//
-//        print("gasViewModel:",gasViewModel)
-//        gasViewModel.etherFee
-
-//        转字符串
-//        fullFormatter.string(from: transaction.gasPrice, units: UnitConfiguration.gasPriceUnit)
-
-
-//        let addressString = ""
-//        let address = EthereumAddress(string: addressString)
-//        let amountString = "0"
-//        let parsedValue: BigInt? = {
-//            switch transfer.type {
-//            case .ether, .dapp:
-//                return EtherNumberFormatter.full.number(from: amountString, units: .ether)
-//            case .token(let token):
-//                return EtherNumberFormatter.full.number(from: amountString, decimals: token.decimals)
-//            }
-//        }()
-//        let transaction = UnconfirmedTransaction(
-//            transfer: transfer,
-//            value: parsedValue!,
-//            to: address,
-//            data: data,
-//            gasLimit: .none,
-//            gasPrice: viewModel.gasPrice,
-//            nonce: .none
-//        )
-//        let configurator = TransactionConfigurator(
-//            session: session,
-//            account: account,
-//            transaction: transaction,
-//            server: transfer.server,
-//            chainState: ChainState(server: transfer.server)
-//        )
-//        initConfigurator = configurator
-////        configurator.transaction.gasLimit
-////        configurator.transaction.gasPrice
-//        sendView.minerCostSlider.minimumValue = 1
-//        sendView.minerCostSlider.minimumValue = 60
-//
-////        sendView.updateSliderCostStr(gasLimit:Double(sendView.minerCostSlider.minimumValue))
-////        minerCostSlider.minimumValue = 1
-////        minerCostSlider.maximumValue = 60
     }
     @objc func costSlider(sender: UISlider) {
         refreshSendView()
     }
 
     func refreshSendView() {
-        var model:GasViewModel =  GasViewModel(fee: totalFee, server: chainState.server, store:storage, formatter: fullFormatter)
+        sendView.viewModel = viewModel
+        let model: GasViewModel =  GasViewModel(fee: totalFee, server: chainState.server, store: storage, formatter: fullFormatter)
         sendView.costAmound.text = model.etherFee
     }
 
-    @objc func scanAction(sender:UIButton) {
+    @objc func scanAction(sender: UIButton) {
         delegate?.didPressScan()
     }
 

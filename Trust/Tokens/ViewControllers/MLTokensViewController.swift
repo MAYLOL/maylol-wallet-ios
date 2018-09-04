@@ -18,7 +18,7 @@ final class MLTokensViewController: UIViewController {
 
     lazy var header: MLTokensHeaderView = {
         let header = MLTokensHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenW, height: 215))
-        header.viewModel = viewModel
+        header.addressLabel.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(reciveCoinInfo)))
 //        header.frame.size = header.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
         return header
     }()
@@ -112,6 +112,7 @@ final class MLTokensViewController: UIViewController {
 
     func refreshHeaderView() {
         header.amountLabel.attributedText = viewModel.headerAttributeBalance
+        header.viewModel = viewModel
     }
 
     @objc func missingToken() {
@@ -154,6 +155,11 @@ final class MLTokensViewController: UIViewController {
 
     private func stopTokenObservation() {
         viewModel.invalidateTokensObservation()
+    }
+
+    @objc private func reciveCoinInfo() {
+        let tokenObject = viewModel.tokens.first
+        self.delegate?.didRequest(token: tokenObject!, in: self)
     }
 
     deinit {

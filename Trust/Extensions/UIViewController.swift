@@ -47,6 +47,33 @@ extension UIViewController {
         }))
         self.present(alertController, animated: true, completion: nil)
     }
+    func confirmPassWord(
+        title: String? = .none,
+        message: String? = .none,
+        okTitle: String = R.string.localizable.oK(),
+        okStyle: UIAlertActionStyle = .default,
+        address: String,
+        completion: @escaping (Result<Void, ConfirmationError>) -> Void
+        ) {
+        let alertController = UIAlertController(title: "ML.lock.enter.passcode.view.model.initial".localized(), message: nil, preferredStyle: .alert)
+        alertController.popoverPresentationController?.sourceView = self.view
+        alertController.addAction(UIAlertAction(title: okTitle, style: okStyle, handler: { _ in
+            let passWordField = alertController.textFields?.first
+            guard MLKeychain().verify(passworld: (passWordField?.text)!, service: address) else {
+                MLProgressHud.showError(error: MLErrorType.PasswordError as NSError)
+                return
+            }
+            completion(.success(()))
+        }))
+        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: { _ in
+            completion(.failure(ConfirmationError.cancel))
+        }))
+        alertController.addTextField { (field: UITextField) in
+            field.placeholder = "Password"
+            field.isSecureTextEntry = true
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     func displayLoading(
         text: String = String(format: NSLocalizedString("loading.dots", value: "Loading %@", comment: ""), "..."),

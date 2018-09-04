@@ -164,7 +164,6 @@ extension SettingsCoordinator: WalletsCoordinatorDelegate {
     }
 
     func didGoSettingVC(pushType: MLPushType) {
-     
     }
 
     func didCancel(in coordinator: WalletsCoordinator) {

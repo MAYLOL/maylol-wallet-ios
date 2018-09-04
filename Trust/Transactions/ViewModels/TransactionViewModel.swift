@@ -111,12 +111,37 @@ struct TransactionViewModel {
             return R.image.transaction_pending()
         }
     }
+    var detailStatusImage: UIImage? {
+        switch transaction.state {
+        case .error, .unknown, .failed, .deleted:
+            //            return R.image.transaction_error()
+            return R.image.ml_wallet_eth_icon_export()
+        case .completed:
+            switch direction {
+            case .incoming:
+                //                ml_wallet_eth_icon_import
+                return R.image.ml_wallet_eth_icon_import()
+            //                return R.image.transaction_received()
+            case .outgoing:
+                //                ml_wallet_eth_icon_export
+                return R.image.ml_wallet_eth_icon_export()
+                //                return R.image.transaction_sent()
+            }
+        case .pending:
+            //            return R.image.transaction_pending()
+            //                ml_wallet_eth_icon_export
+            return R.image.ml_wallet_eth_icon_export()
+        }
+    }
 
     var amountText: String {
         let value = shortValue
         return amountWithSign(for: value.amount) + " " + value.symbol
     }
-
+    var noSymbolAmountText: String {
+        let value = shortValue
+        return value.amount + " " + value.symbol
+    }
     var amountFullText: String {
         let value = transactionValue(for: balanceFormatter)
         return amountWithSign(for: value.amount) + " " + value.symbol

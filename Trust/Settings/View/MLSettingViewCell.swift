@@ -38,12 +38,12 @@ class MLSettingViewCell: UITableViewCell {
     var settingModel: String? {
         didSet {
             titleLabel.text = settingModel
-            if (settingModel == NSLocalizedString("ML.Setting.cell.Aboutus.UseProtocol", value: "Use Protocol", comment: "")){
+            if settingModel == "ML.Setting.cell.Aboutus.UseProtocol".localized() {
                 addSubview(topDynamicLine)
                 NSLayoutConstraint.activate([
                     topDynamicLine.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-                    topDynamicLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
-                    topDynamicLine.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
+                    topDynamicLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+                    topDynamicLine.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
                     topDynamicLine.heightAnchor.constraint(equalToConstant: 1),
                     ])
             }
@@ -64,12 +64,12 @@ class MLSettingViewCell: UITableViewCell {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
             underDynamicLine.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            underDynamicLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
+            underDynamicLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             underDynamicLine.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
             underDynamicLine.heightAnchor.constraint(equalToConstant: 1),
             titleLabel.bottomAnchor.constraint(equalTo: underDynamicLine.topAnchor, constant: -7),
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
-            iconView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            iconView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             iconView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
             ])
     }

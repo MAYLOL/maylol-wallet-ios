@@ -84,11 +84,11 @@ final class WalletCoordinator: Coordinator {
     }
 
     func pushImportWallet() {
-        if let _ = keystore.mainWallet {
-            pushSelectCoin()
-        } else {
+//        if let _ = keystore.mainWallet {
+//            pushSelectCoin()
+//        } else {
             importMainWallet()
-        }
+//        }
     }
 
     //    func createInstantWallet() {
@@ -118,8 +118,8 @@ final class WalletCoordinator: Coordinator {
     func createInstantWallet(createWalletViewModel: CreateWalletViewModel) {
         let text = R.string.localizable.creatingWallet() + "..."
         navigationController.topViewController?.displayLoading(text: text, animated: false)
-//        let password = PasswordGenerator.generateRandom()
-        let password = createWalletViewModel.password
+        let password = PasswordGenerator.generateRandom()
+        let createPassword = createWalletViewModel.password
         keystore.createAccount(with: password) { result in
             switch result {
             case .success(let account):
@@ -130,7 +130,7 @@ final class WalletCoordinator: Coordinator {
                     case .success(let words):
                         let type = WalletType.hd(account)
                         let wallet = WalletInfo(type: type, info: self.keystore.storage.get(for: type))
-                        self.savePassWord(address: wallet.address.description, pwd: password)
+                        self.savePassWord(address: wallet.address.description, pwd: createPassword)
                         self.pushBackup(for: account, words: words)
                     case .failure(let error):
                         self.navigationController.displayError(error: error)
@@ -155,7 +155,7 @@ final class WalletCoordinator: Coordinator {
         let controller = DarkPassphraseViewController(
             account: account,
             words: words,
-            mode: .showOnly
+            mode: .showAndVerify
         )
         controller.delegate = self
         //        controller.navigationItem.backBarButtonItem = nil
@@ -166,7 +166,7 @@ final class WalletCoordinator: Coordinator {
 
     func verifyPasswordVC(nav: NavigationController,session: WalletSession, completeHandle closure:@escaping ()->()) {
 
-        let walletPasswordVC = MLWalletPasswordViewController(session: session)
+        let walletPasswordVC = MLWalletPasswordViewController(session: session, keystore: keystore)
         walletPasswordVC.view.frame = CGRect(x: 0, y: 0, width: kScreenW, height: kScreenH!)
         walletPasswordVC.delegate = self
         nav.view.addSubview(walletPasswordVC.view)
@@ -180,9 +180,15 @@ final class WalletCoordinator: Coordinator {
     }
 
     func importMainWallet() {
-        let controller = ImportMainWalletViewController(keystore: keystore)
+//        let controller = ImportMainWalletViewController(keystore: keystore)
+//        controller.delegate = self
+//        navigationController.pushViewController(controller, animated: true)
+
+        let controller = ImportNewMainWalletViewController(keystore: keystore, for: .ethereum)
         controller.delegate = self
+        controller.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: addLeftReturnBtn())
         navigationController.pushViewController(controller, animated: true)
+//        navigationController.viewControllers = [controller]
     }
 
     @objc func done() {
@@ -278,6 +284,23 @@ final class WalletCoordinator: Coordinator {
             self.removeCoordinator(self)
         }
     }
+
+    func sameWalletAlertVC(vc: UIViewController, password: String, account: WalletInfo) {
+        let title = "钱包已存在，是否设置为新密码？（请牢记钱包新密码）"
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.popoverPresentationController?.sourceView = vc.view
+
+        alertController.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.destructive){ ( alert: UIAlertAction ) in
+//            if self.keystore.setPassword(password, for: account.currentWallet!) {
+            MLKeychain().saveKeychain(service: account.address.description, data: password as AnyObject)
+                MLProgressHud.show(message: "修改密码成功！")
+                self.done(for: account)
+//            }
+
+    })
+        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: UIAlertActionStyle.cancel, handler: nil))
+        vc.present(alertController, animated: false, completion: nil)
+    }
 }
 
 extension WalletCoordinator: WelcomeViewControllerDelegate {
@@ -359,13 +382,44 @@ extension WalletCoordinator: SelectCoinViewControllerDelegate {
 
 extension WalletCoordinator: ImportNewMainWalletViewControllerDelegate {
     func didImportAccount(account: WalletInfo, fields: [WalletInfoField], in viewController: ImportNewMainWalletViewController, password: String) {
-        keystore.store(object: account.info, fields: fields)
-//        func setPassword(_ password: String, for account: Wallet) -> Bool
-        keystore.setPassword(password, for: account.currentWallet!)
-        self.savePassWord(address: account.address.description, pwd: password)
-        print("address", account.address.description, "\n password", password)
-        done(for: account)
-//        walletCreated(wallet: account, type: .imported)
+        let targetWallet =  keystore.wallets.last
+        var sameWallet: WalletInfo?
+        var isDiff = true
+       var i = keystore.wallets.count
+        for wallet in keystore.wallets {
+            i -= 1
+            if i == 0 {//排除最后一个刚添加的钱包
+                break
+            }
+            if targetWallet?.address.description == wallet.address.description {
+                isDiff = false
+                sameWallet = wallet
+                keystore.delete(wallet: targetWallet!) { result in
+                    switch result {
+                    case .success:
+                        self.sameWalletAlertVC(vc: viewController, password: password, account: sameWallet!)
+                        isDiff = true
+                        sameWallet = nil
+                        return
+                    case .failure:
+//                        self.keystore.store(object: account.info, fields: fields)
+//                        if self.keystore.setPassword(password, for: account.currentWallet!) {
+                        MLKeychain().saveKeychain(service: account.address.description, data: password as AnyObject)
+                            self.done(for: account)
+//                        }
+                        isDiff = true
+                    }
+                    return
+                }
+            }
+        }
+        if isDiff {//排除最后一个刚添加的钱包并且没有相同钱包则保存退出
+            keystore.store(object: account.info, fields: fields)
+            MLKeychain().saveKeychain(service: account.address.description, data: password as AnyObject)
+//            if keystore.setPassword(password, for: account.currentWallet!) {
+                done(for: account)
+//            }
+        }
     }
 }
 extension WalletCoordinator: MLCreateWalletViewControllerDelegate {

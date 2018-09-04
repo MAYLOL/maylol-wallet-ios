@@ -4,7 +4,7 @@ import Foundation
 import KeychainSwift
 
 class MLKeychain {
-    //简便写法
+//    简便写法
     class share {
         static let `default` = MLKeychain()
     }
@@ -46,5 +46,3 @@ class MLKeychain {
         return false
     }
 }
-
-

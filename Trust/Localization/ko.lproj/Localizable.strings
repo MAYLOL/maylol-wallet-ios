@@ -352,3 +352,4 @@
 "ML.Manager.tokens.addWallet" = "点击添加或创建钱包";
 "ML.Manager.UnnamedWallet" = "지갑 이름 이름 없음";
 "ML.Setting.cell.MonetaryUnit" = "화폐 단위";//"货币单位",화폐 단위
+"ML.My.Wallet" = "내 지갑";//我的钱包 My wallet  내 지갑  私の財布 我的錢包

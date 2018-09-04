@@ -75,7 +75,6 @@ final class MLTokenViewCell: UITableViewCell {
     func setup() {
         addSubview(backView)
         backView.addSubview(containerForImageView)
-//        containerForImageView.addSubview(symbolImageView)
         backView.addSubview(symbolImageView)
         backView.addSubview(titleLabel)
         backView.addSubview(amountLabel)
@@ -87,14 +86,14 @@ final class MLTokenViewCell: UITableViewCell {
             backView.rightAnchor.constraint(equalTo: rightAnchor, constant: -40),
             backView.heightAnchor.constraint(equalToConstant: 65),
   symbolImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-symbolImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 5),
-            symbolImageView.widthAnchor.constraint(equalToConstant: 40),
-            symbolImageView.heightAnchor.constraint(equalToConstant: 40),
+symbolImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
+            symbolImageView.widthAnchor.constraint(equalToConstant: 30),
+            symbolImageView.heightAnchor.constraint(equalToConstant: 30),
 
             containerForImageView.centerXAnchor.constraint(equalTo: symbolImageView.centerXAnchor, constant: 0),
             containerForImageView.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor, constant: 0),
-            containerForImageView.widthAnchor.constraint(equalToConstant: TokensLayout.cell.imageSize),
-            containerForImageView.heightAnchor.constraint(equalToConstant: TokensLayout.cell.imageSize),
+            containerForImageView.widthAnchor.constraint(equalToConstant: TokensLayout.cell.imageSize-25),
+            containerForImageView.heightAnchor.constraint(equalToConstant: TokensLayout.cell.imageSize-25),
             titleLabel.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -5),
             titleLabel.centerXAnchor.constraint(equalTo: symbolImageView.centerXAnchor, constant: 0),
 

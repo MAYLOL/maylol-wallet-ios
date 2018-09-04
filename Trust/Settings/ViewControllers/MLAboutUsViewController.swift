@@ -31,8 +31,8 @@ class MLAboutUsViewController: UIViewController {
         let iconView = UIImageView()
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.contentMode = UIViewContentMode.scaleAspectFit
-        underDynamicLine.layer.cornerRadius = 9
-        underDynamicLine.layer.masksToBounds = true
+        iconView.layer.cornerRadius = 9
+        iconView.layer.masksToBounds = true
         iconView.image = UIImage(named: "AppIcon")
         return iconView
     }()

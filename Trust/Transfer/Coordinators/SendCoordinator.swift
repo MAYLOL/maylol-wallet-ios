@@ -127,9 +127,10 @@ extension SendCoordinator: ScanQRCodeCoordinatorDelegate {
     func didScan(result: String, in coordinator: ScanQRCodeCoordinator) {
         coordinator.navigationController.dismiss(animated: true, completion: nil)
         removeCoordinator(coordinator)
-        guard let url = URL(string: result) else {
-            return
-        }
+        self.controller.scanString = result
+//        guard let url = URL(string: result) else {
+//            return
+//        }
 //        controller.
     }
 }

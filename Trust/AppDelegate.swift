@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             fatalError()
         }
 
-        protectionCoordinator.didFinishLaunchingWithOptions()
+//        protectionCoordinator.didFinishLaunchingWithOptions()
         urlNavigatorCoordinator.branch.didFinishLaunchingWithOptions(launchOptions: launchOptions)
         return true
     }
@@ -56,22 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        protectionCoordinator.applicationWillResignActive()
+//        protectionCoordinator.applicationWillResignActive()
         Lock().setAutoLockTime()
         CookiesStore.save()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        protectionCoordinator.applicationDidBecomeActive()
+//        protectionCoordinator.applicationDidBecomeActive()
         CookiesStore.load()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        protectionCoordinator.applicationDidEnterBackground()
+//        protectionCoordinator.applicationDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        protectionCoordinator.applicationWillEnterForeground()
+//        protectionCoordinator.applicationWillEnterForeground()
     }
 
     func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplicationExtensionPointIdentifier) -> Bool {

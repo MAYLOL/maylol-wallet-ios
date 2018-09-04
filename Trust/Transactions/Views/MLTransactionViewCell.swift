@@ -19,9 +19,13 @@ final class MLTransactionViewCell: UITableViewCell {
         statusImageView.contentMode = .scaleAspectFit
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        titleLabel.font = UIFont.systemFont(ofSize: 13)
+        titleLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
+        titleLabel.textColor = Colors.titleBlackcolor
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subTitleLabel.lineBreakMode = .byTruncatingMiddle
+        subTitleLabel.textColor = Colors.detailTextgraycolor
+        subTitleLabel.font = UIFont.systemFont(ofSize: 10)
 
         amountLabel.textAlignment = .right
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,20 +69,19 @@ final class MLTransactionViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     func configure(viewModel: TransactionCellViewModel) {
 
         statusImageView.image = viewModel.statusImage
 
-        titleLabel.text = viewModel.title
-
-        subTitleLabel.text = viewModel.subTitle
-        subTitleLabel.textColor = viewModel.subTitleTextColor
-        subTitleLabel.font = viewModel.subTitleFont
-
-        amountLabel.text = viewModel.amountText
-        amountLabel.font = viewModel.amountFont
-        amountLabel.textColor = viewModel.amountTextColor
+        titleLabel.text = viewModel.subTitle
+        subTitleLabel.text = viewModel.timeString
+//        subTitleLabel.text = viewModel.subTitle
+//        subTitleLabel.textColor = viewModel.subTitleTextColor
+//        subTitleLabel.font = viewModel.subTitleFont
+        amountLabel.attributedText = viewModel.symbolAmountText
+//        amountLabel.text = viewModel.amountText
+//        amountLabel.font = viewModel.amountFont
+//        amountLabel.textColor = viewModel.amountTextColor
 
         backgroundColor = viewModel.backgroundColor
     }

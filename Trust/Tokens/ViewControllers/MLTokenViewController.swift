@@ -54,10 +54,16 @@ final class MLTokenViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(buttonsView)
 
+        var headerHeight: CGFloat = kAutoLayoutHeigth(345)
+        if isiPhone5 {
+            headerHeight = kAutoLayoutHeigth(360)
+        } else {
+            headerHeight = kAutoLayoutHeigth(340)
+        }
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.topAnchor, constant: kNavigationBarHeight + kStatusBarHeight),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(345)),
+            header.heightAnchor.constraint(equalToConstant: headerHeight),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

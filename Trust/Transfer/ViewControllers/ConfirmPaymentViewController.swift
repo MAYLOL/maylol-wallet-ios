@@ -6,15 +6,15 @@ import UIKit
 import Result
 import StatefulViewController
 
-enum ConfirmType {
-    case sign
-    case signThenSend
-}
-
-enum ConfirmResult {
-    case signedTransaction(SentTransaction)
-    case sentTransaction(SentTransaction)
-}
+//enum ConfirmType {
+//    case sign
+//    case signThenSend
+//}
+//
+//enum ConfirmResult {
+//    case signedTransaction(SentTransaction)
+//    case sentTransaction(SentTransaction)
+//}
 
 class ConfirmPaymentViewController: UIViewController {
 

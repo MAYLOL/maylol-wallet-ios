@@ -185,7 +185,7 @@ class MLSettingsViewController: UIViewController {
     }()
 }
 
-extension MLSettingsViewController: UITableViewDelegate,UITableViewDataSource {
+extension MLSettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MLSettingViewCell = tableView.dequeueReusableCell(withIdentifier: MLSettingViewCell.identifier, for: indexPath) as! MLSettingViewCell
         cell.settingModel = viewModel.getTitle(i: indexPath.row)
@@ -204,10 +204,10 @@ extension MLSettingsViewController: UITableViewDelegate,UITableViewDataSource {
         let pushType: MLPushType = viewModel.pushTypes[indexPath.row]
         switch pushType {
         case .MutiLanguage: //多语言
-            self.present(languageAlertViewController, animated: false, completion: nil)
+            self.present(languageAlertViewController, animated: true, completion: nil)
             return
         case .Unit: //货币单位
-            self.present(currencyAlertViewController, animated: false, completion: nil)
+            self.present(currencyAlertViewController, animated: true, completion: nil)
             return
         default:
             break

@@ -147,21 +147,37 @@ extension String {
         return resutl
     }
 
-    func isPassword(pasword : String) -> Bool {
-
+    func isPassword(pasword: String) -> Bool {
         let pwd =  "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$"
 
-        let regextestpwd = NSPredicate(format: "SELF MATCHES %@",pwd)
+        let regextestpwd = NSPredicate(format: "SELF MATCHES %@", pwd)
 
-        if (regextestpwd.evaluate(with: pasword) == true) {
+        if regextestpwd.evaluate(with: pasword) == true {
 
             return true
 
-        }else{
+        } else {
 
             return false
 
         }
-
     }
+
+    func isWalletName(walletName: String) -> Bool {
+        let wn =  "^.{1,12}$"
+
+        let regextestpwd = NSPredicate(format: "SELF MATCHES %@", wn)
+
+        if regextestpwd.evaluate(with: walletName) == true {
+
+            return true
+
+        } else {
+
+            return false
+
+        }
+    }
+
+
 }

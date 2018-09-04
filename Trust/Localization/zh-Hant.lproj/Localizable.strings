@@ -329,4 +329,5 @@
 "ML.Write.Phrase" = "抄下你的钱包助记词！";
 "ML.Write.PhraseTips" = "助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方";
 "wallets.export.alertSheet.detail" = "Export Private Key";
+"ML.My.Wallet" = "我的錢包";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
 

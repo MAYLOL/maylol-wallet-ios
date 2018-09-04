@@ -119,40 +119,31 @@ final class MLTokenHeaderView: UIView {
         didSet {
             var untStr = "≈ ¥"
             if Config().currency == .CNY {
-            }else if Config().currency == .USD {
+            } else if Config().currency == .USD {
                 untStr = "≈ $"
             }
             titleLabel.text = viewModel?.token.symbol
             amountLabel.text = viewModel?.amountCountString
-
-
             currencyAmountLabel.text = "\(untStr)" +  (viewModel?.feelPrise)!
-
-            let dataArr1:[String] = NSDate().latelyEightTimeInt() as! [String]
-
-
-            let dataArr:[String] = NSDate().latelyEightTime() as! [String]
-
-            var y1AmountDouble = Double((viewModel?.amountCountString)!)
-            var y2FreeDouble = Double((viewModel?.feelPrise)!)
-
-
-
-
+            let dataArr1: [String] = NSDate().latelyEightTimeInt() as! [String]
+            let dataArr: [String] = NSDate().latelyEightTime() as! [String]
+            let y1AmountDouble = viewModel?.amoutDouble
+            let y2FreeDouble = Double((viewModel?.feelPrise)!)
 //            var y1A: [Double] = [0,2,10,5,3]
 //            var xA: [Double] = [18,19,20,21,22];
 //            var y2A: [Double] = [0,6000,60000,9000,1000];
 
-            var y1A: [Double] = getY1Arr(d: y1AmountDouble!)
+            var y1A: [Double] = getY1Arr(d: y1AmountDouble ?? 0)
             var xA: [Double] = getXArr(stringArr: dataArr1)
-            var y2A: [Double] = getY2Arr(d: y2FreeDouble!)
+            var y2A: [Double] = getY2Arr(d: y2FreeDouble ?? 0)
 
-            var mutableArr:[RLLineChartItem] = NSMutableArray() as! [RLLineChartItem]
-            for i in 0..<8 {
+            var mutableArr: [RLLineChartItem] = NSMutableArray() as! [RLLineChartItem]
+            for i in 0..<5 {
                 let item = RLLineChartItem()
                 item.xValue = xA[i]
                 item.y1Value = y1A[i]
                 item.y2Value = y2A[i]
+                item.xString = dataArr[i]
                 mutableArr.append(item)
 //                mutableArr.addObjects(from: item)
             }
@@ -170,11 +161,11 @@ final class MLTokenHeaderView: UIView {
     }
 
     func getY1Arr(d: Double) -> [Double] {
-        let y1: [Double] = [0,0,0,0,0,0,0,d/1]
+        let y1: [Double] = [0, 0, 0, 0, d/1]
         return y1
     }
     func getXArr(stringArr: [String]) -> [Double] {
-        var arr:[Double] = []
+        var arr: [Double] = []
         print(stringArr)
         let arrReversed: [String] = stringArr.reversed()
         for str in arrReversed {
@@ -185,7 +176,7 @@ final class MLTokenHeaderView: UIView {
     }
     func getY2Arr(d: Double) -> [Double] {
 //        let y2: [Double] = [0,d/7,d/6,d/5,d/4,d/3,d/2,d/1]
-        let y2: [Double] = [0,0,0,0,0,0,0,d/1]
+        let y2: [Double] = [0, 0, 0, 0, d/1]
         return y2
     }
 
@@ -222,7 +213,7 @@ final class MLTokenHeaderView: UIView {
             sessionView.topAnchor.constraint(equalTo: chatView.bottomAnchor, constant: kAutoLayoutHeigth(25)),
             sessionView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             sessionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-            sessionView.heightAnchor.constraint(equalToConstant: 70),
+            sessionView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(55)),
 
 //            grayLine.topAnchor.constraint(equalTo: chatView.bottomAnchor, constant: 25),
 //            grayLine.rightAnchor.constraint(equalTo: rightAnchor, constant: 25),

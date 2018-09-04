@@ -248,6 +248,8 @@
 		40199F34212B031B003C1765 /* MLManagerWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40199F33212B031B003C1765 /* MLManagerWalletViewController.swift */; };
 		40199F36212B2322003C1765 /* MLWalletSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40199F35212B2322003C1765 /* MLWalletSettingCell.swift */; };
 		401A2537212DC5F80087BE9B /* MLWalletPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401A2536212DC5F80087BE9B /* MLWalletPasswordViewController.swift */; };
+		401C860A2138357600D1AB42 /* MLMyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C86092138357600D1AB42 /* MLMyWalletViewController.swift */; };
+		401C860C2138399400D1AB42 /* MLManagerWalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401C860B2138399400D1AB42 /* MLManagerWalletCoordinator.swift */; };
 		401F79C9212A505900B43D4C /* MLKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401F79C8212A505900B43D4C /* MLKeychain.swift */; };
 		401FC59E21366AA200F0BECD /* NSDate+MLCatrgory.m in Sources */ = {isa = PBXBuildFile; fileRef = 401FC59D21366AA200F0BECD /* NSDate+MLCatrgory.m */; };
 		4020688321311F1800BD3A19 /* ARLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687D21311F1800BD3A19 /* ARLineChartView.m */; };
@@ -269,6 +271,14 @@
 		406B30602129BE83008DF2C5 /* MLScreenCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B305F2129BE83008DF2C5 /* MLScreenCaptureView.swift */; };
 		4078D83A21258FF800AB5B77 /* UnderLineTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4078D83921258FF800AB5B77 /* UnderLineTextFiled.swift */; };
 		407BCD35212C3450000C6931 /* MLTokensHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BCD34212C3450000C6931 /* MLTokensHeaderView.swift */; };
+		4082EC6F213847A300FF7332 /* MLManageWalletViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC6E213847A300FF7332 /* MLManageWalletViewCell.swift */; };
+		4082EC7121385D7800FF7332 /* MLWalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC7021385D7800FF7332 /* MLWalletsViewModel.swift */; };
+		4082EC732138DDBD00FF7332 /* MLWalletInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC722138DDBD00FF7332 /* MLWalletInfoViewController.swift */; };
+		4082EC752138DEA900FF7332 /* MLWalletInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC742138DEA900FF7332 /* MLWalletInfoHeaderView.swift */; };
+		4082EC772138E0AD00FF7332 /* MLWalletInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC762138E0AD00FF7332 /* MLWalletInfoCell.swift */; };
+		4082EC792138E4B800FF7332 /* MLWalletInfoWalletNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC782138E4B800FF7332 /* MLWalletInfoWalletNameCell.swift */; };
+		4082EC7B21390FC200FF7332 /* MLWalletInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC7A21390FC200FF7332 /* MLWalletInfoViewModel.swift */; };
+		4082EC7D21392CF500FF7332 /* MLChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC7C21392CF500FF7332 /* MLChangePasswordViewController.swift */; };
 		408FAB3B212B3E7500C77EAA /* MLCreateWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408FAB3A212B3E7500C77EAA /* MLCreateWalletView.swift */; };
 		408FAB3D212B414E00C77EAA /* MLTokensHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408FAB3C212B414E00C77EAA /* MLTokensHomeViewController.swift */; };
 		40AB7379212CF19D0092E89B /* MLTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB7378212CF19D0092E89B /* MLTokenViewController.swift */; };
@@ -783,6 +793,8 @@
 		40199F33212B031B003C1765 /* MLManagerWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLManagerWalletViewController.swift; sourceTree = "<group>"; };
 		40199F35212B2322003C1765 /* MLWalletSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletSettingCell.swift; sourceTree = "<group>"; };
 		401A2536212DC5F80087BE9B /* MLWalletPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletPasswordViewController.swift; sourceTree = "<group>"; };
+		401C86092138357600D1AB42 /* MLMyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMyWalletViewController.swift; sourceTree = "<group>"; };
+		401C860B2138399400D1AB42 /* MLManagerWalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLManagerWalletCoordinator.swift; sourceTree = "<group>"; };
 		401F79C8212A505900B43D4C /* MLKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLKeychain.swift; sourceTree = "<group>"; };
 		401FC59C21366AA200F0BECD /* NSDate+MLCatrgory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+MLCatrgory.h"; sourceTree = "<group>"; };
 		401FC59D21366AA200F0BECD /* NSDate+MLCatrgory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MLCatrgory.m"; sourceTree = "<group>"; };
@@ -810,6 +822,14 @@
 		406B305F2129BE83008DF2C5 /* MLScreenCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLScreenCaptureView.swift; sourceTree = "<group>"; };
 		4078D83921258FF800AB5B77 /* UnderLineTextFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextFiled.swift; sourceTree = "<group>"; };
 		407BCD34212C3450000C6931 /* MLTokensHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokensHeaderView.swift; sourceTree = "<group>"; };
+		4082EC6E213847A300FF7332 /* MLManageWalletViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLManageWalletViewCell.swift; sourceTree = "<group>"; };
+		4082EC7021385D7800FF7332 /* MLWalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletsViewModel.swift; sourceTree = "<group>"; };
+		4082EC722138DDBD00FF7332 /* MLWalletInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoViewController.swift; sourceTree = "<group>"; };
+		4082EC742138DEA900FF7332 /* MLWalletInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoHeaderView.swift; sourceTree = "<group>"; };
+		4082EC762138E0AD00FF7332 /* MLWalletInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoCell.swift; sourceTree = "<group>"; };
+		4082EC782138E4B800FF7332 /* MLWalletInfoWalletNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoWalletNameCell.swift; sourceTree = "<group>"; };
+		4082EC7A21390FC200FF7332 /* MLWalletInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoViewModel.swift; sourceTree = "<group>"; };
+		4082EC7C21392CF500FF7332 /* MLChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLChangePasswordViewController.swift; sourceTree = "<group>"; };
 		408FAB3A212B3E7500C77EAA /* MLCreateWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLCreateWalletView.swift; sourceTree = "<group>"; };
 		408FAB3C212B414E00C77EAA /* MLTokensHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokensHomeViewController.swift; sourceTree = "<group>"; };
 		40AB7378212CF19D0092E89B /* MLTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokenViewController.swift; sourceTree = "<group>"; };
@@ -1442,6 +1462,7 @@
 				296AF9A21F733AB30058AF78 /* WalletCoordinator.swift */,
 				293E62701FA2F63500CB0A66 /* InitialWalletCreationCoordinator.swift */,
 				29AD3D5820F5BD97007893C9 /* WalletsCoordinator.swift */,
+				401C860B2138399400D1AB42 /* MLManagerWalletCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1513,7 +1534,10 @@
 				7712437520FD45440097296E /* ImportMainWalletViewController.swift */,
 				40B6C9352126DD1200E1FF3B /* ImportNewMainWalletViewController.swift */,
 				7712437720FD8DEF0097296E /* SelectCoinViewController.swift */,
+				4082EC7C21392CF500FF7332 /* MLChangePasswordViewController.swift */,
 				40199F33212B031B003C1765 /* MLManagerWalletViewController.swift */,
+				4082EC722138DDBD00FF7332 /* MLWalletInfoViewController.swift */,
+				401C86092138357600D1AB42 /* MLMyWalletViewController.swift */,
 				4014F35A212B3E3400351817 /* MLCreateWalletViewController.swift */,
 				401A2536212DC5F80087BE9B /* MLWalletPasswordViewController.swift */,
 			);
@@ -1534,6 +1558,8 @@
 				7704836D20FE9B4000837735 /* SelectCoinsViewModel.swift */,
 				779141D721045571007E8E16 /* WalletCreatedViewModel.swift */,
 				4014F358212B26A000351817 /* MLWalletSettingViewModel.swift */,
+				4082EC7021385D7800FF7332 /* MLWalletsViewModel.swift */,
+				4082EC7A21390FC200FF7332 /* MLWalletInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2403,9 +2429,13 @@
 				40481D5421270D2A00DCBBA5 /* MLImportPrivateView.swift */,
 				406B305F2129BE83008DF2C5 /* MLScreenCaptureView.swift */,
 				40C929D5212A8D20002AD7E2 /* MLManagerWalletView.swift */,
+				4082EC6E213847A300FF7332 /* MLManageWalletViewCell.swift */,
 				40C929D7212A8E0D002AD7E2 /* MLWalletViewCell.swift */,
 				40199F35212B2322003C1765 /* MLWalletSettingCell.swift */,
 				408FAB3A212B3E7500C77EAA /* MLCreateWalletView.swift */,
+				4082EC742138DEA900FF7332 /* MLWalletInfoHeaderView.swift */,
+				4082EC762138E0AD00FF7332 /* MLWalletInfoCell.swift */,
+				4082EC782138E4B800FF7332 /* MLWalletInfoWalletNameCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2800,13 +2830,13 @@
 								enabled = 0;
 							};
 							com.apple.DataProtection = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;
@@ -3088,6 +3118,7 @@
 				73ACEF0120163ED4003DD71D /* LockViewModel.swift in Sources */,
 				29AD8A041F93D6CD008E10E7 /* Constants.swift in Sources */,
 				29FF12FE1F75EA3F00AFD326 /* Keystore.swift in Sources */,
+				4082EC7D21392CF500FF7332 /* MLChangePasswordViewController.swift in Sources */,
 				4015B83F212ED3340069C0A8 /* MLConfirmInfoLabel.swift in Sources */,
 				29AD3D4720EC443D007893C9 /* WalletCreatedController.swift in Sources */,
 				A2E43B4E20802879001FAD3D /* UINavigationController.swift in Sources */,
@@ -3185,12 +3216,14 @@
 				296105931FA2AA2100292494 /* SignTransaction.swift in Sources */,
 				296105951FA2DEF000292494 /* TransactionDirection.swift in Sources */,
 				291ED08B1F6F5D2100E7E93A /* Bundle.swift in Sources */,
+				4082EC7121385D7800FF7332 /* MLWalletsViewModel.swift in Sources */,
 				293B8B451F70A20200356286 /* TransactionViewCell.swift in Sources */,
 				771D0646208B3FAD00016B72 /* MonetaryAmountViewModel.swift in Sources */,
 				29FC0CB81F8299510036089F /* Coordinator.swift in Sources */,
 				296106C61F7645CC0006164B /* TokensViewController.swift in Sources */,
 				771DC9D520F36555003E2CE2 /* UIBarButtonItem.swift in Sources */,
 				29282B531F7630970067F88D /* Token.swift in Sources */,
+				4082EC7B21390FC200FF7332 /* MLWalletInfoViewModel.swift in Sources */,
 				29F1C85D2003698A003780D8 /* WellDoneViewController.swift in Sources */,
 				29E9CFCF1FE7347200017744 /* ERC20Token.swift in Sources */,
 				29C9F5FB1F720C050025C494 /* FloatLabelTextField.swift in Sources */,
@@ -3215,6 +3248,7 @@
 				77B806B220778F6A005FDCBE /* URLViewModel.swift in Sources */,
 				29C70C7C201990540072E454 /* SendTransaction.swift in Sources */,
 				29AD3D5720F5BB08007893C9 /* WalletsViewModel.swift in Sources */,
+				4082EC752138DEA900FF7332 /* MLWalletInfoHeaderView.swift in Sources */,
 				771AA962200D5EC700D25403 /* PassphraseViewModel.swift in Sources */,
 				73C41C71201B46AD00243C6C /* LockEnterPasscodeViewModel.swift in Sources */,
 				291A1B671F98092F00ADEC80 /* ConfirmPaymentViewController.swift in Sources */,
@@ -3238,6 +3272,7 @@
 				772C6DB12107FF3800FCE4F1 /* AddressFieldView.swift in Sources */,
 				73200B672044B22600118A82 /* TokensDataStore.swift in Sources */,
 				29DBF2A71F9F145900327C60 /* StateViewModel.swift in Sources */,
+				4082EC792138E4B800FF7332 /* MLWalletInfoWalletNameCell.swift in Sources */,
 				2923D9B31FDA49F8000CF3F8 /* SkipBackupFilesInitializer.swift in Sources */,
 				294DFBA01FE0CADE004CEB56 /* TransactionDetailsViewModel.swift in Sources */,
 				90DDF48520518AE50016E6D4 /* BookmarkViewModel.swift in Sources */,
@@ -3357,6 +3392,7 @@
 				2912CD341F6A849C00C6CBE3 /* WelcomeViewModel.swift in Sources */,
 				40B6C9342126C90000E1FF3B /* MLBackButton.swift in Sources */,
 				7721A6C8202EF81B004DB16C /* CustomRPC.swift in Sources */,
+				401C860C2138399400D1AB42 /* MLManagerWalletCoordinator.swift in Sources */,
 				29E9CFCD1FE7343C00017744 /* NewTokenViewModel.swift in Sources */,
 				299B5E421FD2298E0051361C /* ConfigureTransactionViewController.swift in Sources */,
 				294DFBA31FE0E2EA004CEB56 /* TransactionValue.swift in Sources */,
@@ -3380,6 +3416,7 @@
 				296AF9A91F737F6F0058AF78 /* SendRawTransactionRequest.swift in Sources */,
 				293112121FC4F48400966EEA /* ServiceProvider.swift in Sources */,
 				400BF4CC212D81E4008617A6 /* MLSimpleSlider.swift in Sources */,
+				4082EC772138E0AD00FF7332 /* MLWalletInfoCell.swift in Sources */,
 				77B806AF20776EDA005FDCBE /* HistoryViewModel.swift in Sources */,
 				73C5CF45201A7CAB00C74316 /* LockPasscodeViewController.swift in Sources */,
 				2912CD2F1F6A83A100C6CBE3 /* ImportWalletViewController.swift in Sources */,
@@ -3424,6 +3461,7 @@
 				73DE7B3220987D8F00AE04E6 /* NonFungibleCollectionViewCell.swift in Sources */,
 				77B806A52075C33D005FDCBE /* SharedMigrationInitializer.swift in Sources */,
 				29F114F41FA8117C00114A29 /* SendCoordinator.swift in Sources */,
+				401C860A2138357600D1AB42 /* MLMyWalletViewController.swift in Sources */,
 				779141CD21027CB4007E8E16 /* TransactionsNetworkProvider.swift in Sources */,
 				293B8B411F707F4600356286 /* TransactionViewModel.swift in Sources */,
 				77787134208462EF00CF7303 /* TransactionsLayout.swift in Sources */,
@@ -3449,6 +3487,7 @@
 				40C929D8212A8E0D002AD7E2 /* MLWalletViewCell.swift in Sources */,
 				4011605B21270B920050CBFE /* MLImportSwitchHeaderView.swift in Sources */,
 				29DBF2A31F9DBFF400327C60 /* BackupCoordinator.swift in Sources */,
+				4082EC732138DDBD00FF7332 /* MLWalletInfoViewController.swift in Sources */,
 				40F2042A212C4F6600FB8BDD /* MLTokenViewCell.swift in Sources */,
 				2963B6C11F9AE0E4003063C1 /* Data.swift in Sources */,
 				77CB8398206B8E1C006F34A8 /* ScanQRCodeCoordinator.swift in Sources */,
@@ -3477,6 +3516,7 @@
 				77B1EB012063A198007970AA /* NFTDetailsViewModel.swift in Sources */,
 				298542F31FBD594D00CB5081 /* SettingsViewModel.swift in Sources */,
 				CCA4FE381FD428B300749AE4 /* JailbreakChecker.swift in Sources */,
+				4082EC6F213847A300FF7332 /* MLManageWalletViewCell.swift in Sources */,
 				291A1B651F974E8600ADEC80 /* WalletEntryPoint.swift in Sources */,
 				2959960E1FAB05C200DB66A8 /* TransactionsEmptyView.swift in Sources */,
 				BB03A86D20416AF600649DA0 /* BalanceStatus.swift in Sources */,
@@ -3752,6 +3792,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_ENTITLEMENTS = Trust/Trust.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -3781,6 +3822,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_ENTITLEMENTS = Trust/Trust.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

@@ -314,6 +314,8 @@
 //"ML.Write.PhraseTips" = "助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方";
 "ML.Manager.UnnamedWallet" = "未命名钱包";
 "ML.Manager.Wallet" = "管理钱包";
+"ML.My.Wallet" = "我的钱包";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
+
 "setting.multilingual" = "多语言";//多语言
 "ML.Setting.cell.MonetaryUnit" = "货币单位";//"货币单位",
 "ML.Setting.cell.Aboutus" = "关于我们";//"关于我们",

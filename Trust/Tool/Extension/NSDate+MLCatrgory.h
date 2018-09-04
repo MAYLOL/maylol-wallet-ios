@@ -103,4 +103,5 @@
 - (void)getCurrentWeek;
 -(NSMutableArray *)latelyEightTime;
 -(NSMutableArray *)latelyEightTimeInt;
++ (NSString *)updateTimeForRow:(NSDate *)createTimeString;
 @end

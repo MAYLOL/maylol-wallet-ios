@@ -23,11 +23,27 @@ class PassphraseViewController: UIViewController {
     let viewModel = PassphraseViewModel()
     let account: Wallet
     let words: [String]
+//    lazy var actionButton: UIButton = {
+//        let button = Button(size: .large, style: .solid)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitle(R.string.localizable.next(), for: .normal)
+//        return button
+//    }()
     lazy var actionButton: UIButton = {
-        let button = Button(size: .large, style: .solid)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(R.string.localizable.next(), for: .normal)
-        return button
+        let actionButton = UIButton.init(type: UIButtonType.custom)
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.backgroundColor = UIColor(hex: "F02E44")
+        actionButton.setTitleColor(Colors.fffffgraycolor, for: .normal)
+        actionButton.setTitle(R.string.localizable.next(), for: .normal)
+        actionButton.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
+        actionButton.layer.cornerRadius = 5
+        actionButton.layer.masksToBounds = true
+        return actionButton
+    }()
+    lazy var notScreenView: MLScreenCaptureView = {
+        let notScreenView = MLScreenCaptureView()
+//        notScreenView.translatesAutoresizingMaskIntoConstraints = false
+        return notScreenView
     }()
     let copyButton = Button(size: .extraLarge, style: .clear)
     weak var delegate: PassphraseViewControllerDelegate?
@@ -53,7 +69,7 @@ class PassphraseViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = viewModel.title
-        titleLabel.font = AppStyle.PingFangSC24.font
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textColor = AppStyle.PingFangSC24.textColor
         titleLabel.textAlignment = .left
         let subTitleLabel = UILabel()
@@ -95,7 +111,7 @@ class PassphraseViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 130 - kStatusBarHeight),
             titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
             subTitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             subTitleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
             subTitleTipsLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 25),
@@ -112,6 +128,7 @@ class PassphraseViewController: UIViewController {
             actionButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             actionButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             actionButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -StyleLayout.sideMargin),
+            actionButton.heightAnchor.constraint(equalToConstant: 40)
         ])
 
         copyButton.addTarget(self, action: #selector(copyAction(_:)), for: .touchUpInside)
@@ -123,6 +140,8 @@ class PassphraseViewController: UIViewController {
             actionButton.isHidden = false
         }
         actionButton.addTarget(self, action: #selector(nextAction(_:)), for: .touchUpInside)
+        UIApplication.shared.keyWindow?.addSubview(notScreenView)
+        notScreenView.frame = CGRect(x: 0, y: 0, width: kScreenW, height: kScreenH!)
     }
 
     func presentShare(in sender: UIView) {

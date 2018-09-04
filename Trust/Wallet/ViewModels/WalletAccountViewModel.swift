@@ -17,8 +17,11 @@ struct WalletAccountViewModel {
         if wallet.multiWallet {
             return wallet.info.name
         }
+//        if !wallet.info.name.isEmpty {
+//            return  wallet.info.name + " (" + wallet.coin!.server.symbol + ")"
+//        }
         if !wallet.info.name.isEmpty {
-            return  wallet.info.name + " (" + wallet.coin!.server.symbol + ")"
+            return  wallet.info.name
         }
         return WalletInfo.emptyName
     }
@@ -39,6 +42,12 @@ struct WalletAccountViewModel {
             return  WalletInfo.format(value: "0.0", server: .main)
         }
         return WalletInfo.format(value: shortFormatter.string(from: BigInt(wallet.info.balance) ?? BigInt(), decimals: server.decimals), server: server)
+    }
+    var balanceStr: String {
+        guard !wallet.info.balance.isEmpty, let server = wallet.coin?.server else {
+            return "0.0"
+        }
+        return shortFormatter.string(from: BigInt(wallet.info.balance) ?? BigInt(), decimals: server.decimals)
     }
 
     var isWatch: Bool {

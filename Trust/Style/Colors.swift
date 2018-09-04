@@ -35,4 +35,12 @@ struct Colors {
     static let f22222ecolor = UIColor(hex: "22222e")
     static let bf2537color = UIColor(hex: "bf2537")
     static let f346075color = UIColor(hex: "346075")
+    static let f151515color = UIColor(hex: "151515")
+    static let f4a4a4acolor = UIColor(hex: "4a4a4a")
+    static let f323232color = UIColor(hex: "323232")
+    static let f979797color = UIColor(hex: "979797")
+    static let f646464color = UIColor(hex: "646464")
+    static let f969696color = UIColor(hex: "969696")
+    static let f0f0f0color = UIColor(hex: "f0f0f0")
+    static let f262626color = UIColor(hex: "262626")
 }

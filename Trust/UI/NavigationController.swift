@@ -41,6 +41,7 @@ public class NavigationController: UIViewController {
             nav.modalPresentationStyle = .formSheet
             navigationController.present(nav, animated: true, completion: nil)
         } else {
+            controller.navigationItem.leftBarButtonItem = barItem
             navigationController.pushViewController(controller, animated: true)
         }
         return controller
@@ -113,7 +114,9 @@ public class NavigationController: UIViewController {
     func popViewController(animated: Bool) {
         childNavigationController.popViewController(animated: animated)
     }
-
+    func popRootViewController(animated: Bool) {
+        childNavigationController.popToRootViewController(animated: animated)
+    }
     func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         childNavigationController.setViewControllers(viewControllers, animated: animated)
     }

@@ -90,7 +90,7 @@ class ImportNewMainWalletViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(switchHeaderView)
         NSLayoutConstraint.activate([
-            switchHeaderView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100 - kStatusBarHeight),
+            switchHeaderView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 83-kNavigationBarHeight),
             switchHeaderView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0),
             switchHeaderView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0),
             switchHeaderView.heightAnchor.constraint(equalToConstant: switchHeaderView.calculationheight()),
@@ -101,7 +101,7 @@ class ImportNewMainWalletViewController: UIViewController {
         NSLayoutConstraint.activate([
             importBtn.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 472.5),
             importBtn.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 25),
-            importBtn.widthAnchor.constraint(equalToConstant: 135),
+            importBtn.widthAnchor.constraint(equalToConstant: 160),
             importBtn.heightAnchor.constraint(equalToConstant: 40),
             introduceBtn.topAnchor.constraint(equalTo: importBtn.bottomAnchor, constant: 75),
             introduceBtn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
@@ -132,17 +132,15 @@ class ImportNewMainWalletViewController: UIViewController {
     private func calculationheight() -> CGFloat {
 
         return 472.5 + 75 + 80 + 20
-
     }
-    @objc private func introduceAction(sender: UIButton){
+    @objc private func introduceAction(sender: UIButton) {
         if sender.titleLabel?.text == NSLocalizedString("MLPhraseIntroduce", value: "什么是助记词？", comment: "") {
             print("什么是助记词？")
         } else {
             print("什么是私钥？")
         }
     }
-    @objc private func importWalletAction(sender: UIButton){
-
+    @objc private func importWalletAction(sender: UIButton) {
         let initialName = WalletInfo.initialName(index: keystore.wallets.count)
         switch importSelectionType {
         case .mnemonic:
@@ -162,10 +160,9 @@ class ImportNewMainWalletViewController: UIViewController {
                         self.displayError(error: error)
                     }
                 }
-            }else{
+            } else {
                 return
             }
-            break
         case .privateKey:
             if privateView.observeStatus() {
                 let privateKeyInput = privateView.getPrivateWord()
@@ -182,10 +179,9 @@ class ImportNewMainWalletViewController: UIViewController {
                         self.displayError(error: error)
                     }
                 }
-            }else{
+            } else {
                 return
             }
-            break
         default:
             return
         }
@@ -194,6 +190,7 @@ class ImportNewMainWalletViewController: UIViewController {
         delegate?.didImportAccount(account: account, fields: [
             .name(name),
             .backup(true),
+            .mainWallet(true),
             ], in: self, password: password)
     }
     func switchImportStyle(importSelectType: ImportSelectionType) {
@@ -203,12 +200,10 @@ class ImportNewMainWalletViewController: UIViewController {
             importSelectionType = .mnemonic
             removePrivateInfo()
             addPhraseView()
-            break
         case .privateKey:
             importSelectionType = .privateKey
             removePhraseInfo()
             addPrivateView()
-            break
         case .keystore:
             break
         case .address:
@@ -274,4 +269,3 @@ extension WalletInfo {
         )
     }
 }
-

@@ -48,7 +48,6 @@ final class TokensCoordinator: Coordinator {
         return masterViewController
     }()
 
-
     func addLeftReturnBtn() -> UIButton {
         let leftBtn = UIButton(type: UIButtonType.custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -58,11 +57,11 @@ final class TokensCoordinator: Coordinator {
     }
 
     @objc func dismissViewController() {
-        navigationController.popViewController(animated: false)
+        navigationController.popViewController(animated: true)
     }
 
-    lazy var managerWalletVC: MLManagerWalletViewController = {
-        let managerWalletVC = MLManagerWalletViewController(keystore: keystore)
+    lazy var managerWalletVC: MLMyWalletViewController = {
+        let managerWalletVC = MLMyWalletViewController(keystore: keystore)
         managerWalletVC.delegate = self
         return managerWalletVC
     }()
@@ -272,6 +271,8 @@ final class TokensCoordinator: Coordinator {
             presentWalletCoordinator(entryPoint: .importWallet)
         case .Setting:
             presentSettingCoordinator()
+        case .ManageWallte:
+            presentManagerCoordinator()
         default: break
         }
     }
@@ -305,6 +306,20 @@ final class TokensCoordinator: Coordinator {
         settingsCoordinator.start()
         addCoordinator(settingsCoordinator)
         navigationController.present(settingsCoordinator.navigationController, animated: true, completion: nil)
+    }
+    func presentManagerCoordinator() {
+        let tokensViewModel = TokensViewModel(session: session, store: store, tokensNetwork: network, transactionStore: transactionsStore)
+        let managerCoordinator = MLManagerWalletCoordinator(
+            session: session,
+            keystore: keystore,
+            tokensStorage: session.tokensStorage,
+            transactionsStore: session.transactionsStorage,
+            netWork: network,
+            tokensViewModel: tokensViewModel)
+        managerCoordinator.delegate = self
+        managerCoordinator.start()
+        addCoordinator(managerCoordinator)
+        navigationController.present(managerCoordinator.navigationController, animated: true, completion: nil)
     }
 
     deinit {
@@ -358,10 +373,12 @@ extension TokensCoordinator: MLTokenViewControllerDelegate {
             tokenViewModel: viewModel
         )
         controller.delegate = self
+
         NavigationController.openFormSheet(
             for: controller,
             in: navigationController,
-            barItem: UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss))
+            barItem: UIBarButtonItem.init(customView: addLeftReturnBtn())
+//            UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss))
         )
     }
     func didPressSend(for token: TokenObject, in controller: UIViewController) {
@@ -404,15 +421,15 @@ extension TokensCoordinator: EditTokensViewControllerDelegate {
         editToken(token)
     }
 }
-extension TokensCoordinator: MLManagerWalletViewControllerDelegate {
-    func didSelectForInfo(wallet: WalletInfo, account: Account, in controller: MLManagerWalletViewController) {
+extension TokensCoordinator: MLMyWalletViewControllerDelegate {
+    func didSelectForInfo(wallet: WalletInfo, account: Account, in controller: MLMyWalletViewController) {
         showWalletInfo(for: wallet, account: account, sender: controller.view)
     }
 
-    func didSelect(wallet: WalletInfo, account: Account, in controller: MLManagerWalletViewController) {
+    func didSelect(wallet: WalletInfo, account: Account, in controller: MLMyWalletViewController) {
         delegate?.didSelect(wallet: wallet, in: self)
     }
-    func didDeleteAccount(account: WalletInfo, in viewController: MLManagerWalletViewController) {
+    func didDeleteAccount(account: WalletInfo, in viewController: MLMyWalletViewController) {
         viewController.fetch()
 
         //Remove Realm DB
@@ -503,5 +520,12 @@ extension TokensCoordinator: WalletInfoViewControllerDelegate {
     func didPressSave(wallet: WalletInfo, fields: [WalletInfoField], in controller: WalletInfoViewController) {
         keystore.store(object: wallet.info, fields: fields)
         navigationController.popViewController(animated: true)
+    }
+}
+
+extension TokensCoordinator: MLManagerWalletCoordinatorDelegate {
+    func didCancel(in coordinator: MLManagerWalletCoordinator) {
+        removeCoordinator(coordinator)
+        navigationController.dismiss(animated: false)
     }
 }

@@ -24,7 +24,6 @@ final class TokensViewModel: NSObject {
     var headerBalance: String {
         return amount ?? "0.00"
     }
-
     var headerAttributeBalance: NSMutableAttributedString {
 
         var unt = headerBalance.substring(to: 1)
@@ -32,18 +31,15 @@ final class TokensViewModel: NSObject {
         if unt == "C" {
             unt = "¥"
             prise = headerBalance.substring(from: 3)
-        }else if unt == "U" {
+        } else if unt == "U" {
             unt = "$"
             prise = headerBalance.substring(from: 3)
         }
-
-        let str = NSLocalizedString("ML.Tokens.cell.Totalassets", value: "TotalAssets", comment: "") + "("+"\(unt)"+")≈  "
+        let str = "ML.Tokens.cell.Totalassets".localized() + "("+"\(unt)"+")≈  "
         let attstr = NSMutableAttributedString(string: str)
-        attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),NSAttributedStringKey.strokeColor : Colors.titleBlackcolor], range: NSRange(location: 0, length: str.length))
-
-
+        attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.strokeColor: Colors.titleBlackcolor], range: NSRange(location: 0, length: str.length))
         let attstr2 = NSMutableAttributedString(string: prise)
-        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 27),NSAttributedStringKey.strokeColor : Colors.titleBlackcolor], range: NSRange(location: 0, length: prise.length))
+        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 27), NSAttributedStringKey.strokeColor: Colors.titleBlackcolor], range: NSRange(location: 0, length: prise.length))
         attstr.append(attstr2)
         return attstr
     }

@@ -198,7 +198,7 @@ class MLCreateWalletView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 100 - kStatusBarHeight),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 83-kNavigationBarHeight),
             titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -25),
             subtitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
@@ -224,9 +224,10 @@ class MLCreateWalletView: UIView {
             createBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             createBtn.topAnchor.constraint(equalTo: serviceBtn.bottomAnchor, constant: 85),
             createBtn.heightAnchor.constraint(equalToConstant: 40),
-            createBtn.widthAnchor.constraint(equalToConstant: 135),
+            createBtn.widthAnchor.constraint(equalToConstant: 160),
 
-            importBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 162),
+//            importBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 162),
+            importBtn.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             importBtn.topAnchor.constraint(equalTo: createBtn.bottomAnchor, constant: 100),
             importBtn.heightAnchor.constraint(equalToConstant: 40),
             importBtn.widthAnchor.constraint(equalToConstant: 135),

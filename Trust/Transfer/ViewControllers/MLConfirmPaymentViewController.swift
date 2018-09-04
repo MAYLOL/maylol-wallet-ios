@@ -6,6 +6,16 @@ import BigInt
 import Result
 import StatefulViewController
 
+enum ConfirmType {
+    case sign
+    case signThenSend
+}
+
+enum ConfirmResult {
+    case signedTransaction(SentTransaction)
+    case sentTransaction(SentTransaction)
+}
+
 protocol MLConfirmPaymentViewControllerDelegate: class {
 //    func sureAction(viewController: MLConfirmPaymentViewController)
     func dismissAction(viewController: MLConfirmPaymentViewController)
@@ -40,7 +50,7 @@ class MLConfirmPaymentViewController: UIViewController {
         return gasPrice * gasLimit
     }
     private var gasViewModel: GasViewModel {
-        return GasViewModel(fee: totalFee, server: configurator.server, store:configurator.session.tokensStorage, formatter: fullFormatter)
+        return GasViewModel(fee: totalFee, server: configurator.server, store:  configurator.session.tokensStorage, formatter: fullFormatter)
     }
 
     lazy var fullView: UIVisualEffectView = {
@@ -185,7 +195,7 @@ class MLConfirmPaymentViewController: UIViewController {
     }
 
     lazy var walletPasswordVC: MLWalletPasswordViewController = {
-        let walletPasswordVC = MLWalletPasswordViewController(session: session)
+        let walletPasswordVC = MLWalletPasswordViewController(session: session, keystore: keystore)
         walletPasswordVC.delegate = self
         walletPasswordVC.view.frame = CGRect(x: 0, y: 0, width: kScreenW, height: kScreenH!)
         return walletPasswordVC
@@ -198,7 +208,7 @@ class MLConfirmPaymentViewController: UIViewController {
         }
     }
     private func dismissVerifyPassword(vc: MLWalletPasswordViewController) {
-        vc.end {
+        vc.end { 
             vc.view.removeFromSuperview()
         }
     }
@@ -230,7 +240,7 @@ class MLConfirmPaymentViewController: UIViewController {
 //        view.addSubview(stackView)
 //        view.addSubview(footerStack)
         fetch()
-
+//        self.reloadView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -238,15 +248,15 @@ class MLConfirmPaymentViewController: UIViewController {
     }
 
     func fetch() {
-//        startLoading()
+        startLoading()
         configurator.load { [weak self] result in
             guard let `self` = self else { return }
             switch result {
             case .success:
                 self.reloadView()
-//                self.endLoading()
+                self.endLoading()
             case .failure(let error): break
-//                self.endLoading(animated: true, error: error, completion: nil)
+                self.endLoading(animated: true, error: error, completion: nil)
             }
         }
         configurator.configurationUpdate.subscribe { [weak self] _ in
@@ -280,7 +290,7 @@ class MLConfirmPaymentViewController: UIViewController {
         self.minerCostInfo.rightLabel.text = detailsViewModel.estimatedMinerCostFormulaWithEth
         self.minerCostInfo.rightLabel2.text = detailsViewModel.estimatedMinerCostFormula
         self.amountLabel.rightLabel.text = detailsViewModel.absoluteAmountString
-        print("gasLimit,gasPrice,",gasLimit,gasPrice)
+        print("gasLimit,gasPrice,", gasLimit, gasPrice)
     }
     @objc func send() {
         self.displayLoading()
@@ -375,10 +385,10 @@ class MLConfirmPaymentViewController: UIViewController {
     func start() {
         UIView.animate(withDuration: 0.5, animations: {
             self.bottomView.frame = CGRect(x: 0, y: 0.37 * kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-        }) {(_ Bool) in
+        }) { (_ Bool) in
         }
     }
-    func end(closure:@escaping ()->()) {
+    func end(closure:@escaping ()->() ) {
         UIView.animate(withDuration: 0.2, animations: {
             self.bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
         }) { (_ Bool) in
@@ -399,6 +409,12 @@ extension MLConfirmPaymentViewController: UITextFieldDelegate {
 
 extension MLConfirmPaymentViewController: MLWalletPasswordViewControllerDelegate {
     func dismissAction(viewController: MLWalletPasswordViewController) {
-        self.dismissVerifyPassword(vc:viewController)
+        self.dismissVerifyPassword(vc: viewController)
     }
 }
+extension MLConfirmPaymentViewController: StatefulViewController {
+    func hasContent() -> Bool {
+        return false
+    }
+}
+

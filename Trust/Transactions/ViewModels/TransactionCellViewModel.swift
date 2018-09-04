@@ -23,7 +23,7 @@ struct TransactionCellViewModel {
         currentAccount: Account,
         server: RPCServer,
         token: TokenObject
-    ) {
+        ) {
         self.transaction = transaction
         self.config = config
         self.chainState = chainState
@@ -92,20 +92,45 @@ struct TransactionCellViewModel {
         }
         switch transactionViewModel.direction {
         case .incoming:
-            return String(
-                format: "%@: %@",
-                NSLocalizedString("transaction.from.label.title", value: "From", comment: ""),
-                transactionViewModel.transactionFrom
-            )
+                        return String(
+                            format: "%@: %@",
+                            NSLocalizedString("transaction.from.label.title", value: "From", comment: ""),
+                            transactionViewModel.transactionFrom
+                    )
         case .outgoing:
-            return String(
-                format: "%@: %@",
-                NSLocalizedString("transaction.to.label.title", value: "To", comment: ""),
-                transactionViewModel.transactionTo
-            )
+                        return String(
+                            format: "%@: %@",
+                            NSLocalizedString("transaction.to.label.title", value: "To", comment: ""),
+                            transactionViewModel.transactionTo
+                        )
         }
     }
 
+    var detailSubTitle: String {
+        if transaction.toAddress == nil {
+            return NSLocalizedString("transaction.deployContract.label.title", value: "Deploy smart contract", comment: "")
+        }
+        switch transactionViewModel.direction {
+        case .incoming:
+            return transactionViewModel.transactionFrom
+            //            return String(
+            //                format: "%@: %@",
+            //                NSLocalizedString("transaction.from.label.title", value: "From", comment: ""),
+            //                transactionViewModel.transactionFrom
+        //            )
+        case .outgoing:
+            return transactionViewModel.transactionTo
+            //            return String(
+            //                format: "%@: %@",
+            //                NSLocalizedString("transaction.to.label.title", value: "To", comment: ""),
+            //                transactionViewModel.transactionTo
+            //            )
+        }
+    }
+
+    var timeString: String {
+        return NSDate.updateTime(forRow: transaction.date)
+    }
     var subTitleTextColor: UIColor {
         return Colors.gray
     }
@@ -126,6 +151,59 @@ struct TransactionCellViewModel {
     var amountText: String {
         return transactionViewModel.amountText
     }
+    var symbolAmountText: NSMutableAttributedString {
+        var symbolStr = "+ "
+        let amountText = transactionViewModel.noSymbolAmountText
+
+        let attstr2 = NSMutableAttributedString(string: amountText)
+        switch transaction.state {
+        case .error, .unknown, .failed, .deleted:
+            symbolStr = "+ "
+            attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.f02e44color], range: NSRange(location: 0, length: attstr2.length))
+        case .completed:
+            switch transactionViewModel.direction {
+            case .incoming:
+                symbolStr = "+ "
+                attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.f22222ecolor], range: NSRange(location: 0, length: attstr2.length))
+            case .outgoing:
+                symbolStr = "- "
+                attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.f22222ecolor], range: NSRange(location: 0, length: attstr2.length))
+            }
+        case .pending:
+            symbolStr = "+ "
+            attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.f22222ecolor], range: NSRange(location: 0, length: attstr2.length))
+        }
+
+        let attstr = NSMutableAttributedString(string: symbolStr)
+//        let str = symbolStr
+        attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.f02e44color], range: NSRange(location: 0, length: symbolStr.length))
+//
+//        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: Colors.titleBlackcolor], range: NSRange(location: 0, length: attstr2.length))
+        attstr.append(attstr2)
+        return attstr
+    }
+
+
+    //    switch transaction.state {
+    //    case .error, .unknown, .failed, .deleted:
+    //    //            return R.image.transaction_error()
+    //    return R.image.ml_wallet_eth_icon_export()
+    //    case .completed:
+    //    switch direction {
+    //    case .incoming:
+    //    //                ml_wallet_eth_icon_import
+    //    return R.image.ml_wallet_eth_icon_import()
+    //    //                return R.image.transaction_received()
+    //    case .outgoing:
+    //    //                ml_wallet_eth_icon_export
+    //    return R.image.ml_wallet_eth_icon_export()
+    //    //                return R.image.transaction_sent()
+    //    }
+    //    case .pending:
+    //    //            return R.image.transaction_pending()
+    //    //                ml_wallet_eth_icon_export
+    //    return R.image.ml_wallet_eth_icon_export()
+    //    }
 
     var amountFont: UIFont {
         return UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
@@ -137,5 +215,8 @@ struct TransactionCellViewModel {
 
     var statusImage: UIImage? {
         return transactionViewModel.statusImage
+    }
+    var statusdetailImage: UIImage? {
+        return transactionViewModel.detailStatusImage
     }
 }

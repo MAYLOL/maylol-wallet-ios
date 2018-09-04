@@ -82,7 +82,7 @@ final class TransactionViewController: UIViewController {
         ]
 
         if viewModel.detailsAvailable {
-            items.append(moreDetails())
+//            items.append(moreDetails())
         }
 
         for item in items {
@@ -93,7 +93,7 @@ final class TransactionViewController: UIViewController {
         displayChildViewController(viewController: stackViewController)
 
         if viewModel.shareAvailable {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
         }
     }
 

@@ -10,6 +10,7 @@ enum MLErrorType: LocalizedError {
     case PasswordInvalid//无效的！
     case PasswordError//密码不匹配！
     case PasswordEmpty//密码不能为空！
+    case WalletNameError//请输入1-12位钱包名称
     case ReadProtocolNotRead//阅读协议错误相关！
     case PhraseInvalidError//助记词错误！
     case PrivateInvalidError //私钥错误！
@@ -41,6 +42,8 @@ enum MLErrorType: LocalizedError {
                 return "密码不匹配！"
             case .PasswordEmpty:
                 return "密码不能为空！"
+            case .WalletNameError:
+                return "请输入1-12位钱包名称"
             case .ReadProtocolNotRead:
                 return "请阅读协议并同意！"
             case .PhraseInvalidError:

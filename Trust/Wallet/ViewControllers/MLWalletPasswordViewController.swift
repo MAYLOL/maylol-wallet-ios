@@ -8,21 +8,21 @@ typealias StaduesHandle = (() -> ())
 protocol MLWalletPasswordViewControllerDelegate: class {
 
     func dismissAction(viewController: MLWalletPasswordViewController)
-//    optional func sureAction(viewController: MLWalletPasswordViewController)
+    //    optional func sureAction(viewController: MLWalletPasswordViewController)
 }
 
 class MLWalletPasswordViewController: UIViewController {
 
     weak var delegate: MLWalletPasswordViewControllerDelegate?
-
+    private let keystore: Keystore
     var succesHandle: StaduesHandle?
-//    var faildHandle: StaduesHandle
+    //    var faildHandle: StaduesHandle
     var session: WalletSession
 
     lazy var fullView: UIVisualEffectView = {
         let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
         var effecview = UIVisualEffectView(effect: blur)
-//        effecview.alpha = 0.95
+        //        effecview.alpha = 0.95
         effecview.alpha = 0
         effecview.translatesAutoresizingMaskIntoConstraints = false
         effecview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -33,7 +33,7 @@ class MLWalletPasswordViewController: UIViewController {
         let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let effec = UIVibrancyEffect(blurEffect: blur)
         var effecview = UIVisualEffectView(effect: effec)
-//        effecview.alpha = 0.8
+        //        effecview.alpha = 0.8
         effecview.alpha = 0
         effecview.translatesAutoresizingMaskIntoConstraints = false
         effecview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -115,23 +115,31 @@ class MLWalletPasswordViewController: UIViewController {
             MLProgressHud.showError(error: MLErrorType.PasswordEmpty as NSError)
             return
         }
+
+
+        //        guard keystore.getPassword(for: session.account.currentWallet!) == passWord else {
+        //            MLProgressHud.showError(error: MLErrorType.PasswordError as NSError)
+        //            return
+        //        }
         guard MLKeychain().verify(passworld: passWord!, service: session.account.address.description) else {
             MLProgressHud.showError(error: MLErrorType.PasswordError as NSError)
             return
         }
-//        succesHandle()
-//        delegate?.sureAction(viewController: self)
+        //        succesHandle()
+        //        delegate?.sureAction(viewController: self)
         self.succesHandle!()
     }
 
     init(
-        session: WalletSession
-//        successHandle:@escaping ()->(),
-//        faildHandle:@escaping ()->()
+        session: WalletSession,
+        keystore: Keystore
+        //        successHandle:@escaping ()->(),
+        //        faildHandle:@escaping ()->()
         ) {
-//        self.succesHandle = successHandle
-//        self.faildHandle = faildHandle
+        //        self.succesHandle = successHandle
+        //        self.faildHandle = faildHandle
         self.session = session
+        self.keystore = keystore
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -140,13 +148,13 @@ class MLWalletPasswordViewController: UIViewController {
     }
 
     @objc func dismissVC() {
-//        faildHandle()
+        //        faildHandle()
         delegate?.dismissAction(viewController: self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor.clear
+        //        view.backgroundColor = UIColor.clear
         setup()
     }
 
@@ -160,7 +168,7 @@ class MLWalletPasswordViewController: UIViewController {
         bottomView.addSubview(enterPasswordLabel)
         bottomView.addSubview(passwordField)
         bottomView.addSubview(sureBtn)
-//        bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
+        //        bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -207,19 +215,19 @@ class MLWalletPasswordViewController: UIViewController {
 
     func start(successHandle:@escaping ()->()) {
         self.succesHandle = successHandle
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.bottomView.frame = CGRect(x: 0, y: 0.37 * kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-//        }) {(_ Bool) in
-//        }
+        //        UIView.animate(withDuration: 0.5, animations: {
+        //            self.bottomView.frame = CGRect(x: 0, y: 0.37 * kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
+        //        }) {(_ Bool) in
+        //        }
     }
     func end(closure:@escaping ()->()) {
-//        func end() {
-//        UIView.animate(withDuration: 0.2, animations: {
-//            self.bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-//        }) { (_ Bool) in
-            closure()
-//            self.faildHandle()
-//        }
+        //        func end() {
+        //        UIView.animate(withDuration: 0.2, animations: {
+        //            self.bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
+        //        }) { (_ Bool) in
+        closure()
+        //            self.faildHandle()
+        //        }
     }
 }
 extension MLWalletPasswordViewController: UITextFieldDelegate {

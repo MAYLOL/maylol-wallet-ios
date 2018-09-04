@@ -35,4 +35,11 @@ class MLProgressHud {
         hud.mode = .text
         hud.hide(animated: false, afterDelay: 1.5)
     }
+
+    class func show(message: String) {
+        let hud = MBProgressHUD.showAdded(to: ShareAppDelegate.window!, animated: false)
+        hud.label.text = message
+        hud.mode = .text
+        hud.hide(animated: false, afterDelay: 1.5)
+    }
 }

@@ -15,7 +15,7 @@ class MLWalletViewCell: UITableViewCell {
     lazy var walletNameLabel: UILabel = {
         let walletNameLabel = UILabel()
         walletNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        walletNameLabel.textColor = AppStyle.PingFangSC13.textColor
+        walletNameLabel.textColor = Colors.f262626color
         walletNameLabel.textAlignment = .left
         walletNameLabel.textColor = UIColor.black
         walletNameLabel.numberOfLines = 0

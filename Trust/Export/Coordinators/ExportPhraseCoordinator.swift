@@ -39,9 +39,7 @@ final class ExportPhraseCoordinator: RootCoordinator {
 
 extension ExportPhraseCoordinator: PassphraseViewControllerDelegate {
     func pushDone(in controller: PassphraseViewController, with account: Wallet) {
-        
     }
-    
     func didPressVerify(in controller: PassphraseViewController, with account: Wallet, words: [String]) {
         // Missing functionality
     }

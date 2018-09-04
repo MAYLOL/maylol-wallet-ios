@@ -8,7 +8,7 @@ class MLWalletSettingCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = AppStyle.PingFangSC13.textColor
+        titleLabel.textColor = Colors.f262626color
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor.black
         titleLabel.numberOfLines = 0
@@ -27,7 +27,6 @@ class MLWalletSettingCell: UITableViewCell {
         underDynamicLine.backgroundColor = Colors.e6e6e6color
         return underDynamicLine
     }()
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = UITableViewCellSelectionStyle.none

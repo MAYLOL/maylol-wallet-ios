@@ -11,7 +11,7 @@
 
 #define DEFAULT_Y_COUNT 5 //可见区域y轴竖线总数
 //#define DEFAULT_X_COUNT 5 //可见区域x轴总数
-#define DEFAULT_X_COUNT 8 //可见区域x轴总数
+#define DEFAULT_X_COUNT 5 //可见区域x轴总数
 
 typedef enum {
     XViewAll    = 0, //x轴显示所有
@@ -21,6 +21,7 @@ typedef enum {
 @interface ARLineChartContentView ()
 
 @property (strong, nonatomic) NSMutableArray *xArray; //x轴刻度
+@property (strong, nonatomic) NSMutableArray *xAStrrray; //x轴刻度
 @property (strong, nonatomic) NSMutableArray *y1Array; //左边y轴刻度
 @property (strong, nonatomic) NSMutableArray *y2Array; //右边y轴刻度
 
@@ -72,16 +73,16 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
         
         //////////////////// 数据源排序（冒泡排序，x轴的数据（距离）从小到大排序） /////////////////
         //根据 RLLineChartItem.xValue属性进行排序
-        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"_xValue" ascending:YES];
-        self.dataSource = [dataSource sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor1, nil]];
-        
+//        NSSortDescriptor *sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"_xValue" ascending:YES];
+//        self.dataSource = [dataSource sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor1, nil]];
+        self.dataSource = dataSource;
+
 //        //************* test 打印排序的 *************
 //        for (NSInteger i = 0; i < self.dataSource.count; i++) {
 //            SportLineChartItem *item = [self.dataSource objectAtIndex:i];
 //            NSLog(@"排序后： item.xValue=%.2lf, item.y1Value=%.2lf, item.y2Value=%.2lf", item.xValue, item.y1Value, item.y2Value);
 //        }
 //        //************ end test *********************
-        
 
         //生成x轴、左y轴、右y轴刻度值
         [self buildXYSetpArray:DEFAULT_X_COUNT yStepCount:DEFAULT_Y_COUNT];
@@ -148,6 +149,11 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
 
 - (void)buildXYSetpArray:(NSInteger)xStepCount yStepCount:(NSInteger)yStepCount
 {
+    if (!self.xAStrrray){
+        self.xAStrrray = [NSMutableArray array];
+    }else{
+        [self.xAStrrray removeAllObjects];
+    }
     //////////////////// 生成x轴、左y轴、右y轴刻度值数组 ///////////////////////
     if (self.dataSource.count >= 2) {
         float xMin, xMax, y1Min, y1Max, y2Min, y2Max;
@@ -155,14 +161,20 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
         xMin = item.xValue; xMax = item.xValue;
         y1Min = item.y1Value; y1Max = item.y1Value;
         y2Min = item.y2Value; y2Max = item.y2Value;
-        
+//        [self.xAStrrray addObject:item.xString];
+        [self.xAStrrray insertObject:item.xString atIndex:0];
         for (NSInteger i = 1; i < self.dataSource.count; i++) {
             RLLineChartItem *item = [self.dataSource objectAtIndex:i];
-            if (item.xValue < xMin)
-                xMin = item.xValue;
-            else if (item.xValue > xMax)
+//            if (item.xValue < xMin)
+//                xMin = item.xValue;
+//            else if (item.xValue > xMax)
+//                xMax = item.xValue;
+//            [self.xAStrrray addObject:item.xString];
+            [self.xAStrrray insertObject:item.xString atIndex:0];
+            if (self.dataSource.count - 1 == i)
+            {
                 xMax = item.xValue;
-            
+            }
             if (item.y1Value < y1Min)
                 y1Min = item.y1Value;
             else if (item.y1Value > y1Max)
@@ -275,9 +287,11 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
     ////////////////////// 水平方向 //////////////////////////
     for (NSInteger index=0; index < self.xArray.count; index++) {
         
-        NSNumber *num = [self.xArray objectAtIndex:index];
-        NSString *valStr = [NSString stringWithFormat:@"%.f", [num doubleValue]]; //四舍五入保留2位
-        
+//        NSNumber *num = [self.xArray objectAtIndex:index];
+//        NSString *valStr = [NSString stringWithFormat:@"%.f", [num doubleValue]]; //四舍五入保留2位
+        NSString *valStr = [self.xAStrrray objectAtIndex:index];
+
+
         float xPosition = self.originPoint.x + (index)* self.xPerStepWidth + self.contentScroll.x;
         
         if (xPosition >= self.originPoint.x && xPosition < self.rightBottomPoint.x) {
@@ -363,14 +377,14 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
         for (NSInteger i = 0; i < self.dataSource.count-1; i++) {
             RLLineChartItem *item = (RLLineChartItem*)[self.dataSource objectAtIndex:i];
             RLLineChartItem *item2 = (RLLineChartItem*)[self.dataSource objectAtIndex:i+1];
-            float xPerStepVal = [(NSNumber*)[self.xArray objectAtIndex:0] floatValue];
-            float x1 = xPerStepVal;
+//            float xPerStepVal = [(NSNumber*)[self.xArray objectAtIndex:0] floatValue];
+//            float x1 = xPerStepVal;
             //        if (xPerStepVal == 0) xPerStepVal = [(NSNumber*)[self.xArray objectAtIndex:1] floatValue];
 //            float xPosition = self.originPoint.x + ((self.xPerStepWidth * item.xValue) / x1) + self.contentScroll.x;
             float xPosition = self.originPoint.x + (self.xPerStepWidth * i) + self.contentScroll.x;
 
 //            NSLog(@"xPosition:  %f,%f,%f",xPosition,xPerStepVal,self.originPoint.x);
-            NSLog(@"xPosition: %f,self.originPoint.x: %f,self.xPerStepWidth: %f,item.xValue: %f,xPerStepVal:%f,self.contentScroll.x:%f",xPosition,self.originPoint.x,self.xPerStepWidth,item.xValue,xPerStepVal,self.contentScroll.x);
+//            NSLog(@"xPosition: %f,self.originPoint.x: %f,self.xPerStepWidth: %f,item.xValue: %f,xPerStepVal:%f,self.contentScroll.x:%f",xPosition,self.originPoint.x,self.xPerStepWidth,item.xValue,xPerStepVal,self.contentScroll.x);
 
 
 //            float xPosition2 = self.originPoint.x + ((self.xPerStepWidth * item2.xValue) / xPerStepVal) + self.contentScroll.x;
@@ -407,7 +421,13 @@ static bool isLineIntersectRectangle(CGFloat linePointX1,
             {
                 [ARLineChartCommon drawLine:context startPoint:startPoint2 endPoint:endPoint2 lineColor:self.colorModel.lineY2Color ?: line2Color];
             }
-            
+
+            if (self.dataSource.count - 2 == i &&  isLineIntersectRectangle(xPosition, y2Position, xPosition2, y2Position2, _leftTopPoint.x, _leftTopPoint.y, _rightBottomPoint.x, _rightBottomPoint.y) ){
+                CGPoint x2Point = CGPointMake(xPosition2, startPoint.y);
+//                [ARLineChartCommon drawTriangle:context x1Point:startPoint x2Point:x2Point yPoint:endPoint lineColor:self.colorModel.lineY2Color ?: line2Color];
+                [ARLineChartCommon drawTriangle:context x1Point:startPoint x2Point:x2Point yPoint:endPoint lineColor:xyEntityColor];
+
+            }
             
         }
     }

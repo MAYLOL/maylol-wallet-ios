@@ -10,7 +10,7 @@ class MLSendView: UIView {
     var superSelect: Bool = false
     var viewModel: SendViewModel? {
         didSet {
-            titleLabel.text = (viewModel?.symbol)! + NSLocalizedString("ML.Transaction.cell.tokenTransfer.title", value: "转账", comment: "")
+            titleLabel.text = (viewModel?.symbol)! + " " + "ML.Transaction.cell.tokenTransfer.title".localized()
 
             minerCostSlider.minimumValue = 1
             minerCostSlider.maximumValue = 60
@@ -77,7 +77,7 @@ class MLSendView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 32
+        stackView.spacing = 0
         return stackView
     }()
 
@@ -89,7 +89,7 @@ class MLSendView: UIView {
         customGasStackView.translatesAutoresizingMaskIntoConstraints = false
         customGasStackView.axis = .vertical
         customGasStackView.distribution = .fillEqually
-        customGasStackView.spacing = 32
+        customGasStackView.spacing = 0
         return customGasStackView
     }()
     lazy var superSelectLabel: UILabel = {
@@ -179,7 +179,7 @@ class MLSendView: UIView {
         //        minerCostSlider.addTarget(self, action: #selector(costSliderDragExit(sender:)), for: UIControlEvents.touchDragExit)
         //            minerCostSlider.addTarget(self, action: #selector(costSliderTap(sender:)), for: UIControlEvents.touchUpInside)
 
-        //        minerCostSlider.thumbRect(forBounds: CGRect(x: kAutoLayoutWidth(25), y: minerCostLabel.frame.origin.y + minerCostLabel.frame.size.height , width: kScreenW - kAutoLayoutWidth(50), height: 1), trackRect: CGRect(x: 0, y: 0, width: 1, height: 1), value: 0)
+        //        minerCostSlider.thumbRect(forBounds: CGRect(x: 25, y: minerCostLabel.frame.origin.y + minerCostLabel.frame.size.height , width: kScreenW - kAutoLayoutWidth(50), height: 1), trackRect: CGRect(x: 0, y: 0, width: 1, height: 1), value: 0)
         minerCostSlider.isUserInteractionEnabled = true
         minerCostSlider.maximumTrackTintColor = Colors.ccccccolor
         minerCostSlider.minimumTrackTintColor = Colors.f02e44color
@@ -320,79 +320,81 @@ class MLSendView: UIView {
         //                superSelectControl.addGestureRecognizer(tap)
 
     }
-
     override func layoutSubviews() {
+
         super.layoutSubviews()
-        var controRec: CGRect = sizeWithText(text: NSLocalizedString("ML.Transaction.cell.HowToSetParameters？", value: "How to set parameters？", comment: "") as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize.init(width: 200, height: 20))
+        var controRec: CGRect = sizeWithText(text: NSLocalizedString("ML.Transaction.cell.HowToSetParameters？", value: "How to set parameters？", comment: "") as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize(width: 200, height: 20))
 
         NSLayoutConstraint.activate([
 
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             titleLabel.widthAnchor.constraint(equalToConstant: 200),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 83 + kStatusBarHeight),
+            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: kAutoLayoutHeigth(83) + kStatusBarHeight),
             scanBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
             scanBtn.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: 0),
             scanBtn.widthAnchor.constraint(equalToConstant: 20),
             scanBtn.heightAnchor.constraint(equalToConstant: 20),
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: kAutoLayoutHeigth(15)),
             stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            stackView.heightAnchor.constraint(equalToConstant: 160),
+//            stackView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(160)),
+            stackView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(140)),
             nextBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             nextBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            nextBtn.heightAnchor.constraint(equalToConstant: 30),
-            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            nextBtn.heightAnchor.constraint(equalToConstant: 40),
+            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -KBottomSafeHeight - kAutoLayoutHeigth(50)),
             superSelectControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            superSelectControl.widthAnchor.constraint(equalToConstant: 80),
+            superSelectControl.widthAnchor.constraint(equalToConstant: kAutoLayoutWidth(80)),
             superSelectControl.heightAnchor.constraint(equalToConstant: 1),
-            superSelectControl.bottomAnchor.constraint(equalTo: nextBtn.topAnchor, constant: -50),
+            superSelectControl.bottomAnchor.constraint(equalTo: nextBtn.topAnchor, constant: kAutoLayoutHeigth(-50)),
 
             selectControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            selectControl.widthAnchor.constraint(equalToConstant: 80),
-            selectControl.heightAnchor.constraint(equalToConstant: 60),
+            selectControl.widthAnchor.constraint(equalToConstant: kAutoLayoutWidth(80)),
+            selectControl.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(60)),
             selectControl.centerYAnchor.constraint(equalTo: superSelectControl.centerYAnchor, constant: 0),
 //            selectControl.bottomAnchor.constraint(equalTo: nextBtn.topAnchor, constant: -50),
 
-            superSelectLabel.rightAnchor.constraint(equalTo: superSelectControl.leftAnchor, constant: -11),
+            superSelectLabel.rightAnchor.constraint(equalTo: superSelectControl.leftAnchor, constant: kAutoLayoutWidth(-11)),
             superSelectLabel.centerYAnchor.constraint(equalTo: superSelectControl.centerYAnchor, constant: 0),
 
             howToSetBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             howToSetBtn.centerYAnchor.constraint(equalTo: superSelectControl.centerYAnchor, constant: 0),
-            howToSetBtn.heightAnchor.constraint(equalToConstant: 20),
+            howToSetBtn.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(20)),
             howToSetBtn.widthAnchor.constraint(equalToConstant: controRec.size.width),
             ])
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            scrollView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: kAutoLayoutHeigth(10)),
             scrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             scrollView.widthAnchor.constraint(equalToConstant: kScreenW),
-            scrollView.bottomAnchor.constraint(equalTo: nextBtn.topAnchor, constant: -75),
-            scrollView.heightAnchor.constraint(equalToConstant: 210),
+            scrollView.bottomAnchor.constraint(equalTo: nextBtn.topAnchor, constant: kAutoLayoutHeigth(-75)),
+            scrollView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(210)),
 
             contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
             contentView.widthAnchor.constraint(equalToConstant: 2 * kScreenW),
-            contentView.heightAnchor.constraint(equalToConstant: 210),
+            contentView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(210)),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 0),
 
             minerCostLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 25),
-            minerCostLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            minerCostLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: kAutoLayoutHeigth(0)),
 
             minerCostImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -kScreenW-25),
-            minerCostImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            minerCostImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: kAutoLayoutHeigth(0)),
             minerCostSlider.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 25),
             minerCostSlider.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -kScreenW-25),
-            minerCostSlider.topAnchor.constraint(equalTo: minerCostLabel.bottomAnchor, constant: 20),
-            minerCostSlider.heightAnchor.constraint(equalToConstant: 16),
+            minerCostSlider.topAnchor.constraint(equalTo: minerCostLabel.bottomAnchor, constant: kAutoLayoutHeigth(20)),
+            minerCostSlider.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(16)),
 
             lowLabel.leftAnchor.constraint(equalTo: minerCostSlider.leftAnchor, constant: 0),
-            lowLabel.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: 20),
+            lowLabel.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: kAutoLayoutHeigth(20)),
 
             costAmound.centerXAnchor.constraint(equalTo: minerCostSlider.centerXAnchor, constant: 0),
-            costAmound.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: 20),
+            costAmound.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: kAutoLayoutHeigth(20)),
 
             fastLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -kScreenW-25),
-            fastLabel.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: 20),
+            fastLabel.topAnchor.constraint(equalTo: minerCostSlider.bottomAnchor, constant: kAutoLayoutHeigth(20)),
             ])
         scrollView.contentSize = CGSize(width: kScreenW * 2, height: 240)
 
@@ -406,15 +408,15 @@ class MLSendView: UIView {
             //            customGasField.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -25),
             //            customGasField.heightAnchor.constraint(equalToConstant: 50),
 
-            customGasStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32),
+            customGasStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: kAutoLayoutHeigth(0)),
             customGasStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: kScreenW + 25),
             customGasStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -25),
-            customGasStackView.heightAnchor.constraint(equalToConstant: 100),
+            customGasStackView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(100)),
 
-            sixdataTV.topAnchor.constraint(equalTo: customGasField.bottomAnchor, constant: 15),
+            sixdataTV.topAnchor.constraint(equalTo: customGasField.bottomAnchor, constant: kAutoLayoutHeigth(10)),
             sixdataTV.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: kScreenW + 25),
             sixdataTV.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -25),
-            sixdataTV.heightAnchor.constraint(equalToConstant: 70),
+            sixdataTV.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(70)),
 
             ])
     }
@@ -464,7 +466,7 @@ class MLSendView: UIView {
 //    }
 
     @objc func costSliderDragInside(sender: UISlider) {
-        print("costSliderDragInside:%d",sender.value)
+        print("costSliderDragInside:%d", sender.value)
     }
 
     @objc func costSliderDragExit(sender: UISlider) {
@@ -474,8 +476,6 @@ class MLSendView: UIView {
     @objc func costSliderTap(sender: UISlider) {
         print("costSliderTap:%d", sender.value)
     }
-
-
     @objc func sliderTouchDown(sender: UISlider) {
         superSelectControl.isEnabled = false
     }

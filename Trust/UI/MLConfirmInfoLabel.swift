@@ -77,6 +77,7 @@ class MLConfirmInfoLabel: UIView {
     NSLayoutConstraint.activate([
     leftLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
     leftLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+    leftLabel.widthAnchor.constraint(equalToConstant: 60),
     rightLabel.leftAnchor.constraint(equalTo: leftLabel.rightAnchor, constant: 27),
     rightLabel.centerYAnchor.constraint(equalTo: leftLabel.centerYAnchor, constant: 0),
     rightLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),

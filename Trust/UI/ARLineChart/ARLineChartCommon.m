@@ -35,6 +35,21 @@
     CGContextStrokePath(context);
     CGColorSpaceRelease(Linecolorspace1);
 }
++ (void)drawTriangle:(CGContextRef)context x1Point:(CGPoint)x1Point x2Point:(CGPoint)x2Point yPoint:(CGPoint)yPoint lineColor:(UIColor *)lineColor{
+
+//    CGContextSetShouldAntialias(context, YES ); //抗锯齿
+//    CGColorSpaceRef Linecolorspace1 = CGColorSpaceCreateDeviceRGB();
+//    CGContextSetStrokeColorSpace(context, Linecolorspace1);
+//    CGContextSetLineWidth(context, 0.5);
+//    CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
+    CGContextMoveToPoint(context, x1Point.x, x1Point.y);
+    CGContextAddLineToPoint(context, x2Point.x, x2Point.y);
+    CGContextAddLineToPoint(context, yPoint.x, yPoint.y);
+    CGContextClosePath(context);
+    [lineColor setFill];
+    CGContextDrawPath(context, kCGPathFillStroke);
+//    CGColorSpaceRelease(Linecolorspace1);
+}
 
 + (void)drawText:(CGContextRef)context text:(NSString*)text point:(CGPoint)point color:(UIColor *)color font:(UIFont*)font textAlignment:(NSTextAlignment)textAlignment
 {

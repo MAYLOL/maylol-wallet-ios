@@ -7,6 +7,7 @@ enum MLPushType {
     case QRCode
     case CreateWallte
     case ImportWallte
+    case ManageWallte
     case Setting
     case MutiLanguage //多语言
     case Unit //货币单位
@@ -41,7 +42,8 @@ struct MLWalletSettingViewModel {
     let settingText: [String] = [
         "browser.qrCode.button.title".localized(),
         "welcome.createWallet.button.title".localized(),
-        "welcome.importWallet.button.title".localized()
+        "welcome.importWallet.button.title".localized(),
+        "ML.Manager.Wallet".localized()
 //        R.string.localizable.welcomeCreateWalletButtonTitle().localized(),
 //        R.string.localizable.welcomeImportWalletButtonTitle().localized(),
 //        R.string.localizable.browserQrCodeButtonTitle().localized(),
@@ -53,12 +55,14 @@ struct MLWalletSettingViewModel {
         R.image.ml_wallet_menu_icon_scan()!,
         R.image.ml_wallet_menu_icon_wallet()!,
         R.image.ml_wallet_menu_icon_import()!,
+        R.image.ml_wallet_menu_icon_manage()!,
         ]
 
     let pushTypes: [MLPushType] = [
         .QRCode,
         .CreateWallte,
         .ImportWallte,
+        .ManageWallte
     ]
     func getModel(i: Int) -> MLWalletSettingModel {
         let settingModel:MLWalletSettingModel = MLWalletSettingModel(setText: settingText[i], setIcon: settingIcon[i])

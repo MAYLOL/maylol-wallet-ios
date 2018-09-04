@@ -73,6 +73,17 @@ final class TokenViewModel {
         )
     }
 
+    var amoutDouble: Double {
+       let amountString = String(
+            format: "%@",
+            shortFormatter.string(from: BigInt(token.value) ?? BigInt(), decimals: token.decimals)
+        )
+        guard amountString != nil else {
+            return 0
+        }
+        return Double(amountString.replacingOccurrences(of: ",", with: "") )!
+    }
+
     var feelPrise: String {
         let count = Double(shortFormatter.string(from: BigInt(token.value) ?? BigInt(), decimals: token.decimals))
         guard marketPrice != nil else {
