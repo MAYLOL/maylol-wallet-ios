@@ -43,6 +43,3 @@ func kAutoLayoutHeigth(_ height: CGFloat) -> CGFloat {
 //let KUITabBarHeight: CGFloat = kUI_IPHONEX ? 83 : 49
 ////navigationBarHeight默认高度44 （iPhoneX 88）
 ////tabBarHeight默认高度49     （iPhoneX 83）
-
-
-

@@ -83,7 +83,7 @@ final class ConfirmCoordinator: RootCoordinator {
         }
     }
 
-    func pushVerifyPWD(completeHandle closure:@escaping ()->()) {
+    func pushVerifyPWD(completeHandle closure:@escaping ()->Void) {
         let coordinator = WalletCoordinator(keystore: keystore)
         coordinator.verifyPasswordVC(nav: self.navigationController, session: session, completeHandle: closure)
         addCoordinator(coordinator)
@@ -95,7 +95,7 @@ final class ConfirmCoordinator: RootCoordinator {
         controller.start()
     }
 
-    func endConfirm(closure:@escaping ()->()) {
+    func endConfirm(closure:@escaping ()->Void) {
         controller.view.removeFromSuperview()
         controller.end(closure: closure)
     }

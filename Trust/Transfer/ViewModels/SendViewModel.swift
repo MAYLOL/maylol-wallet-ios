@@ -11,7 +11,6 @@ enum SendViewType {
     case amount
 }
 
-
 enum SendPriseType {
     case Min
     case Max
@@ -215,11 +214,10 @@ struct SendViewModel {
     //        }
     //       return GasPriceConfiguration.default
     //    }
-    func gasLimitPu(type : SendPriseType) -> BigInt {
+    func gasLimitPu(type: SendPriseType) -> BigInt {
         let calculatedGasLimit = SendViewModel.gasLimit(for:  self.transfer.type)
         return calculatedGasLimit
     }
-    
     private static func gasLimit(for type: TransferType) -> BigInt {
         switch type {
         case .ether:

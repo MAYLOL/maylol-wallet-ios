@@ -26,7 +26,7 @@ class PassphraseViewController: UIViewController {
 //    lazy var actionButton: UIButton = {
 //        let button = Button(size: .large, style: .solid)
 //        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle(R.string.localizable.next(), for: .normal)
+//        button.setTitle("ML.Next", for: .normal)
 //        return button
 //    }()
     lazy var actionButton: UIButton = {
@@ -34,7 +34,7 @@ class PassphraseViewController: UIViewController {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.backgroundColor = UIColor(hex: "F02E44")
         actionButton.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        actionButton.setTitle(R.string.localizable.next(), for: .normal)
+        actionButton.setTitle("ML.Next".localized(), for: .normal)
         actionButton.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         actionButton.layer.cornerRadius = 5
         actionButton.layer.masksToBounds = true

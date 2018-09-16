@@ -42,7 +42,7 @@ class MLConfirmInfoLabel: UIView {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             rightLabel,
-            rightLabel2,]
+            rightLabel2]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical

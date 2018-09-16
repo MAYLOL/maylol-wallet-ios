@@ -69,18 +69,24 @@ struct TransactionCellViewModel {
         case .completed:
             switch transactionViewModel.direction {
             case .incoming:
-                return NSLocalizedString("transaction.cell.received.title", value: "Received", comment: "")
+//                return NSLocalizedString("transaction.cell.received.title", value: "Received", comment: "")
+                return "ML.Transaction.cell.received.title".localized()
             case .outgoing:
-                return NSLocalizedString("transaction.cell.sent.title", value: "Sent", comment: "")
+//                return NSLocalizedString("transaction.cell.sent.title", value: "Sent", comment: "")
+                return "ML.Transaction.cell.sent.title".localized()
             }
         case .error:
-            return NSLocalizedString("transaction.cell.error.title", value: "Error", comment: "")
+//            return NSLocalizedString("transaction.cell.error.title", value: "Error", comment: "")
+            return "ML.Transaction.cell.error.title".localized()
         case .failed:
-            return NSLocalizedString("transaction.cell.failed.title", value: "Failed", comment: "")
+//            return NSLocalizedString("transaction.cell.failed.title", value: "Failed", comment: "")
+            return "ML.Transaction.cell.failed.title".localized()
         case .unknown:
-            return NSLocalizedString("transaction.cell.unknown.title", value: "Unknown", comment: "")
+//            return NSLocalizedString("transaction.cell.unknown.title", value: "Unknown", comment: "")
+            return "ML.Transaction.cell.unknown.title".localized()
         case .pending:
-            return NSLocalizedString("transaction.cell.pending.title", value: "Pending", comment: "")
+//            return NSLocalizedString("transaction.cell.pending.title", value: "Pending", comment: "")
+            return "ML.Transaction.cell.pending.title".localized()
         case .deleted:
             return ""
         }
@@ -89,6 +95,7 @@ struct TransactionCellViewModel {
     var subTitle: String {
         if transaction.toAddress == nil {
             return NSLocalizedString("transaction.deployContract.label.title", value: "Deploy smart contract", comment: "")
+//            return "transaction.deployContract.label.title".localized()
         }
         switch transactionViewModel.direction {
         case .incoming:
@@ -182,7 +189,6 @@ struct TransactionCellViewModel {
         attstr.append(attstr2)
         return attstr
     }
-
 
     //    switch transaction.state {
     //    case .error, .unknown, .failed, .deleted:

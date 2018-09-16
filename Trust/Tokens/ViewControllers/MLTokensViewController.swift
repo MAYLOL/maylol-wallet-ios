@@ -18,6 +18,7 @@ final class MLTokensViewController: UIViewController {
 
     lazy var header: MLTokensHeaderView = {
         let header = MLTokensHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenW, height: 215))
+        header.iconView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(reciveCoinInfo)))
         header.addressLabel.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(reciveCoinInfo)))
 //        header.frame.size = header.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
         return header
@@ -179,7 +180,7 @@ extension MLTokensViewController: UITableViewDelegate {
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let token = viewModel.item(for: indexPath)
-        let deleteAction = UIContextualAction(style: .normal, title: R.string.localizable.transactionsReceiveButtonTitle()) { _, _, handler in
+        let deleteAction = UIContextualAction(style: .normal, title: "ML.Transaction.cell.receivables.title".localized()) { _, _, handler in
             self.delegate?.didRequest(token: token, in: self)
             handler(true)
         }

@@ -42,79 +42,20 @@ final class MLTokenHeaderView: UIView {
         return currencyAmountLabel
     }()
     lazy var chatView: ARLineChartView = {
-        let chatView: ARLineChartView = ARLineChartView(frame: CGRect(x: 25, y: kAutoLayoutHeigth(60), width: kScreenW - kAutoLayoutWidth(50), height: 150), desc1: "数量", desc2: "资产")
+        let chatView: ARLineChartView = ARLineChartView(frame: CGRect(x: 25, y: kAutoLayoutHeigth(60), width: kScreenW - kAutoLayoutWidth(50), height: 150), desc1: "ML.Transaction.Count".localized(), desc2: "ML.Transaction.Assets".localized())
         chatView.xColor = Colors.f22222ecolor
         chatView.yColor = Colors.detailTextgraycolor
         chatView.lineY1Color = UIColor(red: 122, green: 133, blue: 202)
         chatView.lineY2Color = UIColor(red: 97, green: 180, blue: 196)
         chatView.formColor = Colors.detailTextgraycolor
         chatView.translatesAutoresizingMaskIntoConstraints = false
-//        chatView.backgroundColor = Colors.textgraycolor
         return chatView
     }()
-//    lazy var chatView: UIView = {
-//        let chatView = UIView()
-//        chatView.translatesAutoresizingMaskIntoConstraints = false
-//        chatView.backgroundColor = Colors.textgraycolor
-//        return chatView
-//    }()
     lazy var sessionView: MLTransactionSessionView = {
         let sessionView = MLTransactionSessionView()
         sessionView.translatesAutoresizingMaskIntoConstraints = false
         return sessionView
     }()
-//    lazy var grayLine: UIView = {
-//        var grayLine = UIView()
-//        grayLine.translatesAutoresizingMaskIntoConstraints = false
-//        grayLine.backgroundColor = Colors.e6e6e6color
-//        return grayLine
-//    }()
-//    lazy var sessionLabel: UILabel = {
-//        var sessionLabel: UILabel
-//        sessionLabel = UILabel()
-//        sessionLabel.translatesAutoresizingMaskIntoConstraints = false
-//        sessionLabel.textAlignment = .left
-//        sessionLabel.textColor = Colors.titleBlackcolor
-//        sessionLabel.font = UIFont.boldSystemFont(ofSize: 15)
-//        sessionLabel.text = NSLocalizedString("ML.Transaction.Recentrecords", value: "Recent Transaction Records", comment: "")
-//        return sessionLabel
-//    }()
-
-//    lazy var marketPriceLabel: UILabel = {
-//        let label = UILabel(frame: .zero)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-
-//    lazy var totalAmountLabel: UILabel = {
-//        let label = UILabel(frame: .zero)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    lazy var fiatAmountLabel: UILabel = {
-//        let label = UILabel(frame: .zero)
-//        label.textColor = Colors.black
-//        label.textAlignment = .right
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-
-//    lazy var imageView: TokenImageView = {
-//        let imageView = TokenImageView(frame: .zero)
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-
-//    lazy var buttonsView: ButtonsFooterView = {
-//        let footerView = ButtonsFooterView(
-//            frame: .zero,
-//            bottomOffset: 5
-//        )
-//        footerView.translatesAutoresizingMaskIntoConstraints = false
-//        footerView.setBottomBorder()
-//        return footerView
-//    }()
     var viewModel: TokenViewModel? {
         didSet {
             var untStr = "≈ ¥"
@@ -129,10 +70,6 @@ final class MLTokenHeaderView: UIView {
             let dataArr: [String] = NSDate().latelyEightTime() as! [String]
             let y1AmountDouble = viewModel?.amoutDouble
             let y2FreeDouble = Double((viewModel?.feelPrise)!)
-//            var y1A: [Double] = [0,2,10,5,3]
-//            var xA: [Double] = [18,19,20,21,22];
-//            var y2A: [Double] = [0,6000,60000,9000,1000];
-
             var y1A: [Double] = getY1Arr(d: y1AmountDouble ?? 0)
             var xA: [Double] = getXArr(stringArr: dataArr1)
             var y2A: [Double] = getY2Arr(d: y2FreeDouble ?? 0)
@@ -145,14 +82,9 @@ final class MLTokenHeaderView: UIView {
                 item.y2Value = y2A[i]
                 item.xString = dataArr[i]
                 mutableArr.append(item)
-//                mutableArr.addObjects(from: item)
             }
             chatView.dataSource = mutableArr
             chatView.startDraw()
-//            symbolImageView.kf.setImage(
-//                with: viewModel.imageURL,
-//                placeholder: viewModel.placeholderImage
-//            )
         }
     }
     override init(frame: CGRect) {
@@ -175,7 +107,6 @@ final class MLTokenHeaderView: UIView {
         return arr
     }
     func getY2Arr(d: Double) -> [Double] {
-//        let y2: [Double] = [0,d/7,d/6,d/5,d/4,d/3,d/2,d/1]
         let y2: [Double] = [0, 0, 0, 0, d/1]
         return y2
     }
@@ -188,13 +119,9 @@ final class MLTokenHeaderView: UIView {
         addSubview(currencyAmountLabel)
         addSubview(chatView)
         addSubview(sessionView)
-//        addSubview(grayLine)
-//        addSubview(sessionLabel)
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-//        kAutoLayoutHeigth
-//        kAutoLayoutWidth
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: kAutoLayoutHeigth(0)),
@@ -214,13 +141,6 @@ final class MLTokenHeaderView: UIView {
             sessionView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             sessionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             sessionView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(55)),
-
-//            grayLine.topAnchor.constraint(equalTo: chatView.bottomAnchor, constant: 25),
-//            grayLine.rightAnchor.constraint(equalTo: rightAnchor, constant: 25),
-//            grayLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
-//            grayLine.heightAnchor.constraint(equalToConstant: 1),
-//            sessionLabel.topAnchor.constraint(equalTo: grayLine.bottomAnchor, constant: 25),
-//            sessionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             ])
 
     }
@@ -229,4 +149,3 @@ final class MLTokenHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

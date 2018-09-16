@@ -79,7 +79,7 @@ class MLMyWalletViewController: UIViewController {
         let settingBtn = UIButton.init(type: UIButtonType.custom)
         settingBtn.translatesAutoresizingMaskIntoConstraints = false
         //        settingBtn.setTitle(R.string.localizable.settingsNavigationTitle(), for: .normal)
-        settingBtn.setTitle("settings.navigation.title".localized(), for: .normal)
+        settingBtn.setTitle("ML.Settings.navigation.title".localized(), for: .normal)
         settingBtn.titleLabel?.font = AppStyle.PingFangSC18.font
         settingBtn.setTitleColor(AppStyle.PingFangSC18.textColor, for: .normal)
         settingBtn.addTarget(self, action: #selector(settingAction(sender:)), for: .touchUpInside)
@@ -160,13 +160,13 @@ class MLMyWalletViewController: UIViewController {
     func start() {
         UIView.animate(withDuration: 0.5, animations: {
             self.rightManagerView.frame = CGRect(x: 0.4 * kScreenW, y: 0, width: 0.6 * kScreenW, height: kScreenH!)
-        }) {(_ Bool) in
+        }) { _ in
         }
     }
-    func end(closure:@escaping ()->()) {
+    func end(closure:@escaping () -> Void) {
         UIView.animate(withDuration: 0.2, animations: {
             self.rightManagerView.frame = CGRect(x: kScreenW, y: 0, width: 0.6 * kScreenW, height: kScreenH!)
-        }) { (_ Bool) in
+        }) { _ in
             closure()
         }
     }
@@ -193,7 +193,7 @@ class MLMyWalletViewController: UIViewController {
     }
 
     func delete(wallet: WalletInfo) {
-        navigationController?.displayLoading(text: R.string.localizable.deleting())
+        navigationController?.displayLoading(text: "ML.Deleting".localized())
         keystore.delete(wallet: wallet) { [weak self] result in
             guard let `self` = self else { return }
             self.navigationController?.hideLoading()
@@ -206,7 +206,7 @@ class MLMyWalletViewController: UIViewController {
         }
     }
 }
-extension MLMyWalletViewController: UITableViewDelegate,UITableViewDataSource {
+extension MLMyWalletViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == walletsView {
             let cell: MLWalletViewCell = tableView.dequeueReusableCell(withIdentifier: MLWalletViewCell.identifier, for: indexPath) as! MLWalletViewCell

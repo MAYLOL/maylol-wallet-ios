@@ -14,15 +14,17 @@ struct ConfirmPaymentViewModel {
     }
 
     var title: String {
-        return NSLocalizedString("confirmPayment.confirm.button.title", value: "Confirm", comment: "")
+        return "ML.Sure".localized()
     }
 
     var actionButtonText: String {
         switch type {
         case .sign:
-            return R.string.localizable.approve()
+//            return R.string.localizable.approve()
+            return "Approve".localized()
         case .signThenSend:
-            return R.string.localizable.send()
+//            return R.string.localizable.send()
+            return "Send".localized()
         }
     }
 

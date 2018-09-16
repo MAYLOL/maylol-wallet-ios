@@ -26,7 +26,7 @@ class RequestViewController: UIViewController {
         titleLabel.textAlignment = .center
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titleLabel.text = NSLocalizedString("ML.Token.ReceiptCode", value: "Receipt Code", comment: "")
+        titleLabel.text = "ML.Token.ReceiptCode".localized()
         return titleLabel
     }()
     lazy var underDynamicLine: UIView = {
@@ -59,7 +59,7 @@ class RequestViewController: UIViewController {
     lazy var copyButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("ML.Token.copyAddress", value: "复制收款地址", comment: ""), for: .normal)
+        button.setTitle("ML.Token.copyAddress".localized(), for: .normal)
         button.addTarget(self, action: #selector(copyAddress), for: .touchUpInside)
         button.backgroundColor = UIColor(hex: "F02E44")
         button.setTitleColor(Colors.fffffgraycolor, for: .normal)

@@ -50,7 +50,7 @@ class MLConfirmPaymentViewController: UIViewController {
         return gasPrice * gasLimit
     }
     private var gasViewModel: GasViewModel {
-        return GasViewModel(fee: totalFee, server: configurator.server, store:  configurator.session.tokensStorage, formatter: fullFormatter)
+        return GasViewModel(fee: totalFee, server: configurator.server, store: configurator.session.tokensStorage, formatter: fullFormatter)
     }
 
     lazy var fullView: UIVisualEffectView = {
@@ -85,7 +85,8 @@ class MLConfirmPaymentViewController: UIViewController {
         titleLabel.textAlignment = .center
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titleLabel.text = NSLocalizedString("ML.Transaction.cell.Detailsofpayment", value: "支付详情", comment: "")
+//        titleLabel.text = NSLocalizedString("ML.Transaction.cell.Detailsofpayment", value: "支付详情", comment: "")
+        titleLabel.text = "ML.Transaction.cell.Detailsofpayment".localized()
         return titleLabel
     }()
     lazy var underDynamicLine: UIView = {
@@ -100,16 +101,17 @@ class MLConfirmPaymentViewController: UIViewController {
         var payInfo: MLConfirmInfoLabel
         payInfo = MLConfirmInfoLabel(frame: .zero)
         payInfo.style = .style1
-        payInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.Detailsofpayment", value: "支付详情", comment: "")
+        payInfo.leftLabel.text = "ML.Transaction.cell.Detailsofpayment".localized()
+        payInfo.rightLabel.text = "ML.Transaction.cell.tokenTransfer.title".localized()
         payInfo.rightLabel.font = UIFont.systemFont(ofSize: 13)
-        payInfo.rightLabel.text = NSLocalizedString("ML.Transaction.cell.tokenTransfer.title", value: "转账", comment: "")
         return payInfo
     }()
     lazy var enterAddressInfo: MLConfirmInfoLabel = {
         var enterAddressInfo: MLConfirmInfoLabel
         enterAddressInfo = MLConfirmInfoLabel(frame: .zero)
         enterAddressInfo.style = .style1
-        enterAddressInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.Transfertotheaddress", value: "转入地址", comment: "")
+//        enterAddressInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.Transfertotheaddress", value: "转入地址", comment: "")
+        enterAddressInfo.leftLabel.text = "ML.Transaction.cell.Transfertotheaddress".localized()
         enterAddressInfo.rightLabel.font = UIFont.systemFont(ofSize: 12)
         return enterAddressInfo
     }()
@@ -117,7 +119,8 @@ class MLConfirmPaymentViewController: UIViewController {
         var payWalletInfo: MLConfirmInfoLabel
         payWalletInfo = MLConfirmInfoLabel(frame: .zero)
         payWalletInfo.style = .style1
-        payWalletInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.PaymentPurse", value: "付款钱包", comment: "")
+//        payWalletInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.PaymentPurse", value: "付款钱包", comment: "")
+        payWalletInfo.leftLabel.text = "ML.Transaction.cell.PaymentPurse".localized()
         payWalletInfo.rightLabel.font = UIFont.systemFont(ofSize: 13)
         return payWalletInfo
     }()
@@ -125,7 +128,8 @@ class MLConfirmPaymentViewController: UIViewController {
         var minerCostInfo: MLConfirmInfoLabel
         minerCostInfo = MLConfirmInfoLabel(frame: .zero)
         minerCostInfo.style = .style2
-        minerCostInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.MinerCost", value: "矿工费用", comment: "")
+//        minerCostInfo.leftLabel.text = NSLocalizedString("ML.Transaction.cell.MinerCost", value: "矿工费用", comment: "")
+        minerCostInfo.leftLabel.text = "ML.Transaction.cell.MinerCost".localized()
         minerCostInfo.rightLabel.font = UIFont.systemFont(ofSize: 15)
         minerCostInfo.rightLabel.textAlignment = NSTextAlignment.right
         minerCostInfo.rightLabel.textColor = Colors.titleBlackcolor
@@ -139,7 +143,8 @@ class MLConfirmPaymentViewController: UIViewController {
         var amountLabel: MLConfirmInfoLabel
         amountLabel = MLConfirmInfoLabel(frame: .zero)
         amountLabel.style = .style1
-        amountLabel.leftLabel.text = NSLocalizedString("ML.Transaction.cell.Amountofmoney", value: "金额", comment: "")
+//        amountLabel.leftLabel.text = NSLocalizedString("ML.Transaction.cell.Amountofmoney", value: "金额", comment: "")
+        amountLabel.leftLabel.text = "ML.Transaction.cell.Amountofmoney".localized()
         amountLabel.leftLabel.font = UIFont.systemFont(ofSize: 13)
         amountLabel.leftLabel.textColor = Colors.titleBlackcolor
         amountLabel.rightLabel.font = UIFont.systemFont(ofSize: 15)
@@ -169,7 +174,8 @@ class MLConfirmPaymentViewController: UIViewController {
         sureBtn.translatesAutoresizingMaskIntoConstraints = false
         sureBtn.backgroundColor = UIColor(hex: "F02E44")
         sureBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        sureBtn.setTitle(NSLocalizedString("transaction.confirmation.label.title", value: "确认", comment: ""), for: .normal)
+//        sureBtn.setTitle(NSLocalizedString("transaction.confirmation.label.title", value: "确认", comment: ""), for: .normal)
+        sureBtn.setTitle("transaction.confirmation.label.title".localized(), for: .normal)
         sureBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         sureBtn.layer.cornerRadius = 5
         sureBtn.layer.masksToBounds = true
@@ -208,7 +214,7 @@ class MLConfirmPaymentViewController: UIViewController {
         }
     }
     private func dismissVerifyPassword(vc: MLWalletPasswordViewController) {
-        vc.end { 
+        vc.end {
             vc.view.removeFromSuperview()
         }
     }
@@ -239,8 +245,8 @@ class MLConfirmPaymentViewController: UIViewController {
 
 //        view.addSubview(stackView)
 //        view.addSubview(footerStack)
-        fetch()
-//        self.reloadView()
+//        fetch()
+        self.reloadView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -255,7 +261,7 @@ class MLConfirmPaymentViewController: UIViewController {
             case .success:
                 self.reloadView()
                 self.endLoading()
-            case .failure(let error): break
+            case .failure(let error):
                 self.endLoading(animated: true, error: error, completion: nil)
             }
         }
@@ -385,13 +391,13 @@ class MLConfirmPaymentViewController: UIViewController {
     func start() {
         UIView.animate(withDuration: 0.5, animations: {
             self.bottomView.frame = CGRect(x: 0, y: 0.37 * kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-        }) { (_ Bool) in
+        }) { _ in
         }
     }
-    func end(closure:@escaping ()->() ) {
+    func end(closure:@escaping () -> Void ) {
         UIView.animate(withDuration: 0.2, animations: {
             self.bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-        }) { (_ Bool) in
+        }) { _ in
             closure()
         }
     }
@@ -417,4 +423,3 @@ extension MLConfirmPaymentViewController: StatefulViewController {
         return false
     }
 }
-

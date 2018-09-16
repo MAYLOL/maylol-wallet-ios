@@ -288,68 +288,284 @@
 "DeferredDeepLinking" = "Deferred Deep Linking";
 "CrashReports" = "Crash Reports";
 "Confirm signing this message:" = "Confirm signing this message:";
-"setting.multilingual" = "Multilingual";//"多语言".
+//"setting.multilingual" = "Multilingual";//"多语言".
+//
+//"ML.Setting.cell.MonetaryUnit" = "화폐 단위";//"货币单位",
+//"ML.Setting.cell.Aboutus" = "저희에 대한...";//"货币单位",
+//"ML.Setting.cell.Aboutus.UseProtocol" = "사용 프로토콜";//"使用协议"
+//"ML.Setting.cell.Aboutus.PrivacyClause" = "프라이버시 조항";//"隐私条款"
+//"ML.Setting.cell.Aboutus.ProductGuide" = "제품 마법사";//"产品向导"
+//"ML.Setting.cell.Aboutus.DetectionUpdate" = "갱신 검사";//"检测更新"
+//"ML.Setting.cell.Aboutus.Currentversion" = "현재 버전";//"当前版本"
+//"ML.Tokens.cell.Totalassets" = "총자산";//"总资产"
+//"ML.Token.copyAddress" = "수금 주소 복사";//"复制首款地址"
+//"ML.Token.ReceiptCode" = "수금 코드";//"收款码"
+//"ML.Transaction.Recentrecords" = "최근의 교역 기록";//"最近交易记录" //Recent transaction records
+//
+//"ML.Transaction.cell.tokenTransfer.title" = "이체";//转账
+//"ML.Transaction.cell.receivables.title" = "돈을 받다";//收款 Receivables
+//"ML.Transaction.cell.PayeeWalletAddress" = "수금인 지갑 주소";//收款人钱包地址 Payee wallet address
+//"ML.Transaction.cell.TransferAmount" = "계좌 이체 금액.";//转账金额Transfer amount
+//"ML.Transaction.cell.Remarks" = "비고";//备注 Remarks
+//"ML.Transaction.cell.CustomGasPrice" = "사용자 정의 Gas Price";//自定义Gas Price   Custom Gas Price
+//"ML.Transaction.cell.CustomGas" = "사용자 정의 Gas";//自定义Gas  Custom Gas
+//"ML.Transaction.cell.Sixteenbinarydata" = "16 진 데이터";//Sixteen binary data  十六进制数据
+//"ML.Transaction.cell.HowToSetParameters" = "참수를 설정할 수 있습니다.？";//如何设置参数 How to set parameters
+//"ML.Transaction.cell.Advancedoptions" = "고급 설정";//高级选项 Advanced options
+//"ML.Transaction.cell.Pursecipher" = "비밀번호";//钱包密码 Purse cipher
+//"ML.lock.enter.passcode.view.model.initial" = "비밀번호 입력";//请输入密码 Enter your passcode
+//"ML.Transaction.cell.Sure" = "확정하다";//确定 Sure
+//"ML.Transaction.cell.Detailsofpayment" = "지불 상세한 사정.";//支付详情 Details of payment
+//"ML.Transaction.cell.Transfertotheaddress" = "접속 주소";//转入地址  Transfer to the address
+//"ML.Transaction.cell.PaymentPurse" = "돈 지갑";//付款钱包  Payment Purse
+//"ML.Transaction.cell.MinerCost" = "광부비";//矿工费用 Miner's cost
+//"ML.Transaction.cell.Amountofmoney" = "금액";//金额  Amount of money
+//"ML.Transaction.cell.fast" = "빨리";//快  fast
+//"ML.Transaction.cell.slow" = "느리다";//慢  slow
+//
+//#"CreateWalletSettinglabeltitle" = "Creating Wallet!";
+//"CreateWalletSettinglabeltitle" = "创建钱包!";
+//#"CreateWalletSettinglabelsubtitle" = "·Passwords are used to protect private key transactions and trading authorization, The intensity is very important\n·We do not store passwords, nor can we help you find them, Please bear in mind";
+//"CreateWalletSettinglabelsubtitle" = "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记";
+//
+//"CreateWalletSettingServicePrivacyClause" = "服务隐私条款";
+//
+//"CreateWalletSettingWalletName" = "钱包名称";
+//
+//"CreateWalletPassWord" = "密码";
+//
+//"CreateWalletRePassWord" = "重复密码";
+//
+//"CreateWalletSettingServicePrivacyClause1" = "我已经仔细阅读并同意";
+//
+//"CreateWalletSettingCreateWallet" = "创建钱包";
+//
+//"CreateWalletSettingImportWallet" = "导入钱包";
+//
+//"MLPrivateIntroduce" = "什么是私钥？";
+//"MLPhraseIntroduce" = "什么是助记词？";
+//
+//"ML.Write.Phrase" = "抄下你的钱包助记词！";
+//"ML.Write.PhraseTips" = "助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方";
+//"ML.Manager.Wallet" = "지갑 관리";
+//"ML.Manager.tokens.noWallet" = "你还没有钱包";
+//"ML.Manager.tokens.addWallet" = "点击添加或创建钱包";
+//"ML.Manager.UnnamedWallet" = "지갑 이름 이름 없음";
+//"ML.Setting.cell.MonetaryUnit" = "화폐 단위";//"货币单位",화폐 단위
+//"ML.My.Wallet" = "내 지갑";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
+//
+/////111
+//"ML.CreateWalletSettinglabelsubtitle" = "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记";
+//"ML.CreateWalletSettingWalletName" = "钱包名称";
+//"ML.CreateWalletRePassWord" = "重复密码";//重复密码
+//"ML.CreateWalletSettingServicePrivacyClause1" = "我已经仔细阅读并同意";//我已经仔细阅读并同意
+//"ML.CreateWalletSettingServicePrivacyClause" = "服务隐私条款";
+//"ML.PhrasebySpaces" = "助记词，按空格分隔";
+//"ML.PrivateKey" = "明文私钥";//明文私钥
+//"ML.PrivateIntroduce" = "什么是私钥？";//什么是私钥？
+//"ML.PhraseIntroduce" = "什么是助记词？";//什么是助记词？
 
-"ML.Setting.cell.MonetaryUnit" = "화폐 단위";//"货币单位",
-"ML.Setting.cell.Aboutus" = "저희에 대한...";//"货币单位",
-"ML.Setting.cell.Aboutus.UseProtocol" = "사용 프로토콜";//"使用协议"
-"ML.Setting.cell.Aboutus.PrivacyClause" = "프라이버시 조항";//"隐私条款"
-"ML.Setting.cell.Aboutus.ProductGuide" = "제품 마법사";//"产品向导"
-"ML.Setting.cell.Aboutus.DetectionUpdate" = "갱신 검사";//"检测更新"
-"ML.Setting.cell.Aboutus.Currentversion" = "현재 버전";//"当前版本"
-"ML.Tokens.cell.Totalassets" = "총자산";//"总资产"
-"ML.Token.copyAddress" = "수금 주소 복사";//"复制首款地址"
-"ML.Token.ReceiptCode" = "수금 코드";//"收款码"
-"ML.Transaction.Recentrecords" = "최근의 교역 기록";//"最近交易记录" //Recent transaction records
 
+
+//1
+"ML.Manager.tokens.noWallet" = "현재 생성된 지갑이 없습니다.";//您还没有创建钱包
+"ML.Manager.tokens.addWallet" = "클릭 후 지갑 만들기 또는 지갑 추가";//点击添加或创建钱包
+"ML.CreateWallet.button.title" = "지갑 만들기";//创建钱包
+"ML.ImportWallet.button.title" = "지갑 갖고 오기";//导入钱包
+
+//2
+
+"ML.CreateWalletSettinglabelsubtitle" = "·비밀번호는 거래 및 거래 수권을 보호하는데 사용되므로 비밀번호 강도가 매우 중요합니다.\n·플랫폼은 고객님의 비밀번호를 저장하지 않으므로 분실된 비밀번호를 찾아드릴 수 없는 점 꼭 유의하시기 바랍니다.";//·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记
+"ML.CreateWalletSettingWalletName" = "지갑 명칭";//钱包名称
+"ML.Password" = "비밀번호";//密码
+"ML.Password.weak" = "약";//弱
+"ML.Password.middle" = "중";//中
+"ML.Password.strong" = "강";//强
+"ML.CreateWalletRePassWord" = "비밀번호 재입력";//重复密码
+"ML.CreateWalletSettingServicePrivacyClause" = "개인정보 보호정책";//服务隐私条款
+"ML.CreateWalletSettingServicePrivacyClause1" = "숙지하였으며 이에 동의합니다.";//我已经仔细阅读并同意
+"ML.AgreeAgreement.please" = "약관 내용을 확인하시기 바랍니다.";//请同意协议
+"ML.ImportWallet.atOnce" = "즉시 지갑 갖고 오기";//马上导入
+"ML.CreateWallet.Ing" = "지갑 생성 중";//创建钱包中
+"ML.CreateWallet.Success" = "지갑 생성 완료";//创建成功
+
+//3
+
+"ML.BackupWallet.Last" = "마지막 단계: 나의 지갑 백업하기";//最后一步：立即备份你的钱包
+"ML.BackupWalletAndExport.Use" = "지갑 백업: [연상 단어]키를 기록하시어 안전한 곳에 보관하시기 바랍니다. 절대로 온라인 상으로 보관하지 마시기를 권유 드리며, 소정 금액의 이체 테스트 후 사용 하시기 바랍니다.";//备份钱包：导出「助记词」并抄写到安全的地方，千万不要保存到网络上，然后尝试转入、转出小额资产开始使用。
+"ML.Export.backup.button.title" = "지갑 백업 하기";//备份钱包
+"ML.BackupWalletCourse.Look" = "백업 과정 상세하게 알아보기";//查看备份详情教程
+"ML.lock.enter.passcode.view.model.initial" = "비밀번호 입력";//请输入密码
+"ML.Cancel" = "취소";//取消
+"ML.Sure" = "확인";//确认
+"ML.Password.error" = "비밀번호 오류";//密码错误
+
+//4
+"ML.ScreenPrint.Not" = "화면 캡쳐 금지";//请勿截图
+"ML.ScreenPrint.Write" = "연상 단어 키가 도용 당하면 당신의 자산은 위험하게 됩니다. 꼭 안전한 곳에 연상 단어 키를 기록하시어 보관하시기 바랍니다.";//如果有人获取了你的助记词将直接获取你的资产！请抄下助记词并存放在安全的地方
+"ML.ScreenPrint.yee" = "네,알겠습니다.";//我知道了
+"ML.BackupPhrase" = "연상 단어 키 백업";//备份助记词
+"ML.Write.Phrase" = "연상 단어 키 기록하기";//抄下你的钱包助记词！
+"ML.Write.PhraseTips" = "연상 단어 키는 지갑 및 지갑비밀번호 재설정 시 꼭 필요한 정보이며, 꼭 수기로 기록하신 후 본인만 확인이 가능한 안전한 곳에 보관하시기 바랍니다.";//助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方
+"ML.Next" = "다음 단계";//下一步
+"ML.BackupPhrase.Sure" = "연상 단어 키 확인";//确认你的钱包助记词
+"ML.BackupPhrase.Touch" = "순서대로 연상 단어 키를 클릭 하여 정확한 연상 단어 키 백업을 진행하십시오.";//请按顺序点击助记词，以确认你的备份助记词正确
+"ML.BackupPhrase.Error" = "연상 단어 키 순서가 틀립니다. 다시 한번 점검 하시기 바랍니다.";//助记词顺序不正确，请重新校验
+"ML.BackupPhrase.Success" = "백업 완료";//备份成功
+
+//5
+
+"ML.Tokens.cell.Totalassets" = "총자산";//总资产
+"ML.Token.ReceiptCode" = "수령 코드";//收款码
+"ML.Share" = "공유";//分享
+"ML.Token.copyAddress" = "수령 주소 복사하기";//复制收款地址
+"ML.Copy" = "복사하기";//复制
+"ML.Copy.Ready" = "복사 완료";//已复制
+
+//6
+
+"ML.My.Wallet" = "나의 지갑";//我的钱包
+"ML.Manager.UnnamedWallet" = "미정 지갑";//未命名钱包
+"ML.QrCode.button.title" = "스캔하기";//扫一扫
+"ML.QrCode.Start" = "바코드 스캔하기 ";//请将条码置于取景框内扫描
+"ML.Manager.Wallet" = "지갑 관리하기";//管理钱包
+"ML.Settings.navigation.title" = "설정";//设置
+"ML.Setting.multilingual" = "다국어";//多语言
+"ML.Setting.cell.MonetaryUnit" = "화폐 단위";//货币单位
+"ML.Setting.cell.Aboutus" = "회사소개";//关于我们
+"ML.Setting.cell.Aboutus.UseProtocol" = "사용계약";//使用协议
+"ML.Setting.cell.Aboutus.PrivacyClause" = "개인정보 방침";//隐私条款
+"ML.Setting.cell.Aboutus.ProductGuide" = "상품 소개";//产品向导
+"ML.Setting.cell.Aboutus.DetectionUpdate" = "업그레이드";//检测更新
+"ML.Setting.cell.Aboutus.Currentversion" = "현재 버전";//当前版本
+"ML.Phrase" = "연상 단어 키";//助记词
+"ML.PhrasebySpaces" = "연상 단어 키 / 스페이스 바로 구분";//助记词，按空格分隔
+"ML.PrivateKey" = "프라이빗 키";//私钥
+"ML.PrivateKey.Word" = "퍼블릭 키";//明文私钥
+"ML.PhraseIntroduce" = "연상 단어 키란?";//什么是助记词？
+"ML.PrivateIntroduce" = "프라이빗 키란?";//什么是私钥？
+
+//7
+
+"ML.Manager.Wallet.Title" = "지갑 관리하기";//管理钱包
+"ML.Manager.DeleteWallet.Title" = "지갑 삭제하기";//删除钱包
+"ML.Manager.DeleteWallet.Success" = "삭제 완료";//删除成功
+"ML.BackupWallet.Please" = "백업 하십시오";//请备份
+"ML.BackupWallet.Ready" = "백업 완료";//已备份
+"ML.Wallet.Name" = "지갑 명칭";//钱包名
+"ML.Password.Change" = "비밀번호 수정";//修改密码
+"ML.Password.Current" = "현재 비밀번호";//当前密码
+"ML.Password.New" = "새로운 비밀번호";//新密码
+"ML.Password.Repeat" = "새로운 비밀번호 재입력";//重复新密码
+"ML.Finish" = "성공";//完成
+"ML.Save" = "저장";//保存
+"ML.Export.PrivateKey" = "프라이빗 키 가져오기";//导出私钥
+"ML.Export.Warning" = "경고: 프라이빗 키 비밀번호 설정이 안되어 있으므로 노출 위험이 있습니다. 꼭 연상 단어 키 와 프라이빗 키를 사용하여 백업하시기 바랍니다.";//安全警告：私钥未经加密，导出存在风险，建议使用助记词和私钥进行备份
+"ML.Export.Password.Change" = "연상 단어 키와 프라이빗 키를 사용하여 비밀번호를 재설정합니다.";//导入助记词或私钥可重置密码
+
+//8
+
+"ML.Transaction.Recentrecords" = "최근 거래 내역";//"最近交易记录"
+"ML.Transaction.Packing.Wait" = "패킹 중";//"等待打包"
+"ML.Transaction.Packing.Failure" = "패킹 실패";//"打包失败"
+"ML.Transaction.Packing.Success" = "패킹 완료";//"打包成功"
+"ML.Transaction.Assets" = "자산";//资产
+"ML.Transaction.Count" = "수량";//数量
+"ML.Transaction.Income" = "금일 수익";//今日收益
 "ML.Transaction.cell.tokenTransfer.title" = "이체";//转账
-"ML.Transaction.cell.receivables.title" = "돈을 받다";//收款 Receivables
-"ML.Transaction.cell.PayeeWalletAddress" = "수금인 지갑 주소";//收款人钱包地址 Payee wallet address
-"ML.Transaction.cell.TransferAmount" = "계좌 이체 금액.";//转账金额Transfer amount
-"ML.Transaction.cell.Remarks" = "비고";//备注 Remarks
-"ML.Transaction.cell.CustomGasPrice" = "사용자 정의 Gas Price";//自定义Gas Price   Custom Gas Price
-"ML.Transaction.cell.CustomGas" = "사용자 정의 Gas";//自定义Gas  Custom Gas
-"ML.Transaction.cell.Sixteenbinarydata" = "16 진 데이터";//Sixteen binary data  十六进制数据
-"ML.Transaction.cell.HowToSetParameters" = "참수를 설정할 수 있습니다.？";//如何设置参数 How to set parameters
-"ML.Transaction.cell.Advancedoptions" = "고급 설정";//高级选项 Advanced options
-"ML.Transaction.cell.Pursecipher" = "비밀번호";//钱包密码 Purse cipher
-"ML.lock.enter.passcode.view.model.initial" = "비밀번호 입력";//请输入密码 Enter your passcode
-"ML.Transaction.cell.Sure" = "확정하다";//确定 Sure
-"ML.Transaction.cell.Detailsofpayment" = "지불 상세한 사정.";//支付详情 Details of payment
-"ML.Transaction.cell.Transfertotheaddress" = "접속 주소";//转入地址  Transfer to the address
-"ML.Transaction.cell.PaymentPurse" = "돈 지갑";//付款钱包  Payment Purse
-"ML.Transaction.cell.MinerCost" = "광부비";//矿工费用 Miner's cost
-"ML.Transaction.cell.Amountofmoney" = "금액";//金额  Amount of money
-"ML.Transaction.cell.fast" = "빨리";//快  fast
-"ML.Transaction.cell.slow" = "느리다";//慢  slow
+"ML.Transaction.cell.receivables.title" = "수령";//收款
+"ML.Transaction.cell.PayeeWalletAddress" = "수령인 지갑 주소";//收款人钱包地址
+"ML.Transaction.cell.TransferAmount" = "이체 금액";//转账金额
+"ML.Transaction.cell.Amountofmoney" = "금액";//金额
+"ML.Transaction.cell.Remarks" = "비고";//备注
+"ML.Transaction.cell.MinerCost" = "채굴 비용";//矿工费用
+"ML.Transaction.cell.slow" = "느림";//慢
+"ML.Transaction.cell.fast" = "빠름";//快
+"ML.Transaction.cell.Advancedoptions" = "고급 옵션";//高级选项
+"ML.Transaction.Next" = "다음";//下一步
+"ML.Transaction.cell.Pursecipher" = "지갑 비밀번호";//钱包密码
+"ML.Transaction.cell.Detailsofpayment" = "지불 상세 내역";//支付详情
+"ML.Transaction.cell.Transfertotheaddress" = "이체 주소";//转入地址
+"ML.Transaction.cell.PaymentPurse" = "지불 지갑";//付款钱包
+"ML.Transaction.Unfinish" = "작업을 완료하지 못하였습니다.";//未能完成操作
+"ML.Warning" = "경고";//警告
+"ML.Transaction.sent.title" = "발송 완료";//已发送
+"ML.Transaction.cell.CustomGasPrice" = "사용자 설정Gas Price";//自定义Gas Price
+"ML.Transaction.cell.CustomGas" = "사용자 설정Gas";//自定义Gas
+"ML.Transaction.cell.Sixteenbinarydata" = "16진법 데이터";//十六进制数据
+"ML.Transaction.cell.HowToSetParameters" = "매개 변수 설정 방법？";//如何设置参数
+//9
+"ML.Transaction.Info" = "거래명세서";//交易明细
+"ML.Transaction.sender" = "발송인";//发送者
+"ML.Transaction.ID" = "거래ID";//交易ID
+"ML.NetworkFee" = "인터넷 비용";//网络费用
+//交易时间//거래 시간
+"ML.Send.error.invalidAddress.Error"= "주소 오류";//无效的地址
+"ML.Send.error.invalidAmount.Error" = "수량 오류";//无效的数量
+"ML.Password.NoMatch.Error" = "비밀번호 불일치";//密码不匹配
+"ML.WalletName.NotEmpty.Error" = "지갑 명칭이 누락되었습니다."; //钱包名字不能为空！
+"ML.Password.Notformat.Error" = "6-16자리의 숫자, 영문 조합의 비밀번호를 입력해주세요.";//请输入6-16数字和字母组合组成的密码！
+"ML.Password.NotEqual.Error" = "동일한 비밀번호가 아닙니다.";//密码前后不相等！
+"ML.Password.Invalid.Error" = "비밀번호 오류입니다.";//密码无效！
+"ML.Password.Empty.Error" = "비밀번호가 누락되었습니다.";//密码不能为空！
+"ML.WalletName.Name.Error" = "1-12자리의 지갑 명칭을 입력 하시기 바랍니다.";//请输入1-12位钱包名称
+"ML.ReadProtocol.NotRead.Error" = "약관 내용을 읽고 내용에 동의 하시기 바랍니다.";
+"ML.Phrase.InvalidError" = "연상 단어 키 오류"; //助记词无效！
+"ML.Private.InvalidError" = "프라이빗 키 오류";//私钥无效！
+"ML.Private.Characters.Error" = "프라이빗 키는 꼭 64자 여야 합니다.";
+"ML.Gas.Low.Error" = "Gas 가격은 21,000보다 커야 합니다.";//Gas值应该大于 21000
+"ML.Gas.Height.Error" = "Gas 가격은 600,000 보다 작아야 합니다.";//Gas值应该小于600000
+"ML.GasPrise.Low.Error" = "Gas 가격이 낮습니다. 1 gwei 보다 높게 설정하시기 바랍니다.";//Gas prise太低，建议应该大于1 gwei
+"ML.GasPrise.Height.Error" = "Gas 가격이 너무 높습니다. 100 gwei 보다 작게 설정 하시기 바랍니다.";//Gas prise太高，值应该小于 100 gwei
 
-#"CreateWalletSettinglabeltitle" = "Creating Wallet!";
-"CreateWalletSettinglabeltitle" = "创建钱包!";
-#"CreateWalletSettinglabelsubtitle" = "·Passwords are used to protect private key transactions and trading authorization, The intensity is very important\n·We do not store passwords, nor can we help you find them, Please bear in mind";
-"CreateWalletSettinglabelsubtitle" = "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记";
 
-"CreateWalletSettingServicePrivacyClause" = "服务隐私条款";
+//add
+"ML.export.backup.button.Howtotitle" = "지갑을 백업하는 방법";//如何备份钱包
+"ML.MainWallet" = "메인 지갑";//主钱包
+"ML.Wallet" = "월렛";//钱包
+"ML.Recive" = "수신";//接收
+"ML.Password.Forget" = "비밀번호를 잊으셨습니까? 비밀 번호를 재설정하려면 니모닉 또는 개인 키를 가져옵니다.";//忘记密码？导入助记词或私钥可重置密码。
+"ML.Password.ChangeSuccess" = "비밀번호를 변경하십시오!";//修改密码成功！
+"ML.Deleting" = "삭제";//删除
+"ML.Wallet.exist" = "지갑이 이미 있습니다. 새 암호로 설정되어 있습니까? (지갑의 새 비밀번호를 기억하십시오)";//钱包已存在，是否设置为新密码？（请牢记钱包新密码）
+"ML.Wallet.Sure" = "결정";//确定
+"ML.Transaction.cell.Sure" = "결정";//确定
+"ML.Send" = "보내기";//发送
+"ML.Approve" = "승인하다";//批准
 
-"CreateWalletSettingWalletName" = "钱包名称";
+"ML.App.Update.Tip" = "버전 업데이트 됨";//版本更新了
+"ML.App.Update.SubTitle" = "업데이트로 이동할지 여부";//是否前往更新
+"ML.App.Update.Go" = "업데이트로 이동";//去更新
+"ML.App.Update.Next" = "다음에 말하기";//下次再说
+"ML.App.Update.IsNew" = "현재 최신 버전입니다!";//当前已经是最新版本！
+"ML.App.Update.NoTips" = "더 이상 묻지 않음";//不再提示
 
-"CreateWalletPassWord" = "密码";
+"ML.Transaction.time.label.title" = "거래 시간";//交易时间
+"ML.Transaction.cell.error.title" = "오류";//错误
+"ML.Transaction.cell.received.title" = "받은";//已收到
+"ML.Transaction.cell.receiving.title" = "수신";//接收中
+"ML.Transaction.cell.sending.title" = "보내는 중";//发送中
+"ML.Transaction.cell.sent.title" = "발송 완료";//已发送
+"ML.Transaction.cell.tokenTransfer%@.title" = "전송 %@";//转账 %@
+"ML.Transaction.cell.failed.title" = "실패";//失败
+"ML.Transaction.cell.pending.title" = "대기 중";//等待
+"ML.Transaction.cell.unknown.title" = "알 수 없음";//未知
 
-"CreateWalletRePassWord" = "重复密码";
+"ML.Loading" = "読み込み中";//加载中
+"ML.Export.warning.private.key" = "위험을 감수하면서 위험을 내 보냅니다!";//导出风险自负！
+"ML.Export.warningTwo.private.key" = "개인 키를 가진 사람은 누구나 지갑에 완전히 액세스 할 수 있습니다.";
+//任何拥有私钥的人都可以完全访问你的钱包
 
-"CreateWalletSettingServicePrivacyClause1" = "我已经仔细阅读并同意";
+"ML.Lanuch.Page1.Title" = "재산의 자기 통제";//自我掌控财产
+"ML.Lanuch.Page2.Title" = "지점 간 무료 전송";//点对点自由转账
+"ML.Lanuch.Page3.Button" = "오픈 MAYLOL 지갑";//开启魅乐钱包
+"ML.Lanuch.Page1.detail" = "Blockchain 지갑, 모두에게 \ n 개인 키를주는 자산은 이중 백업을하십시오.";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
+"ML.Lanuch.Page2.detail" = "타사 조정이 필요 없음 \ n 지구의 양 끝단, 즉석에서 완료";//无需第三方中介\n地球两端，瞬间完成
 
-"CreateWalletSettingCreateWallet" = "创建钱包";
 
-"CreateWalletSettingImportWallet" = "导入钱包";
 
-"MLPrivateIntroduce" = "什么是私钥？";
-"MLPhraseIntroduce" = "什么是助记词？";
 
-"ML.Write.Phrase" = "抄下你的钱包助记词！";
-"ML.Write.PhraseTips" = "助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方";
-"ML.Manager.Wallet" = "지갑 관리";
-"ML.Manager.tokens.noWallet" = "你还没有钱包";
-"ML.Manager.tokens.addWallet" = "点击添加或创建钱包";
-"ML.Manager.UnnamedWallet" = "지갑 이름 이름 없음";
-"ML.Setting.cell.MonetaryUnit" = "화폐 단위";//"货币单位",화폐 단위
-"ML.My.Wallet" = "내 지갑";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
+
+
+
+

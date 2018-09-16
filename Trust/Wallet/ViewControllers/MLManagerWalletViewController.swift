@@ -61,8 +61,8 @@ class MLManagerWalletViewController: UIViewController {
             frame: .zero,
             bottomOffset: 0
         )
-        buttonsView.sendButton.setTitle("welcome.createWallet.button.title".localized(), for: UIControlState.normal)
-    buttonsView.requestButton.setTitle("welcome.importWallet.button.title".localized(), for: UIControlState.normal)
+        buttonsView.sendButton.setTitle("ML.CreateWallet.button.title".localized(), for: UIControlState.normal)
+    buttonsView.requestButton.setTitle("ML.ImportWallet.button.title".localized(), for: UIControlState.normal)
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         //        buttonsView.setBottomBorder()
         return buttonsView

@@ -30,6 +30,7 @@ class MLTokensHeaderView: UIView {
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.contentMode = UIViewContentMode.scaleAspectFit
         iconView.image = R.image.ml_wallet_home_icon_code()
+        iconView.isUserInteractionEnabled = true
         return iconView
     }()
     lazy var underDynamicLine: UIView = {
@@ -40,6 +41,18 @@ class MLTokensHeaderView: UIView {
         underDynamicLine.backgroundColor = Colors.f02e44color
         return underDynamicLine
     }()
+
+    lazy var underDynamicGaryLine: UIImageView = {
+        var underDynamicGaryLine = UIImageView()
+        underDynamicGaryLine.translatesAutoresizingMaskIntoConstraints = false
+        underDynamicGaryLine.image = R.image.ml_wallet_homeLine()
+        underDynamicGaryLine.layer.cornerRadius = 2
+        underDynamicGaryLine.layer.masksToBounds = true
+        underDynamicGaryLine.backgroundColor = Colors.f02e44color
+        return underDynamicGaryLine
+    }()
+
+//    ml_wallet_homeLine
 
     lazy var amountLabel: UILabel = {
         var amountLabel: UILabel
@@ -70,6 +83,7 @@ class MLTokensHeaderView: UIView {
         addSubview(addressLabel)
         addSubview(iconView)
         addSubview(underDynamicLine)
+        addSubview(underDynamicGaryLine)
         addSubview(amountLabel)
 
         let addressframe: CGRect = sizeWithText(text: "0x000000000000000000000000000000000000003c", font: AppStyle.PingFangSC12.font, size: CGSize.init(width: 300, height: 20))
@@ -87,6 +101,10 @@ class MLTokensHeaderView: UIView {
             underDynamicLine.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 15),
             underDynamicLine.widthAnchor.constraint(equalToConstant: 53),
             underDynamicLine.heightAnchor.constraint(equalToConstant: 4),
+
+            underDynamicGaryLine.leftAnchor.constraint(equalTo: underDynamicLine.rightAnchor, constant: 0),
+            underDynamicGaryLine.centerYAnchor.constraint(equalTo: underDynamicLine.centerYAnchor, constant: 0),
+            underDynamicGaryLine.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
             amountLabel.leftAnchor.constraint(equalTo: addressLabel.leftAnchor, constant: 0),
             amountLabel.topAnchor.constraint(equalTo: underDynamicLine.bottomAnchor, constant: 33),
             ])

@@ -404,8 +404,9 @@ extension InCoordinator: SendCoordinatorDelegate {
             case .signedTransaction:
                 break
             }
-        case .failure(let error):
-            coordinator.navigationController.topViewController?.displayError(error: error)
+        case .failure(_):
+            coordinator.navigationController.topViewController?.displayError(error: MLErrorType.transactionUnfinish)
+//            coordinator.navigationController.topViewController?.displayError(error: error)
         }
     }
 }

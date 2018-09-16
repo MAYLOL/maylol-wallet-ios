@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-typealias StaduesHandle = (() -> ())
+typealias StaduesHandle = (() -> Void)
 
 protocol MLWalletPasswordViewControllerDelegate: class {
 
@@ -56,7 +56,8 @@ class MLWalletPasswordViewController: UIViewController {
         titleLabel.textAlignment = .center
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titleLabel.text = NSLocalizedString("ML.Transaction.cell.Pursecipher", value: "钱包密码", comment: "")
+//        titleLabel.text = NSLocalizedString("ML.Transaction.cell.Pursecipher", value: "钱包密码", comment: "")
+        titleLabel.text = "ML.Transaction.cell.Pursecipher".localized()
         return titleLabel
     }()
     lazy var underDynamicLine: UIView = {
@@ -71,7 +72,8 @@ class MLWalletPasswordViewController: UIViewController {
         let enterPasswordLabel: UILabel
         enterPasswordLabel = UILabel()
         enterPasswordLabel.translatesAutoresizingMaskIntoConstraints = false
-        enterPasswordLabel.text = NSLocalizedString("ML.lock.enter.passcode.view.model.initial", value: "请输入密码", comment: "")
+//        enterPasswordLabel.text = NSLocalizedString("ML.lock.enter.passcode.view.model.initial", value: "请输入密码", comment: "")
+        enterPasswordLabel.text = "ML.lock.enter.passcode.view.model.initial".localized()
         enterPasswordLabel.textAlignment = .left
         enterPasswordLabel.textColor = Colors.titleBlackcolor
         enterPasswordLabel.font = UIFont.systemFont(ofSize: 12)
@@ -81,7 +83,8 @@ class MLWalletPasswordViewController: UIViewController {
         let passwordField = UnderLineTextFiled(frame: .zero)
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        passwordField.placeholder = NSLocalizedString("ML.lock.enter.passcode.view.model.initial", value: "请输入密码", comment: "")
+//        passwordField.placeholder = NSLocalizedString("ML.lock.enter.passcode.view.model.initial", value: "请输入密码", comment: "")
+        passwordField.placeholder = "ML.lock.enter.passcode.view.model.initial".localized()
         passwordField.isSecureTextEntry = true
         passwordField.underLineColor = Colors.textgraycolor
         passwordField.delegate = self
@@ -92,7 +95,8 @@ class MLWalletPasswordViewController: UIViewController {
         sureBtn.translatesAutoresizingMaskIntoConstraints = false
         sureBtn.backgroundColor = UIColor(hex: "F02E44")
         sureBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        sureBtn.setTitle(NSLocalizedString("ML.Transaction.cell.Sure", value: "确定", comment: ""), for: .normal)
+//        sureBtn.setTitle(NSLocalizedString("ML.Transaction.cell.Sure", value: "确定", comment: ""), for: .normal)
+        sureBtn.setTitle("ML.Transaction.cell.Sure".localized(), for: .normal)
         sureBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         sureBtn.layer.cornerRadius = 5
         sureBtn.layer.masksToBounds = true
@@ -115,8 +119,6 @@ class MLWalletPasswordViewController: UIViewController {
             MLProgressHud.showError(error: MLErrorType.PasswordEmpty as NSError)
             return
         }
-
-
         //        guard keystore.getPassword(for: session.account.currentWallet!) == passWord else {
         //            MLProgressHud.showError(error: MLErrorType.PasswordError as NSError)
         //            return
@@ -212,22 +214,11 @@ class MLWalletPasswordViewController: UIViewController {
             sureBtn.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -30-KBottomSafeHeight),
             ])
     }
-
-    func start(successHandle:@escaping ()->()) {
+    func start(successHandle:@escaping () -> Void) {
         self.succesHandle = successHandle
-        //        UIView.animate(withDuration: 0.5, animations: {
-        //            self.bottomView.frame = CGRect(x: 0, y: 0.37 * kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-        //        }) {(_ Bool) in
-        //        }
     }
-    func end(closure:@escaping ()->()) {
-        //        func end() {
-        //        UIView.animate(withDuration: 0.2, animations: {
-        //            self.bottomView.frame = CGRect(x: 0, y: kScreenH!, width: kScreenW, height: 0.63 * kScreenH!)
-        //        }) { (_ Bool) in
+    func end(closure:@escaping ()->Void) {
         closure()
-        //            self.faildHandle()
-        //        }
     }
 }
 extension MLWalletPasswordViewController: UITextFieldDelegate {

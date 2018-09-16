@@ -116,7 +116,7 @@ final class WalletCoordinator: Coordinator {
     //    }
 
     func createInstantWallet(createWalletViewModel: CreateWalletViewModel) {
-        let text = R.string.localizable.creatingWallet() + "..."
+        let text = "ML.CreateWallet.Ing".localized() + "..."
         navigationController.topViewController?.displayLoading(text: text, animated: false)
         let password = PasswordGenerator.generateRandom()
         let createPassword = createWalletViewModel.password
@@ -164,7 +164,7 @@ final class WalletCoordinator: Coordinator {
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func verifyPasswordVC(nav: NavigationController,session: WalletSession, completeHandle closure:@escaping ()->()) {
+    func verifyPasswordVC(nav: NavigationController, session: WalletSession, completeHandle closure:@escaping () -> Void) {
 
         let walletPasswordVC = MLWalletPasswordViewController(session: session, keystore: keystore)
         walletPasswordVC.view.frame = CGRect(x: 0, y: 0, width: kScreenW, height: kScreenH!)
@@ -270,7 +270,6 @@ final class WalletCoordinator: Coordinator {
     }
 
     func didFinishVerifyPassword(vc: MLWalletPasswordViewController) {
-        
 //        session.tokensStorage.clearBalance()
 //        restart(for: session.account)
 //        walletPasswordVC.end {
@@ -286,20 +285,27 @@ final class WalletCoordinator: Coordinator {
     }
 
     func sameWalletAlertVC(vc: UIViewController, password: String, account: WalletInfo) {
-        let title = "钱包已存在，是否设置为新密码？（请牢记钱包新密码）"
+        let title = "ML.Wallet.exist".localized()
         let alertController = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
         alertController.popoverPresentationController?.sourceView = vc.view
 
-        alertController.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.destructive){ ( alert: UIAlertAction ) in
-//            if self.keystore.setPassword(password, for: account.currentWallet!) {
+        alertController.addAction(UIAlertAction(title: "ML.Wallet.Sure".localized(), style: UIAlertActionStyle.destructive){ ( alert: UIAlertAction ) in
+    //            if self.keystore.setPassword(password, for: account.currentWallet!) {
             MLKeychain().saveKeychain(service: account.address.description, data: password as AnyObject)
-                MLProgressHud.show(message: "修改密码成功！")
+                MLProgressHud.show(message: "ML.Password.ChangeSuccess".localized())
                 self.done(for: account)
 //            }
 
     })
         alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: UIAlertActionStyle.cancel, handler: nil))
         vc.present(alertController, animated: false, completion: nil)
+    }
+
+    func pushBrowserCoordinator(url: URL) {
+        let browserCoordinator = MLBrowserCoordinator()
+        browserCoordinator.delegate = self
+        browserCoordinator.openURL(url)
+        navigationController.pushCoordinator(coordinator: browserCoordinator, animated: true)
     }
 }
 
@@ -381,6 +387,9 @@ extension WalletCoordinator: SelectCoinViewControllerDelegate {
 }
 
 extension WalletCoordinator: ImportNewMainWalletViewControllerDelegate {
+    func didPressServise(url: NSURL) {
+        pushBrowserCoordinator(url: url as URL)
+    }
     func didImportAccount(account: WalletInfo, fields: [WalletInfoField], in viewController: ImportNewMainWalletViewController, password: String) {
         let targetWallet =  keystore.wallets.last
         var sameWallet: WalletInfo?
@@ -423,6 +432,9 @@ extension WalletCoordinator: ImportNewMainWalletViewControllerDelegate {
     }
 }
 extension WalletCoordinator: MLCreateWalletViewControllerDelegate {
+    func didPressServise() {
+        pushBrowserCoordinator(url: NSURL(string: privacyClauseUrlStr)! as URL)
+    }
     func didPressCreateWallet(in viewController: MLCreateWalletViewController, createWalletViewModel: CreateWalletViewModel) {
         createInstantWallet(createWalletViewModel: createWalletViewModel)
     }
@@ -437,5 +449,11 @@ extension WalletCoordinator: MLWalletPasswordViewControllerDelegate {
 //    }
     func dismissAction(viewController: MLWalletPasswordViewController) {
         dismissVerifyPassword(vc: viewController)
+    }
+}
+
+extension WalletCoordinator: MLBrowserCoordinatorDelegate {
+    func didCancel(in coordinator: MLBrowserCoordinator) {
+        navigationController.popViewController(animated: true)
     }
 }

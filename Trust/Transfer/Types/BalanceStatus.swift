@@ -18,11 +18,14 @@ extension BalanceStatus {
         var string: String {
             switch self {
             case .insufficientEther:
-                return NSLocalizedString("send.error.insufficientEther", value: "Insufficient %@ balance", comment: "")
+//                return NSLocalizedString("send.error.insufficientEther", value: "Insufficient %@ balance", comment: "")
+                return "send.error.insufficientEther".localized()
             case .insufficientGas:
-                return NSLocalizedString("send.error.insufficientGas", value: "Insufficient %@ to cover gas fee", comment: "")
+//                return NSLocalizedString("send.error.insufficientGas", value: "Insufficient %@ to cover gas fee", comment: "")
+                 return "send.error.insufficientGas".localized()
             case .insufficientToken:
-                return NSLocalizedString("send.error.insufficientToken", value: "Insufficient %@ token balance", comment: "")
+//                return NSLocalizedString("send.error.insufficientToken", value: "Insufficient %@ token balance", comment: "")
+                return "send.error.insufficientToken".localized()
             case .correct:
                 return ""
             }

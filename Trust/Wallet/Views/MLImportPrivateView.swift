@@ -9,19 +9,17 @@ protocol MLImportPrivateViewDelegate: class {
 }
 class MLImportPrivateView: UIView {
 
-
     weak var delegate: MLImportPrivateViewDelegate?
-
-    lazy var placeholderLabel : UILabel = {
+    lazy var placeholderLabel: UILabel = {
         var placeholderLabel = UILabel()
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         return placeholderLabel
     }()
-
     lazy var privateTextView: AnimatableTextView = {
         var privateTextView = AnimatableTextView(frame: .zero)
         privateTextView.translatesAutoresizingMaskIntoConstraints = false
-        privateTextView.placeholderText = "明文私钥"
+        privateTextView.placeholderText = "ML.PrivateKey.Word".localized()
+//        "明文私钥"
         privateTextView.placeholderColor = AppStyle.PingFangSC10.textColor
         privateTextView.font = AppStyle.PingFangSC12.font
         var placeholderLabelConstraints = [NSLayoutConstraint]()
@@ -38,7 +36,8 @@ class MLImportPrivateView: UIView {
         let passwordField = UnderLineTextFiled(frame: .zero)
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        passwordField.placeholder =  R.string.localizable.password()
+        passwordField.placeholder = "ML.Password".localized()
+//            R.string.localizable.password()
         passwordField.isSecureTextEntry = true
         passwordField.delegate = self
         passwordField.underLineColor = Colors.textgraycolor
@@ -49,7 +48,7 @@ class MLImportPrivateView: UIView {
         //        repasswordField.frame.size.width = 30
         repasswordField.translatesAutoresizingMaskIntoConstraints = false
         repasswordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        repasswordField.placeholder = NSLocalizedString("CreateWalletRePassWord", value: "重复密码", comment: "")
+        repasswordField.placeholder = "ML.CreateWalletRePassWord".localized();//重复密码
         repasswordField.delegate = self
         repasswordField.isSecureTextEntry = true
         repasswordField.underLineColor = Colors.textgraycolor
@@ -57,8 +56,7 @@ class MLImportPrivateView: UIView {
     }()
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            passwordField,
-            repasswordField]
+            passwordField, repasswordField]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -70,7 +68,8 @@ class MLImportPrivateView: UIView {
         let readProtocolLabel: UILabel
         readProtocolLabel = UILabel()
         readProtocolLabel.translatesAutoresizingMaskIntoConstraints = false
-        readProtocolLabel.text = NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
+        readProtocolLabel.text = "ML.CreateWalletSettingServicePrivacyClause1".localized()
+//            NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
         readProtocolLabel.textAlignment = .center
         readProtocolLabel.textColor = UIColor.black
         readProtocolLabel.numberOfLines = 0
@@ -81,7 +80,8 @@ class MLImportPrivateView: UIView {
         //        let serviceBtn = Button(size: .normal, style: .border)
         let serviceBtn = UIButton.init(type: UIButtonType.custom)
         serviceBtn.translatesAutoresizingMaskIntoConstraints = false
-        serviceBtn.setTitle(NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: ""), for: .normal)
+serviceBtn.setTitle("ML.CreateWalletSettingServicePrivacyClause".localized(), for: .normal)
+//        serviceBtn.setTitle(NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: ""), for: .normal)
         serviceBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         serviceBtn.setTitleColor(UIColor.red, for: .normal)
         serviceBtn.addTarget(self, action: #selector(serviceAction(sender:)), for: .touchUpInside)
@@ -111,19 +111,19 @@ class MLImportPrivateView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let rectServce: CGRect = sizeWithText(text: NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: "") as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
+        let rectServce: CGRect = sizeWithText(text: "ML.CreateWalletSettingServicePrivacyClause".localized() as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
         NSLayoutConstraint.activate([
             privateTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             privateTextView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             privateTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            privateTextView.heightAnchor.constraint(equalToConstant: 70),
+            privateTextView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(70)),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            stackView.topAnchor.constraint(equalTo: privateTextView.bottomAnchor, constant: 32),
+            stackView.topAnchor.constraint(equalTo: privateTextView.bottomAnchor, constant: kAutoLayoutHeigth(32)),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            stackView.heightAnchor.constraint(equalToConstant: 92),
+            stackView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(92)),
 
             detailBtn.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 25),
-            detailBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 25),
+            detailBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: kAutoLayoutHeigth(25)),
             detailBtn.heightAnchor.constraint(equalToConstant: 20),
             detailBtn.widthAnchor.constraint(equalToConstant: 20),
 
@@ -148,53 +148,40 @@ class MLImportPrivateView: UIView {
     }
     func observeStatus() -> Bool {
         if !privateTextView.text.isPrivateValid(value: privateTextView.text) {
-//            MLErrorType.Private64CharactersError.tips(view: self.superview!)
             MLProgressHud.showError(error: MLErrorType.Private64CharactersError as NSError)
-//            print(MLErrorType.Private64CharactersError.title)
             return false
         }
         let isPassword = "".isPassword(pasword: passwordField.text ?? "")
-
         if !isPassword {
-//            self.superview
-//            MLErrorType.PasswordformatError.tips(view: self.superview!)
             MLProgressHud.showError(error: MLErrorType.PasswordformatError as NSError)
-//            print(MLErrorType.PasswordformatError.title)
             return false
         }
         if passwordField.text ?? "" != repasswordField.text ?? "" {
-//            MLErrorType.PasswordNotEqual.tips(view: self.superview!)
-//            print("密码前后不相等")
             MLProgressHud.showError(error: MLErrorType.PasswordNotEqual as NSError)
-//            print(MLErrorType.PasswordNotEqual.title)
             return false
         }
         if !detailBtn.isSelected {
-//            MLErrorType.ReadProtocolNotRead.tips(view: self.superview!)
             MLProgressHud.showError(error: MLErrorType.ReadProtocolNotRead as NSError)
-//            print(MLErrorType.ReadProtocolNotRead.title)
             return false
         }
         return true
     }
-    func resignResponder(){
+    func resignResponder() {
         privateTextView.resignFirstResponder()
         passwordField.resignFirstResponder()
         repasswordField.resignFirstResponder()
     }
     func calculationheight() -> CGFloat {
-        return  70 + 32 + 92 + 45 + 20
+        return  kAutoLayoutHeigth(70 + 32 + 92 + 45 + 20)
     }
-    func getPrivateWord() -> String{
+    func getPrivateWord() -> String {
         return privateTextView.text
     }
-    func getPassWord() -> String{
+    func getPassWord() -> String {
         return passwordField.text!
     }
 }
-
-extension MLImportPrivateView : UITextViewDelegate {
-
+extension MLImportPrivateView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
 
         placeholderLabel.isHidden = !textView.text.kStringIsEmpty(textView.text)
@@ -210,8 +197,7 @@ extension MLImportPrivateView : UITextViewDelegate {
         return true
     }
 }
-
-extension MLImportPrivateView : UITextFieldDelegate{
+extension MLImportPrivateView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

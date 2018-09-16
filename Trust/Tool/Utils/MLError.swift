@@ -22,47 +22,52 @@ enum MLErrorType: LocalizedError {
     case gasTooHeightError//gas数量过高
     case gasPriseTooLowError//gasPrise数量过低
     case gasPriseTooHeightError//gasPrise数量过高
+    case transactionUnfinish//未能完成操作
     case None
 
     var errorDescription: String? {
             switch self {
             case .invalidAddress:
-                return NSLocalizedString("send.error.invalidAddress", value: "Invalid Address", comment: "")
+                return "ML.Send.error.invalidAddress.Error".localized()//无效的地址
             case .invalidAmount:
-                return NSLocalizedString("send.error.invalidAmount", value: "Invalid Amount", comment: "")
+                return "ML.Send.error.invalidAmount.Error".localized()//无效的数量
             case .WalletNameEmptyError:
-                   return "钱包名字不能为空！"
+                   return "ML.WalletName.NotEmpty.Error".localized()//钱包名字不能为空！
             case .PasswordformatError:
-                return "请输入6-16数字和字母组合组成的密码！"
+                return "ML.Password.Notformat.Error".localized()//请输入6-16数字和字母组合组成的密码！
             case .PasswordNotEqual:
-                return "密码前后不相等！"
+                return "ML.Password.NotEqual.Error".localized()//密码前后不相等！
             case .PasswordInvalid:
-                return "密码无效！"
+                return "ML.Password.Invalid.Error".localized()//密码无效！
             case .PasswordError:
-                return "密码不匹配！"
+                return "ML.Password.NoMatch.Error".localized()//密码不匹配！
             case .PasswordEmpty:
-                return "密码不能为空！"
+                return "ML.Password.Empty.Error".localized()//密码不能为空！
             case .WalletNameError:
-                return "请输入1-12位钱包名称"
+                return "ML.WalletName.Name.Error".localized()//请输入1-12位钱包名称
             case .ReadProtocolNotRead:
-                return "请阅读协议并同意！"
+                return "ML.ReadProtocol.NotRead.Error".localized()//请阅读协议并同意！
             case .PhraseInvalidError:
-                return "Field required!"
+                return "ML.Phrase.InvalidError".localized()//助记词无效!
             case .PrivateInvalidError:
-                return "私钥无效！"
+                return "ML.Private.InvalidError".localized()//私钥无效！
             case .Private64CharactersError:
-                return "Private Key has to be 64 characters long"
+                return "ML.Private.Characters.Error".localized()//私钥必须是64个字符长！
             case .CustomError(let errorString):
                 return errorString
             case .gasTooLowError://gas数量过低
-                return "Gas值应该大于 21000"
+                return "ML.Gas.Low.Error".localized() //Gas值应该大于 21000
             case .gasTooHeightError://gas数量过高
-                return "Gas值应该小于600000"
+                return "ML.Gas.Height.Error".localized() //Gas值应该小于600000
             case .gasPriseTooLowError://gasPrise数量过低
-                return "Gas prise太低，建议应该大于1 gwei"
+                return "ML.GasPrise.Low.Error".localized()//Gas prise太低，建议应该大于1 gwei"
             case .gasPriseTooHeightError://gasPrise数量过高
-                return "Gas prise太高，值应该小于 100 gwei"
+                return "ML.GasPrise.Height.Error".localized()//Gas prise太高，值应该小于 100 gwei
+            case .transactionUnfinish:
+                return "ML.Transaction.Unfinish".localized()
             case .None:
+                return ""
+            default:
                 return ""
         }
     }

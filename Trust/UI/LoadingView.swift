@@ -14,7 +14,7 @@ final class LoadingView: UIView {
 
     init(
         frame: CGRect = .zero,
-        message: String = NSLocalizedString("Loading", value: "Loading", comment: ""),
+        message: String = "ML.Loading".localized(),
         image: UIImage? = .none,
         insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     ) {

@@ -45,6 +45,6 @@ struct CoinViewModel {
     }
 
     var walletName: String {
-        return name + " " + R.string.localizable.wallet()
+        return name + " " + "Wallet".localized()
     }
 }

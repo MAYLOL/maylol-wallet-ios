@@ -50,7 +50,7 @@ extension UIViewController {
     func confirmPassWord(
         title: String? = .none,
         message: String? = .none,
-        okTitle: String = R.string.localizable.oK(),
+        okTitle: String = "ML.Sure".localized(),
         okStyle: UIAlertActionStyle = .default,
         address: String,
         completion: @escaping (Result<Void, ConfirmationError>) -> Void
@@ -65,11 +65,11 @@ extension UIViewController {
             }
             completion(.success(()))
         }))
-        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: { _ in
+        alertController.addAction(UIAlertAction(title: "ML.Cancel".localized(), style: .cancel, handler: { _ in
             completion(.failure(ConfirmationError.cancel))
         }))
         alertController.addTextField { (field: UITextField) in
-            field.placeholder = "Password"
+            field.placeholder = "ML.Password".localized()
             field.isSecureTextEntry = true
         }
         self.present(alertController, animated: true, completion: nil)

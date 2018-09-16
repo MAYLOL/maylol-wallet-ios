@@ -31,8 +31,6 @@ struct MLWalletSettingModel {
 
 struct MLWalletSettingViewModel {
 
-
-
     let session: Int = 1
     var row: Int {
         get {
@@ -40,15 +38,10 @@ struct MLWalletSettingViewModel {
         }
     }
     let settingText: [String] = [
-        "browser.qrCode.button.title".localized(),
-        "welcome.createWallet.button.title".localized(),
-        "welcome.importWallet.button.title".localized(),
+        "ML.QrCode.button.title".localized(),
+        "ML.CreateWallet.button.title".localized(),
+        "ML.ImportWallet.button.title".localized(),
         "ML.Manager.Wallet".localized()
-//        R.string.localizable.welcomeCreateWalletButtonTitle().localized(),
-//        R.string.localizable.welcomeImportWalletButtonTitle().localized(),
-//        R.string.localizable.browserQrCodeButtonTitle().localized(),
-//        R.string.localizable.welcomeCreateWalletButtonTitle().localized(),
-//        R.string.localizable.welcomeImportWalletButtonTitle().localized(),
         ]
 
     let settingIcon: [UIImage] = [
@@ -65,9 +58,7 @@ struct MLWalletSettingViewModel {
         .ManageWallte
     ]
     func getModel(i: Int) -> MLWalletSettingModel {
-        let settingModel:MLWalletSettingModel = MLWalletSettingModel(setText: settingText[i], setIcon: settingIcon[i])
+        let settingModel: MLWalletSettingModel = MLWalletSettingModel(setText: settingText[i], setIcon: settingIcon[i])
         return settingModel
     }
 }
-
-

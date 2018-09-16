@@ -71,15 +71,10 @@ struct MLSettingsViewModel {
         }
     }
     let settingText: [String] = [
-//        "transaction.time.label.title".localized(),
-        "setting.multilingual".localized(),
+        "ML.Setting.multilingual".localized(),
         "ML.Setting.cell.MonetaryUnit".localized(),
         "ML.Setting.cell.Aboutus".localized()
-//        NSLocalizedString("ML.Setting.cell.Multilingual", value: "Multilingual", comment: ""),
-//        NSLocalizedString("ML.Setting.cell.MonetaryUnit", value: "Monetary unit", comment: ""),
-//        NSLocalizedString("ML.Setting.cell.Aboutus", value: "About us", comment: ""),
         ]
-    
     let pushTypes: [MLPushType] = [
         .MutiLanguage, //多语言
         .Unit, //货币单位

@@ -22,8 +22,7 @@ class MLSettingsViewController: UIViewController {
         titleLabel.textAlignment = .left
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.text = "settings.navigation.title".localized()
-//            R.string.localizable.settingsNavigationTitle().localized()
+        titleLabel.text = "ML.Settings.navigation.title".localized()
         return titleLabel
     }()
     lazy var underDynamicLine: UIView = {
@@ -68,7 +67,7 @@ class MLSettingsViewController: UIViewController {
             underDynamicLine.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             underDynamicLine.widthAnchor.constraint(equalToConstant: 47),
             underDynamicLine.heightAnchor.constraint(equalToConstant: 4),
-            settingView.topAnchor.constraint(equalTo: underDynamicLine.bottomAnchor, constant: 25),
+            settingView.topAnchor.constraint(equalTo: underDynamicLine.bottomAnchor, constant: 0),
             settingView.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0),
             settingView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
             settingView.heightAnchor.constraint(equalToConstant: 200),
@@ -81,19 +80,13 @@ class MLSettingsViewController: UIViewController {
         self.view.addSubview(underDynamicLine)
         self.view.addSubview(settingView)
 
-        languageAlertHandler = { ( alertAction : UIAlertAction ) in
-            //            self.dismiss(animated: false, completion: nil)
+        languageAlertHandler = { ( alertAction: UIAlertAction ) in
             self.setLanguage(kind: self.languageWithString(string: alertAction.title!))
 
         }
-        currencyAlertHandler = { ( alertAction : UIAlertAction ) in
-            //            self.dismiss(animated: false, completion: nil)
+        currencyAlertHandler = { ( alertAction: UIAlertAction ) in
             self.setCurrency(currency: self.currencyWithString(string: alertAction.title!))
         }
-        //                Localize.setCurrentLanguage(language)
-        //
-        //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeLanguage"), object: self)
-
     }
 
     func run(action: MLPushType) {
@@ -126,22 +119,8 @@ class MLSettingsViewController: UIViewController {
     }
 
     func setLanguage(kind: languageKind) {
-        print(kind.titleAbbreviation)
-        print(kind.title)
-//        Localize.setCurrentLanguage(language)
         Localize.setCurrentLanguage(kind.titleAbbreviation)
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ChangeLanguage"), object: self)
-//        var language = Localize.displayNameForLanguage(kind.titleAbbreviation)
-//        if language == "" {
-//            language = "default".localized()
-//        }
-//        Localize.setCurrentLanguage(language)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: LCLLanguageChangeNotification), object: self)
-//        let localizableVC = MLLocalizableController()
-//        let bundle: Bundle = localizableVC.bundle
-//        bundle.localizedString(forKey: "", value: "", table: nil)
-
-//        MLLocalizableController().setUserlanguage(language: kind.titleAbbreviation)
         self.run(action: .MutiLanguage)
     }
     func setLanguage(language: String) {
@@ -155,36 +134,43 @@ class MLSettingsViewController: UIViewController {
     }
 
     lazy var languageAlertViewController: UIAlertController = {
-        var title = NSLocalizedString("ML.Setting.cell.Multilingual", value: "Multilingual", comment: "")
+        var title = "ML.Setting.multilingual".localized()
         let alertController = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         alertController.popoverPresentationController?.sourceView = self.view
         for language in availableLanguages {
             print(language)
-            var displayName = Localize.displayNameForLanguage(language)
+//            var displayName = Localize.displayNameForLanguage(language)
+            var displayName = nameForLanguage(language)
             if displayName == "" {
                 displayName = "default".localized()
             }
-            let alertAction = UIAlertAction(title: displayName, style: UIAlertActionStyle.default, handler: { ( alertAction : UIAlertAction ) in
+            let alertAction = UIAlertAction(title: displayName, style: UIAlertActionStyle.default, handler: { (alertAction: UIAlertAction) in
                 self.setLanguage(language: language)
             })
             alertController.addAction(alertAction)
         }
-        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: UIAlertActionStyle.cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "ML.Cancel".localized(), style: UIAlertActionStyle.cancel, handler: nil))
         return alertController
     }()
 
     lazy var currencyAlertViewController: UIAlertController = {
-        var title = NSLocalizedString("settings.network.test.warnning.title", value: "Monetary Unit", comment: "")
+        var title = "ML.Setting.cell.MonetaryUnit".localized()
 //        var title = NSLocalizedString("ML.Setting.cell.MonetaryUnit", value: "Monetary Unit", comment: "")
         let alertController = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         alertController.popoverPresentationController?.sourceView = self.view
         alertController.addAction(UIAlertAction(title: "CNY", style: UIAlertActionStyle.default, handler: currencyAlertHandler))
         alertController.addAction(UIAlertAction(title: "USD", style: UIAlertActionStyle.destructive, handler: currencyAlertHandler))
-        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: UIAlertActionStyle.cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "ML.Cancel".localized(), style: UIAlertActionStyle.cancel, handler: nil))
         return alertController
     }()
+    func nameForLanguage(_ language: String) -> String {
+        let locale: NSLocale = NSLocale(localeIdentifier: language)
+        if let displayName = locale.displayName(forKey: NSLocale.Key.identifier, value: language) {
+            return displayName
+        }
+        return String()
+    }
 }
-
 extension MLSettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MLSettingViewCell = tableView.dequeueReusableCell(withIdentifier: MLSettingViewCell.identifier, for: indexPath) as! MLSettingViewCell
@@ -212,7 +198,9 @@ extension MLSettingsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-
         delegate?.didAction(action: viewModel.pushTypes[indexPath.row], in: self)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }

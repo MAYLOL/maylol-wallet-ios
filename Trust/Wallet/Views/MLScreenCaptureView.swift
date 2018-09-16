@@ -15,12 +15,6 @@ class MLScreenCaptureView: UIView {
         fullView.translatesAutoresizingMaskIntoConstraints = false
         fullView.alpha = 0.5
         fullView.backgroundColor = UIColor.black
-//        let blur = UIBlurEffect(style: UIBlurEffectStyle.dark)
-//        var effecview = UIVisualEffectView(effect: blur)
-//        effecview.alpha = 0.5
-//        effecview.translatesAutoresizingMaskIntoConstraints = false
-//        effecview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        return effecview
         return fullView
     }()
     lazy var alertView: UIView = {
@@ -41,7 +35,7 @@ class MLScreenCaptureView: UIView {
         var titleLabel = UILabel(frame: .zero)
         titleLabel.font = AppStyle.PingFangSC15.font
         titleLabel.textColor = AppStyle.PingFangSC15.textColor
-        titleLabel.text = "请勿截图"
+        titleLabel.text = "ML.ScreenPrint.Not".localized()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
@@ -49,7 +43,7 @@ class MLScreenCaptureView: UIView {
         var detailLabel = UILabel(frame: .zero)
         detailLabel.font = AppStyle.PingFangSC11.font
         detailLabel.textColor = AppStyle.PingFangSC11.textColor
-        detailLabel.text = "如果有人获取了你的助记词将直接获取你的资产！请抄下助记词并存放在安全的地方"
+        detailLabel.text = "ML.ScreenPrint.Write".localized()
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.numberOfLines = 0
         return detailLabel
@@ -57,7 +51,7 @@ class MLScreenCaptureView: UIView {
     lazy var yeeBtn: UIButton = {
         var yeeBtn = UIButton(type: UIButtonType.custom)
         yeeBtn.backgroundColor = Colors.f02e44color
-        yeeBtn.setTitle("我知道了", for: UIControlState.normal)
+        yeeBtn.setTitle("ML.ScreenPrint.yee".localized(), for: UIControlState.normal)
         yeeBtn.titleLabel?.font = AppStyle.PingFangSC14.font
         yeeBtn.titleLabel?.textColor = UIColor.white
         yeeBtn.translatesAutoresizingMaskIntoConstraints = false

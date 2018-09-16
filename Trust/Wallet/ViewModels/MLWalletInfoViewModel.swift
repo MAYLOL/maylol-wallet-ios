@@ -46,10 +46,10 @@ struct MLWalletInfoViewModel {
         return WalletInfo.emptyName
     }
 
-    let titles: [NSString] = [
-        "钱包名",
-        "修改密码",
-        "导出私钥"
+    let titles: [String] = [
+        "ML.Wallet.Name".localized(),
+        "ML.Password.Change".localized(),
+        "ML.Export.PrivateKey".localized()
     ]
     let action: [ManagerActionType] = [
         .changeWalletName,

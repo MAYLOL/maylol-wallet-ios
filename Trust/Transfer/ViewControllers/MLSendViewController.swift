@@ -17,6 +17,7 @@ protocol MLSendViewControllerDelegate: class {
         in viewController: MLSendViewController
     )
     func didPressScan()
+    func didHowToSet()
 }
 
 class MLSendViewController: UIViewController {
@@ -48,6 +49,7 @@ class MLSendViewController: UIViewController {
         var sendView = MLSendView(frame: .zero)
         sendView.scanBtn.addTarget(self, action: #selector(scanAction(sender:)), for: UIControlEvents.touchUpInside)
         sendView.translatesAutoresizingMaskIntoConstraints = false
+        sendView.delegate = self
         return sendView
     }()
 
@@ -56,11 +58,6 @@ class MLSendViewController: UIViewController {
     let transfer: Transfer
     let storage: TokensDataStore
     let chainState: ChainState
-    private var allowedCharacters: String = {
-        let decimalSeparator = Locale.current.decimalSeparator ?? "."
-        return "0123456789" + decimalSeparator
-    }()
-    private var data = Data()
     init(
         session: WalletSession,
         storage: TokensDataStore,
@@ -121,7 +118,7 @@ class MLSendViewController: UIViewController {
 //            }
 //            return Data(hex: dataString.drop0x)
 //        }()
-//
+
 //        let configuration = TransactionConfiguration(
 //            gasPrice: gasPrice,
 //            gasLimit: gasLimit,
@@ -167,7 +164,9 @@ class MLSendViewController: UIViewController {
         if gasPrice > GasPriceConfiguration.max {
             return displayError(error: MLErrorType.gasPriseTooHeightError)
         }
-
+        guard judgeData() else {
+            return displayError(error: MLErrorType.Private64CharactersError)
+        }
         let transaction = UnconfirmedTransaction(
             transfer: transfer,
             value: value,
@@ -180,10 +179,20 @@ class MLSendViewController: UIViewController {
         self.delegate?.didPressConfirm(transaction: transaction, transfer: transfer, in: self)
     }
 
+    private var data: Data {
+        if sendView.superSelect {
+            let dataStr = sendView.sixdataTV.text ?? ""
+            guard "".judgeSixteenData(hex: dataStr) else {
+                return Data()
+            }
+            return Data(hex: dataStr.drop0x)
+        }
+        return Data()
+    }
     private let fullFormatter = EtherNumberFormatter.full
 
     private var defaultGasLimit: BigInt {
-        return TransactionConfigurator.gasLimitPu(type: transfer.type)
+        return BigInt(Float(TransactionConfigurator.gasLimitPu(type: transfer.type).description) ?? 21000)
     }
 
     private var defaultGasPriceBigInt: BigInt {
@@ -212,6 +221,14 @@ class MLSendViewController: UIViewController {
     private var gasViewModel: GasViewModel {
         return GasViewModel(fee: totalFee, server: chainState.server, store: storage, formatter: fullFormatter)
     }
+
+    func judgeData() -> Bool {
+        if sendView.superSelect {
+            let dataStr = sendView.sixdataTV.text ?? ""
+            return "".judgeSixteenData(hex: dataStr)
+        }
+        return true
+    }
     func refreshCoordinator() {
         refreshSendView()
         sendView.minerCostSlider.addTarget(self, action: #selector(costSlider(sender:)), for: UIControlEvents.valueChanged)
@@ -236,5 +253,13 @@ class MLSendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.applyTintAdjustment()
+    }
+}
+extension MLSendViewController: MLSendViewDelegate {
+    func didHowToSetAction() {
+        delegate?.didHowToSet()
+    }
+    func invideData() {
+        displayError(error: MLErrorType.Private64CharactersError)
     }
 }

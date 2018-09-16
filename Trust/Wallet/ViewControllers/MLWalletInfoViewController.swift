@@ -49,7 +49,7 @@ class MLWalletInfoViewController: UIViewController {
         backUpBtn.translatesAutoresizingMaskIntoConstraints = false
         backUpBtn.backgroundColor = UIColor(hex: "F02E44")
         backUpBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        backUpBtn.setTitle("备份助记词", for: .normal)
+        backUpBtn.setTitle("ML.BackupPhrase".localized(), for: .normal)
         backUpBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         backUpBtn.layer.cornerRadius = 5
         backUpBtn.layer.masksToBounds = true
@@ -62,7 +62,7 @@ class MLWalletInfoViewController: UIViewController {
         deleteBtn.translatesAutoresizingMaskIntoConstraints = false
         deleteBtn.backgroundColor = Colors.f0f0f0color
         deleteBtn.setTitleColor(Colors.f969696color, for: .normal)
-        deleteBtn.setTitle("删除钱包", for: .normal)
+        deleteBtn.setTitle("ML.Manager.DeleteWallet.Title".localized(), for: .normal)
         deleteBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         deleteBtn.layer.cornerRadius = 5
         deleteBtn.layer.masksToBounds = true
@@ -73,7 +73,7 @@ class MLWalletInfoViewController: UIViewController {
     func addSaveBtn() -> UIButton {
         let saveBtn = UIButton(type: UIButtonType.custom)
         saveBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        saveBtn.setTitle("保存", for: UIControlState.normal)
+        saveBtn.setTitle("ML.Save".localized(), for: UIControlState.normal)
         saveBtn.setTitleColor(Colors.f02e44color, for: UIControlState.normal)
         saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         saveBtn.addTarget(self, action: #selector(save), for: UIControlEvents.touchUpInside)
@@ -182,7 +182,7 @@ class MLWalletInfoViewController: UIViewController {
     }
 
     func delete(wallet: WalletInfo) {
-        navigationController?.displayLoading(text: R.string.localizable.deleting())
+        navigationController?.displayLoading(text: "Deleting".localized())
         keystore.delete(wallet: wallet) { [weak self] result in
             guard let `self` = self else { return }
             self.navigationController?.hideLoading()

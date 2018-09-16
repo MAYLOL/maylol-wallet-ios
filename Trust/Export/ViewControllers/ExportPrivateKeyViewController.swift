@@ -42,7 +42,7 @@ final class ExportPrivateKeyViewConroller: UIViewController {
         let button = Button(size: .extraLarge, style: .clear)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(copyAction(_:)), for: .touchUpInside)
-        button.setTitle(NSLocalizedString("Copy", value: "Copy", comment: ""), for: .normal)
+        button.setTitle("ML.Copy".localized(), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

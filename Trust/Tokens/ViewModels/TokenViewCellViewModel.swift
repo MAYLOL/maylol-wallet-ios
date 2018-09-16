@@ -41,6 +41,10 @@ struct TokenViewCellViewModel {
         return TokensLayout.cell.totalFiatAmount(token: viewModel.token)
     }
 
+    var currencyAmountRe: String? {
+        return TokensLayout.cell.totalFiatAmount(token: viewModel.token)
+    }
+
     var amountFont: UIFont {
         return UIFont.systemFont(ofSize: 17, weight: .medium)
     }

@@ -13,7 +13,8 @@ final class ExportPrivateKeyCoordinator: RootCoordinator {
     }
     lazy var exportViewController: ExportPrivateKeyViewConroller = {
         let controller = ExportPrivateKeyViewConroller(viewModel: viewModel)
-        controller.navigationItem.title = NSLocalizedString("export.privateKey.navigation.title", value: "Export Private Key", comment: "")
+//        controller.navigationItem.title = NSLocalizedString("export.privateKey.navigation.title", value: "Export Private Key", comment: "")
+        controller.navigationItem.title = "ML.Export.PrivateKey".localized()
         return controller
     }()
     private lazy var viewModel: ExportPrivateKeyViewModel = {

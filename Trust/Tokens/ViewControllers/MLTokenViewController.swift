@@ -104,8 +104,6 @@ final class MLTokenViewController: UIViewController {
     private func fetch() {
         startLoading()
         viewModel.fetch()
-        print("",viewModel.getModel())
-
     }
 
     @objc func infoAction() {

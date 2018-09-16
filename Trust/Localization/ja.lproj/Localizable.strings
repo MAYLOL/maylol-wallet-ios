@@ -289,41 +289,260 @@
 "CrashReports" = "クラッシュレポート";
 "Confirm signing this message:" = "Confirm signing this message:";
 "wallets.export.alertSheet.detail" = "Export Private Key";
-"setting.multilingual" = "多言語";//"多语言".
-"ML.Manager.Wallet" = "財布の管理";
+//"setting.multilingual" = "多言語";//"多语言".
+//"ML.Manager.Wallet" = "財布の管理";
+//
+//"ML.Manager.UnnamedWallet" = "無名の財布";
+//
+//"ML.Setting.cell.MonetaryUnit" = "通貨単位";//"货币单位",화폐 단위
+//"ML.Setting.cell.Aboutus" = "アバウトアス";//"货币单位",
+//"ML.Setting.cell.Aboutus.UseProtocol" = "使用プロトコル";//"使用协议"
+//"ML.Setting.cell.Aboutus.PrivacyClause" = "プライバシー条項";//"隐私条款"
+//"ML.Setting.cell.Aboutus.ProductGuide" = "製品ガイド";//"产品向导"
+//"ML.Setting.cell.Aboutus.DetectionUpdate" = "検出更新";//"检测更新"
+//"ML.Setting.cell.Aboutus.Currentversion" = "現在のバージョン";//"当前版本"
+//"ML.Tokens.cell.Totalassets" = "総資産";//"总资产"
+//"ML.Token.copyAddress" = "アドレスをコピーする";//"复制首款地址"
+//"ML.Token.ReceiptCode" = "入金コード";//"收款码"
+//"ML.Transaction.Recentrecords" = "最近の取引記録";//"最近交易记录" //Recent transaction records
+//
+//"ML.Transaction.cell.tokenTransfer.title" = "振替";//转账
+//"ML.Transaction.cell.receivables.title" = "受取をする";//收款 Receivables
+//"ML.Transaction.cell.PayeeWalletAddress" = "受取人の財布の住所";//收款人钱包地址 Payee wallet address
+//"ML.Transaction.cell.TransferAmount" = "振替金額";//转账金额Transfer amount
+//"ML.Transaction.cell.Remarks" = "備考";//备注 Remarks
+//"ML.Transaction.cell.CustomGasPrice" = "カスタム Gas Price";//自定义Gas Price   Custom Gas Price
+//"ML.Transaction.cell.CustomGas" = "カスタム Gas";//自定义Gas  Custom Gas
+//"ML.Transaction.cell.Sixteenbinarydata" = "16進法データ";//Sixteen binary data  十六进制数据
+//"ML.Transaction.cell.HowToSetParameters" = "パラメータをどのように設定するか？";//如何设置参数 How to set parameters
+//"ML.Transaction.cell.Advancedoptions" = "高級なオプション";//高级选项 Advanced options
+//"ML.Transaction.cell.Pursecipher" = "お財布のパスワード";//钱包密码 Purse cipher
+//"ML.lock.enter.passcode.view.model.initial" = "パスワードを入力してください";//请输入密码 Enter your passcode
+//"ML.Transaction.cell.Sure" = "確定する";//确定 Sure
+//"ML.Transaction.cell.Detailsofpayment" = "詳細を支払う";//支付详情 Details of payment
+//"ML.Transaction.cell.Transfertotheaddress" = "住所に転入する";//转入地址  Transfer to the address
+//"ML.Transaction.cell.PaymentPurse" = "金を払う";//付款钱包  Payment Purse
+//"ML.Transaction.cell.MinerCost" = "鉱夫費用";//矿工费用 Miner's cost
+//"ML.Transaction.cell.Amountofmoney" = "金額";//金额  Amount of money
+//"ML.Transaction.cell.fast" = "速い";//快  fast
+//"ML.Transaction.cell.slow" = "遅い";//慢  slow
+//"ML.My.Wallet" = "私の財布";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
+//
+/////111
+//"ML.CreateWalletSettinglabelsubtitle" = "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记";
+//
+//"ML.CreateWalletSettingWalletName" = "钱包名称";
+//"ML.CreateWalletRePassWord" = "重复密码";//重复密码
+//"ML.CreateWalletSettingServicePrivacyClause1" = "我已经仔细阅读并同意";//我已经仔细阅读并同意
+//"ML.CreateWalletSettingServicePrivacyClause" = "服务隐私条款";
+//"ML.PhrasebySpaces" = "助记词，按空格分隔";
+//"ML.PrivateKey" = "明文私钥";//明文私钥
+//"ML.PrivateIntroduce" = "什么是私钥？";//什么是私钥？
+//"ML.PhraseIntroduce" = "什么是助记词？";//什么是助记词？
 
-"ML.Manager.UnnamedWallet" = "無名の財布";
 
-"ML.Setting.cell.MonetaryUnit" = "通貨単位";//"货币单位",화폐 단위
-"ML.Setting.cell.Aboutus" = "アバウトアス";//"货币单位",
-"ML.Setting.cell.Aboutus.UseProtocol" = "使用プロトコル";//"使用协议"
-"ML.Setting.cell.Aboutus.PrivacyClause" = "プライバシー条項";//"隐私条款"
-"ML.Setting.cell.Aboutus.ProductGuide" = "製品ガイド";//"产品向导"
-"ML.Setting.cell.Aboutus.DetectionUpdate" = "検出更新";//"检测更新"
-"ML.Setting.cell.Aboutus.Currentversion" = "現在のバージョン";//"当前版本"
-"ML.Tokens.cell.Totalassets" = "総資産";//"总资产"
-"ML.Token.copyAddress" = "アドレスをコピーする";//"复制首款地址"
-"ML.Token.ReceiptCode" = "入金コード";//"收款码"
-"ML.Transaction.Recentrecords" = "最近の取引記録";//"最近交易记录" //Recent transaction records
 
-"ML.Transaction.cell.tokenTransfer.title" = "振替";//转账
-"ML.Transaction.cell.receivables.title" = "受取をする";//收款 Receivables
-"ML.Transaction.cell.PayeeWalletAddress" = "受取人の財布の住所";//收款人钱包地址 Payee wallet address
-"ML.Transaction.cell.TransferAmount" = "振替金額";//转账金额Transfer amount
-"ML.Transaction.cell.Remarks" = "備考";//备注 Remarks
-"ML.Transaction.cell.CustomGasPrice" = "カスタム Gas Price";//自定义Gas Price   Custom Gas Price
-"ML.Transaction.cell.CustomGas" = "カスタム Gas";//自定义Gas  Custom Gas
-"ML.Transaction.cell.Sixteenbinarydata" = "16進法データ";//Sixteen binary data  十六进制数据
-"ML.Transaction.cell.HowToSetParameters" = "パラメータをどのように設定するか？";//如何设置参数 How to set parameters
-"ML.Transaction.cell.Advancedoptions" = "高級なオプション";//高级选项 Advanced options
-"ML.Transaction.cell.Pursecipher" = "お財布のパスワード";//钱包密码 Purse cipher
-"ML.lock.enter.passcode.view.model.initial" = "パスワードを入力してください";//请输入密码 Enter your passcode
-"ML.Transaction.cell.Sure" = "確定する";//确定 Sure
-"ML.Transaction.cell.Detailsofpayment" = "詳細を支払う";//支付详情 Details of payment
-"ML.Transaction.cell.Transfertotheaddress" = "住所に転入する";//转入地址  Transfer to the address
-"ML.Transaction.cell.PaymentPurse" = "金を払う";//付款钱包  Payment Purse
-"ML.Transaction.cell.MinerCost" = "鉱夫費用";//矿工费用 Miner's cost
-"ML.Transaction.cell.Amountofmoney" = "金額";//金额  Amount of money
-"ML.Transaction.cell.fast" = "速い";//快  fast
-"ML.Transaction.cell.slow" = "遅い";//慢  slow
-"ML.My.Wallet" = "私の財布";//我的钱包 My wallet  내 지갑  私の財布 我的錢包
+
+
+
+
+
+//1
+"ML.Manager.tokens.noWallet" = "您还没有创建钱包";//您还没有创建钱包
+"ML.Manager.tokens.addWallet" = "点击添加或创建钱包";//点击添加或创建钱包
+"ML.CreateWallet.button.title" = "创建钱包";//创建钱包
+"ML.ImportWallet.button.title" = "导入钱包";//导入钱包
+
+//2
+
+"ML.CreateWalletSettinglabelsubtitle" = "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记";//·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记
+"ML.CreateWalletSettingWalletName" = "钱包名称";//钱包名称
+"ML.Password" = "密码";//密码
+"ML.Password.weak" = "弱";//弱
+"ML.Password.middle" = "中";//中
+"ML.Password.strong" = "强";//强
+"ML.CreateWalletRePassWord" = "重复密码";//重复密码
+"ML.CreateWalletSettingServicePrivacyClause" = "服务隐私条款";//服务隐私条款
+"ML.CreateWalletSettingServicePrivacyClause1" = "我已经仔细阅读并同意";//我已经仔细阅读并同意
+"ML.AgreeAgreement.please" = "请同意协议";//请同意协议
+"ML.ImportWallet.atOnce" = "马上导入";//马上导入
+"ML.CreateWallet.Ing" = "创建钱包中";//创建钱包中
+"ML.CreateWallet.Success" = "创建成功";//创建成功
+
+//3
+
+"ML.BackupWallet.Last" = "最后一步：立即备份你的钱包";//最后一步：立即备份你的钱包
+"ML.BackupWalletAndExport.Use" = "备份钱包：导出「助记词」并抄写到安全的地方，千万不要保存到网络上，然后尝试转入、转出小额资产开始使用。";//备份钱包：导出「助记词」并抄写到安全的地方，千万不要保存到网络上，然后尝试转入、转出小额资产开始使用。
+"ML.Export.backup.button.title" = "备份钱包";//备份钱包
+"ML.BackupWalletCourse.Look" = "查看备份详情教程";//查看备份详情教程
+"ML.lock.enter.passcode.view.model.initial" = "请输入密码";//请输入密码
+"ML.Cancel" = "取消";//取消
+"ML.Sure" = "确认";//确认
+"ML.Password.error" = "密码错误";//密码错误
+
+//4
+"ML.ScreenPrint.Not" = "请勿截图";//请勿截图
+"ML.ScreenPrint.Write" = "如果有人获取了你的助记词将直接获取你的资产！请抄下助记词并存放在安全的地方";//如果有人获取了你的助记词将直接获取你的资产！请抄下助记词并存放在安全的地方
+"ML.ScreenPrint.yee" = "我知道了";//我知道了
+"ML.BackupPhrase" = "备份助记词";//备份助记词
+"ML.Write.Phrase" = "抄下你的钱包助记词！";//抄下你的钱包助记词！
+"ML.Write.PhraseTips" = "助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方";//助记词用于恢复钱包或重置钱包密码，将他准确的抄写在纸上并存放在只有你知道的安全的地方
+"ML.Next" = "下一步";//下一步
+"ML.BackupPhrase.Sure" = "确认你的钱包助记词";//确认你的钱包助记词
+"ML.BackupPhrase.Touch" = "请按顺序点击助记词，以确认你的备份助记词正确";//请按顺序点击助记词，以确认你的备份助记词正确
+"ML.BackupPhrase.Error" = "助记词顺序不正确，请重新校验";//助记词顺序不正确，请重新校验
+"ML.BackupPhrase.Success" = "备份成功";//备份成功
+
+//5
+
+"ML.Tokens.cell.Totalassets" = "总资产";//总资产
+"ML.Token.ReceiptCode" = "收款码";//收款码
+"ML.Share" = "分享";//分享
+"ML.Token.copyAddress" = "复制收款地址";//复制收款地址
+"ML.Copy" = "复制";//复制
+"ML.Copy.Ready" = "已复制";//已复制
+
+//6
+
+"ML.My.Wallet" = "我的钱包";//我的钱包
+"ML.Manager.UnnamedWallet" = "未命名钱包";//未命名钱包
+"ML.QrCode.button.title" = "扫一扫";//扫一扫
+"ML.QrCode.Start" = "请将条码置于取景框内扫描";//请将条码置于取景框内扫描
+"ML.Manager.Wallet" = "管理钱包";//管理钱包
+"ML.Settings.navigation.title" = "设置";//设置
+"ML.Setting.multilingual" = "多语言";//多语言
+"ML.Setting.cell.MonetaryUnit" = "货币单位";//货币单位
+"ML.Setting.cell.Aboutus" = "关于我们";//关于我们
+"ML.Setting.cell.Aboutus.UseProtocol" = "使用协议";//使用协议
+"ML.Setting.cell.Aboutus.PrivacyClause" = "隐私条款";//隐私条款
+"ML.Setting.cell.Aboutus.ProductGuide" = "产品向导";//产品向导
+"ML.Setting.cell.Aboutus.DetectionUpdate" = "检测更新";//检测更新
+"ML.Setting.cell.Aboutus.Currentversion" = "当前版本";//当前版本
+"ML.Phrase" = "助记词";//助记词
+"ML.PhrasebySpaces" = "助记词，按空格分隔";//助记词，按空格分隔
+"ML.PrivateKey" = "私钥";//私钥
+"ML.PrivateKey.Word" = "明文私钥";//明文私钥
+"ML.PhraseIntroduce" = "什么是助记词？";//什么是助记词？
+"ML.PrivateIntroduce" = "什么是私钥？";//什么是私钥？
+
+//7
+
+"ML.Manager.Wallet.Title" = "管理钱包";//管理钱包
+"ML.Manager.DeleteWallet.Title" = "删除钱包";//删除钱包
+"ML.Manager.DeleteWallet.Success" = "删除成功";//删除成功
+"ML.BackupWallet.Please" = "请备份";//请备份
+"ML.BackupWallet.Ready" = "已备份";//已备份
+"ML.Wallet.Name" = "钱包名";//钱包名
+"ML.Password.Change" = "修改密码";//修改密码
+"ML.Password.Current" = "当前密码";//当前密码
+"ML.Password.New" = "新密码";//新密码
+"ML.Password.Repeat" = "重复新密码";//重复新密码
+"ML.Finish" = "完成";//完成
+"ML.Save" = "保存";//保存
+"ML.Export.PrivateKey" = "导出私钥";//导出私钥
+"ML.Export.Warning" = "安全警告：私钥未经加密，导出存在风险，建议使用助记词和私钥进行备份";//安全警告：私钥未经加密，导出存在风险，建议使用助记词和私钥进行备份
+"ML.Export.Password.Change" = "导入助记词或私钥可重置密码";//导入助记词或私钥可重置密码
+
+//8
+
+"ML.Transaction.Recentrecords" = "最近交易记录";//"最近交易记录"
+"ML.Transaction.Packing.Wait" = "等待打包";//"等待打包"
+"ML.Transaction.Packing.Failure" = "打包失败";//"打包失败"
+"ML.Transaction.Packing.Success" = "打包成功";//"打包成功"
+"ML.Transaction.Assets" = "资产";//资产
+"ML.Transaction.Count" = "数量";//数量
+"ML.Transaction.Income" = "今日收益";//今日收益
+"ML.Transaction.cell.tokenTransfer.title" = "转账";//转账
+"ML.Transaction.cell.receivables.title" = "收款";//收款
+"ML.Transaction.cell.PayeeWalletAddress" = "收款人钱包地址";//收款人钱包地址
+"ML.Transaction.cell.TransferAmount" = "转账金额";//转账金额
+"ML.Transaction.cell.Amountofmoney" = "金额";//金额
+"ML.Transaction.cell.Remarks" = "备注";//备注
+"ML.Transaction.cell.MinerCost" = "矿工费用";//矿工费用
+"ML.Transaction.cell.slow" = "慢";//慢
+"ML.Transaction.cell.fast" = "快";//快
+"ML.Transaction.cell.Advancedoptions" = "高级选项";//高级选项
+"ML.Transaction.Next" = "下一步";//下一步
+"ML.Transaction.cell.Pursecipher" = "钱包密码";//钱包密码
+"ML.Transaction.cell.Detailsofpayment" = "支付详情";//支付详情
+"ML.Transaction.cell.Transfertotheaddress" = "转入地址";//转入地址
+"ML.Transaction.cell.PaymentPurse" = "付款钱包";//付款钱包
+"ML.Transaction.Unfinish" = "未能完成操作";//未能完成操作
+"ML.Warning" = "警告";//警告
+"ML.Transaction.sent.title" = "已发送";//已发送
+"ML.Transaction.cell.CustomGasPrice" = "自定义Gas Price";//自定义Gas Price
+"ML.Transaction.cell.CustomGas" = "自定义Gas";//自定义Gas
+"ML.Transaction.cell.Sixteenbinarydata" = "十六进制数据";//十六进制数据
+"ML.Transaction.cell.HowToSetParameters" = "如何设置参数？";//如何设置参数
+//9
+"ML.Transaction.Info" = "交易明细";//交易明细
+"ML.Transaction.sender" = "发送者";//发送者
+"ML.Transaction.ID" = "交易ID";//交易ID
+"ML.NetworkFee" = "网络费用";//网络费用
+"ML.Send.error.invalidAddress.Error"= "无效的地址";//无效的地址
+"ML.Send.error.invalidAmount.Error" = "无效的数量";//无效的数量
+"ML.Password.NoMatch.Error" = "密码不匹配";//密码不匹配
+"ML.WalletName.NotEmpty.Error" = "钱包名字不能为空！"; //钱包名字不能为空！
+"ML.Password.Notformat.Error" = "请输入6-16数字和字母组合组成的密码！";//请输入6-16数字和字母组合组成的密码！
+"ML.Password.NotEqual.Error" = "密码前后不相等！";//密码前后不相等！
+"ML.Password.Invalid.Error" = "密码无效！";//密码无效！
+"ML.Password.Empty.Error" = "密码不能为空！";//密码不能为空！
+"ML.WalletName.Name.Error" = "请输入1-12位钱包名称！";//请输入1-12位钱包名称
+"ML.ReadProtocol.NotRead.Error" = "请阅读协议并同意！";
+"ML.Phrase.InvalidError" = "助记词无效！"; //助记词无效！
+"ML.Private.InvalidError" = "私钥无效！";//私钥无效！
+"ML.Private.Characters.Error" = "私钥必须是64个字符长！";
+"ML.Gas.Low.Error" = "Gas值应该大于 21000！";//Gas值应该大于 21000
+"ML.Gas.Height.Error" = "Gas值应该小于600000！";//Gas值应该小于600000
+"ML.GasPrise.Low.Error" = "Gas prise太低，建议应该大于1 gwei！";//Gas prise太低，建议应该大于1 gwei
+"ML.GasPrise.Height.Error" = "Gas prise太高，值应该小于 100 gwei！";//Gas prise太高，值应该小于 100 gwei
+
+//add
+"ML.export.backup.button.Howtotitle" = "ウォレットをバックアップする方法";//如何备份钱包
+"ML.MainWallet" = "メインウォレット";//主钱包
+"ML.Wallet" = "ウォレット";//钱包
+"ML.Recive" = "受信";//接收
+"ML.Password.Forget" = "パスワードを忘れましたか？ ニーモニックまたはプライベートキーをインポートしてパスワードをリセットします。";//忘记密码？导入助记词或私钥可重置密码。
+"ML.Password.ChangeSuccess" = "パスワードを正常に変更してください！";//修改密码成功！
+"ML.Deleting" = "削除";//删除
+"ML.Wallet.exist" = "ウォレットは既に存在します。新しいパスワードに設定されていますか？ （ウォレットの新しいパスワードを覚えておいてください）";//钱包已存在，是否设置为新密码？（请牢记钱包新密码）
+"ML.Wallet.Sure" = "決定する";//确定
+"ML.Transaction.cell.Sure" = "決定する";//确定
+"ML.Send" = "送信";//发送
+"ML.Approve" = "承認する";//批准
+
+"ML.App.Update.Tip" = "バージョン更新";//版本更新了
+"ML.App.Update.SubTitle" = "更新に行くかどうか";//是否前往更新
+"ML.App.Update.Go" = "更新に行く";//去更新
+"ML.App.Update.Next" = "次回に言って";//下次再说
+"ML.App.Update.IsNew" = "現在は最新バージョンです！";//当前已经是最新版本！
+"ML.App.Update.NoTips" = "もうメッセージが表示されません";//不再提示
+
+"ML.Transaction.time.label.title" = "取引時間";//交易时间
+
+"ML.Transaction.cell.error.title" = "エラー";//错误
+"ML.Transaction.cell.received.title" = "受け取った";//已收到
+"ML.Transaction.cell.receiving.title" = "受信";//接收中
+"ML.Transaction.cell.sending.title" = "送信";//发送中
+"ML.Transaction.cell.sent.title" = "送信済み";//已发送
+"ML.Transaction.cell.tokenTransfer%@.title" = "転送 %@";//转账 %@
+"ML.Transaction.cell.failed.title" = "失敗";//失败
+"ML.Transaction.cell.pending.title" = "待っている";//等待
+"ML.Transaction.cell.unknown.title" = "不明";//未知
+
+"ML.Loading" = "로드 중";//加载中
+"ML.Export.warning.private.key" = "自身の責任でエクスポートしてください！";//导出风险自负！
+"ML.Export.warningTwo.private.key" = "あなたの秘密鍵を持っている人なら誰でもあなたのウォレットに完全にアクセスできます！";//任何拥有私钥的人都可以完全访问你的钱包
+
+"ML.Lanuch.Page1.Title" = "財産の自己管理";//自我掌控财产
+"ML.Lanuch.Page2.Title" = "ポイントツーポイントフリー転送";//点对点自由转账
+"ML.Lanuch.Page3.Button" = "オープンMAYLOLウォレット";//开启魅乐钱包
+"ML.Lanuch.Page1.detail" = "すべての人に\ n秘密鍵を与えるBlockchainウォレットは、資産ですダブルバックアップをしてください";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
+"ML.Lanuch.Page2.detail" = "第三者の仲介の必要はありません。\ n地球の両端が瞬時に完了します";//无需第三方中介\n地球两端，瞬间完成
+
+
+
+
+
+
+

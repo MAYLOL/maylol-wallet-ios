@@ -122,10 +122,14 @@ symbolImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
 
         var untStr = "≈ ¥"
         if Config().currency == .CNY {
-        }else if Config().currency == .USD {
+        } else if Config().currency == .USD {
             untStr = "≈ $"
         }
-        currencyAmountLabel.text = "\(untStr)" +  (viewModel.currencyAmount ?? "0")
+        var amountStr = (viewModel.currencyAmount ?? "0")
+        if amountStr.contains("US$") {
+            amountStr = amountStr.replacingOccurrences(of: "US$", with: "")
+        }
+        currencyAmountLabel.text = "\(untStr)" +  amountStr
         symbolImageView.kf.setImage(
             with: viewModel.imageURL,
             placeholder: viewModel.placeholderImage
@@ -167,4 +171,3 @@ symbolImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
         pendingTokenTransactionsObserver = nil
     }
 }
-

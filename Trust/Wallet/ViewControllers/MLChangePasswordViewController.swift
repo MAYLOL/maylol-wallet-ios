@@ -17,7 +17,7 @@ class MLChangePasswordViewController: UIViewController {
         var cPwdField = UnderLineTextFiled(frame: .zero)
         cPwdField.translatesAutoresizingMaskIntoConstraints = false
         cPwdField.isSecureTextEntry = true
-        cPwdField.placeholder = "当前密码"
+        cPwdField.placeholder = "ML.Password.Current".localized()
         cPwdField.underLineColor = Colors.textgraycolor
         cPwdField.font = UIFont.init(name: "PingFang SC", size: 12)
         cPwdField.delegate = self
@@ -27,19 +27,19 @@ class MLChangePasswordViewController: UIViewController {
         let passwordField = UnderLineTextFiled(frame: .zero)
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        passwordField.placeholder =  "新密码"
+        passwordField.placeholder =  "ML.Password.New".localized()
         passwordField.isSecureTextEntry = true
         passwordField.underLineColor = Colors.textgraycolor
-        passwordField.delegate = self;
+        passwordField.delegate = self
         return passwordField
     }()
     lazy var repasswordField: UnderLineTextFiled = {
         let repasswordField = UnderLineTextFiled(frame: .zero)
         repasswordField.translatesAutoresizingMaskIntoConstraints = false
         repasswordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        repasswordField.placeholder = "重复新密码"
+        repasswordField.placeholder = "ML.Password.Repeat".localized()
         repasswordField.isSecureTextEntry = true
-        repasswordField.delegate = self;
+        repasswordField.delegate = self
         repasswordField.underLineColor = Colors.textgraycolor
         return repasswordField
     }()
@@ -47,7 +47,8 @@ class MLChangePasswordViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [
             cPwdField,
             passwordField,
-            repasswordField]
+            repasswordField
+            ]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -55,31 +56,46 @@ class MLChangePasswordViewController: UIViewController {
         stackView.spacing = 25
         return stackView
     }()
-    lazy var tipsLabel: UILabel = {
-        let tipsLabel: UILabel
-        tipsLabel = UILabel()
-        tipsLabel.translatesAutoresizingMaskIntoConstraints = false
-        tipsLabel.text = "忘记密码？导入助记词或私钥可重置密码。"
-        tipsLabel.textAlignment = .center
-        tipsLabel.textColor = Colors.detailTextgraycolor
-        tipsLabel.numberOfLines = 1
-        tipsLabel.font = UIFont.systemFont(ofSize: 11)
-        return tipsLabel
-    }()
-    lazy var importBtn: UIButton = {
-        let importBtn = UIButton.init(type: UIButtonType.custom)
-        importBtn.translatesAutoresizingMaskIntoConstraints = false
-        importBtn.setTitleColor(Colors.f02e44color, for: .normal)
-        importBtn.setTitle("马上导入", for: .normal)
-        importBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 12)
-        importBtn.addTarget(self, action: #selector(importAction), for: .touchUpInside)
-        return importBtn
+    //    lazy var tipsLabel: UILabel = {
+    //        let tipsLabel: UILabel
+    //        tipsLabel = UILabel()
+    //        tipsLabel.translatesAutoresizingMaskIntoConstraints = false
+    //        tipsLabel.text = "ML.Password.Forget".localized()
+    //        tipsLabel.textAlignment = .left
+    //        tipsLabel.textColor = Colors.detailTextgraycolor
+    //        tipsLabel.numberOfLines = 2
+    //        tipsLabel.font = UIFont.systemFont(ofSize: 11)
+    //        return tipsLabel
+    //    }()
+    //    lazy var importBtn: UIButton = {
+    //        let importBtn = UIButton.init(type: UIButtonType.custom)
+    //        importBtn.translatesAutoresizingMaskIntoConstraints = false
+    //        importBtn.setTitleColor(Colors.f02e44color, for: .normal)
+    //        importBtn.setTitle("ML.ImportWallet.atOnce".localized(), for: .normal)
+    //        importBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 12)
+    //        importBtn.addTarget(self, action: #selector(importAction), for: .touchUpInside)
+    //        return importBtn
+    //    }()
+
+    lazy var tipsView: UITextView = {
+        let tipsView = UITextView()
+        tipsView.translatesAutoresizingMaskIntoConstraints = false
+        tipsView.isEditable = false
+        tipsView.isScrollEnabled = false
+        tipsView.delegate = self
+        tipsView.attributedText = getTips()
+
+        let strokeTextAttributes: [String: Any] = [
+            NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor.rawValue : Colors.f02e44color, NSAttributedStringKey.underlineStyle.rawValue : NSUnderlineStyle.styleNone.rawValue]
+        tipsView.linkTextAttributes = strokeTextAttributes
+
+        return tipsView
     }()
 
     func addSaveBtn() -> UIButton {
         let saveBtn = UIButton(type: UIButtonType.custom)
         saveBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        saveBtn.setTitle("完成", for: UIControlState.normal)
+        saveBtn.setTitle("ML.Finish".localized(), for: UIControlState.normal)
         saveBtn.setTitleColor(Colors.f02e44color, for: UIControlState.normal)
         saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         saveBtn.addTarget(self, action: #selector(finish), for: UIControlEvents.touchUpInside)
@@ -104,7 +120,7 @@ class MLChangePasswordViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.white
-        navigationItem.title = "更改密码"
+        navigationItem.title = "ML.Password.Change".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: addSaveBtn())
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: addLeftReturnBtn())
         setup()
@@ -114,8 +130,10 @@ class MLChangePasswordViewController: UIViewController {
         view.addSubview(passwordField)
         view.addSubview(repasswordField)
         view.addSubview(stackView)
-        view.addSubview(tipsLabel)
-        view.addSubview(importBtn)
+        //        view.addSubview(tipsLabel)
+//        view.addSubview(importBtn)
+        view.addSubview(tipsView)
+        tipsView.attributedText = getTips()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -124,16 +142,25 @@ class MLChangePasswordViewController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
             stackView.heightAnchor.constraint(equalToConstant: 105),
-
-            tipsLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 25),
-            tipsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
-            importBtn.leftAnchor.constraint(equalTo: tipsLabel.rightAnchor, constant: 5),
-//            importBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
-            importBtn.centerYAnchor.constraint(equalTo: tipsLabel.centerYAnchor, constant: 0),
-            importBtn.widthAnchor.constraint(equalToConstant: 100),
-            importBtn.heightAnchor.constraint(equalToConstant: 20)
+            tipsView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
+            tipsView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 25),
+            tipsView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
+            tipsView.heightAnchor.constraint(equalToConstant: 100),
             ])
     }
+
+    private func getTips() -> NSAttributedString {
+        let forgetStr = "ML.Password.Forget".localized()
+        let atOnceStr = "  " + "ML.ImportWallet.atOnce".localized()
+        let attstr = NSMutableAttributedString(string: forgetStr)
+        attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 11), NSAttributedStringKey.strokeColor: Colors.detailTextgraycolor], range: NSRange(location: 0, length: forgetStr.length))
+        let attstr2 = NSMutableAttributedString(string: atOnceStr)
+        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.strokeColor: Colors.f02e44color], range: NSRange(location: 0, length: atOnceStr.length))
+        attstr.append(attstr2)
+        attstr.addAttributes([NSAttributedStringKey.link: "mashangdaoru://", NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.strokeColor: Colors.f02e44color], range: NSRange(location: forgetStr.length, length: atOnceStr.length))
+        return attstr
+    }
+
     @objc func finish() {
         guard !"".kStringIsEmpty(cPwdField.text) else {
             MLProgressHud.showError(error: MLErrorType.PasswordEmpty as NSError)
@@ -147,17 +174,17 @@ class MLChangePasswordViewController: UIViewController {
             MLProgressHud.showError(error: MLErrorType.PasswordNotEqual as NSError)
             return
         }
-//        keystore.getPassword(for: wallet.currentAccount.wallet!)
+        //        keystore.getPassword(for: wallet.currentAccount.wallet!)
 
         guard MLKeychain().verify(passworld: cPwdField.text!, service: wallet.currentAccount.address.description) else {
             MLProgressHud.showError(error: MLErrorType.PasswordError as NSError)
             return
         }
         MLKeychain().saveKeychain(service: wallet.currentAccount.address.description, data: passwordField.text! as AnyObject)
-//        if self.keystore.setPassword(passwordField.text!, for: wallet.currentAccount.wallet!) {
-            MLProgressHud.show(message: "修改密码成功！")
-            delegate?.didDismiss()
-//        }
+        //        if self.keystore.setPassword(passwordField.text!, for: wallet.currentAccount.wallet!) {
+        MLProgressHud.show(message: "修改密码成功！")
+        delegate?.didDismiss()
+        //        }
     }
     @objc func dismissViewController() {
         delegate?.didDismiss()
@@ -179,5 +206,15 @@ extension MLChangePasswordViewController: UITextFieldDelegate {
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //        browserDelegate?.did(action: .beginEditing)
+    }
+}
+
+extension MLChangePasswordViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if URL.scheme == "mashangdaoru" {
+            importAction()
+            return false
+        }
+        return true
     }
 }

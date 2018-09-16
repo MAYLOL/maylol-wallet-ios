@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 protocol MLImportSwitchHeaderViewDelegate: class {
-    func didSwitchImportStyle(importSelectionType:ImportSelectionType)
+    func didSwitchImportStyle(importSelectionType: ImportSelectionType)
 }
 
 class MLImportSwitchHeaderView: UIView {
@@ -18,13 +18,13 @@ class MLImportSwitchHeaderView: UIView {
         importLabel.textColor = AppStyle.PingFangSC24.textColor
         importLabel.font = UIFont.boldSystemFont(ofSize: 24)
 //            AppStyle.PingFangSC24.font
-        importLabel.text = R.string.localizable.welcomeImportWalletButtonTitle() + "!"
+        importLabel.text = "ML.ImportWallet.button.title".localized() + "!"
         return importLabel
     }()
     lazy var phraseBtn: UIButton = {
         var phraseBtn = UIButton(type: UIButtonType.custom)
         phraseBtn.translatesAutoresizingMaskIntoConstraints = false
-        phraseBtn.setTitle(R.string.localizable.phrase(), for: .normal)
+        phraseBtn.setTitle("ML.Phrase".localized(), for: .normal)
         phraseBtn.setTitleColor(AppStyle.PingFangSC15.textColor, for: .normal)
         phraseBtn.titleLabel?.font = AppStyle.PingFangSC15.font
         phraseBtn.isSelected = true
@@ -34,7 +34,7 @@ class MLImportSwitchHeaderView: UIView {
     lazy var privateBtn: UIButton = {
         var privateBtn = UIButton(type: UIButtonType.custom)
         privateBtn.translatesAutoresizingMaskIntoConstraints = false
-        privateBtn.setTitle(R.string.localizable.privateKey(), for: .normal)
+        privateBtn.setTitle("ML.PrivateKey".localized(), for: .normal)
         privateBtn.setTitleColor(AppStyle.PingFangSC15.textColor, for: .normal)
         privateBtn.titleLabel?.font = AppStyle.PingFangSC15.font
         privateBtn.addTarget(self, action: #selector(switchPhraseAndPrivateAction(sender:)), for: .touchUpInside)
@@ -83,20 +83,20 @@ class MLImportSwitchHeaderView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let phraseBtnW: CGRect = sizeWithText(text: R.string.localizable.phrase() as NSString, font: AppStyle.PingFangSC15.font, size: CGSize.init(width: 1000, height: 20))
-        let privateBtnW: CGRect = sizeWithText(text: R.string.localizable.privateKey() as NSString, font: AppStyle.PingFangSC15.font, size: CGSize.init(width: 1000, height: 20))
+        let phraseBtnW: CGRect = sizeWithText(text: "ML.Phrase".localized() as NSString, font: AppStyle.PingFangSC15.font, size: CGSize.init(width: 200, height: 20))
+        let privateBtnW: CGRect = sizeWithText(text: "ML.PrivateKey".localized() as NSString, font: AppStyle.PingFangSC15.font, size: CGSize.init(width: 200, height: 20))
         NSLayoutConstraint.activate([
             importTitleLabel.leftAnchor.constraint(equalTo: self.layoutGuide.leftAnchor, constant: 25),
             importTitleLabel.topAnchor.constraint(equalTo: self.layoutGuide.topAnchor, constant: 0),
             phraseBtn.leftAnchor.constraint(equalTo: self.layoutGuide.leftAnchor, constant: 25),
-            phraseBtn.topAnchor.constraint(equalTo: importTitleLabel.bottomAnchor, constant: 19),
+            phraseBtn.topAnchor.constraint(equalTo: importTitleLabel.bottomAnchor, constant: kAutoLayoutHeigth(19)),
             phraseBtn.widthAnchor.constraint(equalToConstant: phraseBtnW.width + 5),
             phraseBtn.heightAnchor.constraint(equalToConstant: 20),
-            privateBtn.leftAnchor.constraint(equalTo: phraseBtn.rightAnchor, constant: 30),
-            privateBtn.topAnchor.constraint(equalTo: importTitleLabel.bottomAnchor, constant: 19),
-            privateBtn.widthAnchor.constraint(equalToConstant: privateBtnW.width + 5),
+            privateBtn.leftAnchor.constraint(equalTo: phraseBtn.rightAnchor, constant: kAutoLayoutWidth(30)),
+            privateBtn.topAnchor.constraint(equalTo: importTitleLabel.bottomAnchor, constant: kAutoLayoutHeigth(19)),
+            privateBtn.widthAnchor.constraint(equalToConstant: privateBtnW.width + kAutoLayoutWidth(5)),
             privateBtn.heightAnchor.constraint(equalToConstant: 20),
-            underDynamicLine.topAnchor.constraint(equalTo: phraseBtn.bottomAnchor, constant: 5),
+            underDynamicLine.topAnchor.constraint(equalTo: phraseBtn.bottomAnchor, constant: kAutoLayoutHeigth(5)),
             underDynamicLine.widthAnchor.constraint(equalToConstant: 28),
             underDynamicLine.heightAnchor.constraint(equalToConstant: 2),
             underDynamicLine.centerXAnchor.constraint(equalTo: phraseBtn.centerXAnchor, constant: 0),
@@ -111,7 +111,7 @@ class MLImportSwitchHeaderView: UIView {
     }
 
     func calculationheight() -> CGFloat {
-        return  34 + 19 + 33 + 5 + 2
+        return  kAutoLayoutHeigth(34 + 19 + 33 + 5 + 2)
     }
     func getTitle() -> String {
         if phraseBtn.isSelected {

@@ -34,7 +34,7 @@ class MLManageWalletViewCell: UITableViewCell {
     lazy var backupsBtn: UIButton = {
         let backupsBtn = UIButton(type: UIButtonType.custom)
         backupsBtn.translatesAutoresizingMaskIntoConstraints = false
-        backupsBtn.setTitle("请备份", for: UIControlState.normal)
+        backupsBtn.setTitle("ML.BackupWallet.Please".localized(), for: UIControlState.normal)
         backupsBtn.setTitleColor(Colors.bf2537color, for: UIControlState.normal)
         backupsBtn.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         backupsBtn.isHidden = false
@@ -79,7 +79,7 @@ class MLManageWalletViewCell: UITableViewCell {
     }()
     var viewModel: WalletAccountViewModel? {
         didSet {
-            guard let model = viewModel else {
+            guard viewModel != nil else {
                 return
             }
             walletNameLabel.text = viewModel?.title
@@ -136,15 +136,14 @@ class MLManageWalletViewCell: UITableViewCell {
             ethFreeCountLabel.topAnchor.constraint(equalTo: underDynamicLine.bottomAnchor, constant: kAutoLayoutHeigth(10)),
             ])
     }
-
-    private func getEthFreeCount(ethFree: String) -> NSAttributedString{
+    private func getEthFreeCount(ethFree: String) -> NSAttributedString {
         let ethFreeStr = ethFree
         let company = " ether"
         let attstr = NSMutableAttributedString(string: ethFreeStr)
-         attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17),NSAttributedStringKey.strokeColor : Colors.f323232color], range: NSRange(location: 0, length: ethFreeStr.length))
+        attstr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.strokeColor: Colors.f323232color], range: NSRange(location: 0, length: ethFreeStr.length))
         let attstr2 = NSMutableAttributedString(string: company)
-        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),NSAttributedStringKey.strokeColor : Colors.f979797color], range: NSRange(location: 0, length: company.length))
-         attstr.append(attstr2)
+        attstr2.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),NSAttributedStringKey.strokeColor: Colors.f979797color], range: NSRange(location: 0, length: company.length))
+        attstr.append(attstr2)
         return attstr
     }
     override func prepareForReuse() {

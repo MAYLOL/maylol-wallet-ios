@@ -16,30 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     let urlNavigatorCoordinator = URLNavigatorCoordinator()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        window = UIWindow(frame: UIScreen.main.bounds)
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//
-//        let sharedMigration = SharedMigrationInitializer()
-//        sharedMigration.perform()
-//        let realm = try! Realm(configuration: sharedMigration.config)
-//        let walletStorage = WalletStorage(realm: realm)
-//        let keystore = EtherKeystore(storage: walletStorage)
-//
-//        coordinator = AppCoordinator(window: window!, keystore: keystore, navigator: urlNavigatorCoordinator)
-//        coordinator.start()
         updateUI()
         if !UIApplication.shared.isProtectedDataAvailable {
             fatalError()
         }
-
 //        protectionCoordinator.didFinishLaunchingWithOptions()
         urlNavigatorCoordinator.branch.didFinishLaunchingWithOptions(launchOptions: launchOptions)
+
         return true
     }
 
     @objc func updateUI() {
-        NSLog("%@", "Disable".localized())
-        window = UIWindow(frame: UIScreen.main.bounds)
 
         let sharedMigration = SharedMigrationInitializer()
         sharedMigration.perform()
@@ -47,8 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let walletStorage = WalletStorage(realm: realm)
         let keystore = EtherKeystore(storage: walletStorage)
 
-        coordinator = AppCoordinator(window: window!, keystore: keystore, navigator: urlNavigatorCoordinator)
-        coordinator.start()
+        if  UserDefaults.standard.bool(forKey: "HasLaunchedOnce") {
+            //非首次登陆
+            coordinator = AppCoordinator(window: window!, keystore: keystore, navigator: urlNavigatorCoordinator)
+            self.coordinator.start()
+        } else {
+            var defaultLanguageCode: String = NSLocale.current.languageCode ?? "en"
+            if  !Localize.availableLanguages().contains(defaultLanguageCode) {
+                defaultLanguageCode = "en"
+            }
+            Localize.setCurrentLanguage(defaultLanguageCode)
+            window?.rootViewController = MLWelcomeViewController()
+            window?.makeKeyAndVisible()
+            //首次登陆
+            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
+            UserDefaults.standard.synchronize()
+        }
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

@@ -57,7 +57,7 @@ final class TransactionViewController: UIViewController {
         let confirmationView = item(title: viewModel.confirmationLabelTitle, value: viewModel.confirmation)
         confirmationView.widthAnchor.constraint(equalToConstant: 140).isActive = true
 
-        var items: [UIView] = [
+        let items: [UIView] = [
             .spacer(),
             header,
             TransactionAppearance.divider(color: dividerColor, alpha: 1, layoutInsets: dividerOffset),
@@ -135,10 +135,10 @@ final class TransactionViewController: UIViewController {
         )
         alertController.popoverPresentationController?.sourceView = sourceView
         alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-        let copyAction = UIAlertAction(title: NSLocalizedString("Copy", value: "Copy", comment: ""), style: .default) { _ in
+        let copyAction = UIAlertAction(title: "ML.Copy".localized(), style: .default) { _ in
             UIPasteboard.general.string = value
         }
-        let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel) { _ in }
+        let cancelAction = UIAlertAction(title: "ML.Cancel".localized(), style: .cancel) { _ in }
         alertController.addAction(copyAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)

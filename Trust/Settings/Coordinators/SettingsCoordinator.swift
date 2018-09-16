@@ -41,9 +41,6 @@ final class SettingsCoordinator: Coordinator {
         controller.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: addLeftReturnBtn())
         return controller
     }()
-
-
-
     let sharedRealm: Realm
     private lazy var historyStore: HistoryStore = {
         return HistoryStore(realm: sharedRealm)
@@ -97,24 +94,60 @@ final class SettingsCoordinator: Coordinator {
         }
         historyStore.clearAll()
     }
-
     private func showWallets() {
         let coordinator = WalletsCoordinator(keystore: keystore, navigationController: navigationController)
         coordinator.delegate = self
         navigationController.pushCoordinator(coordinator: coordinator, animated: true)
+    }
+    func pushBrowserCoordinator(action: MLPushType) {
+        let browserCoordinator = MLBrowserCoordinator()
+        browserCoordinator.delegate = self
+        browserCoordinator.openURL(requestUrlWithAction(action: action) as URL)
+        navigationController.pushCoordinator(coordinator: browserCoordinator, animated: true)
+    }
+    func requestUrlWithAction(action: MLPushType) -> NSURL {
+        switch action {
+        case .UseProtocol:
+            //使用协议
+            return NSURL(string: useProtocolUrlStr)!
+        case .PrivacyClause:
+            //隐私条款
+            return NSURL(string: privacyClauseUrlStr)!
+        case .ProductGuide:
+            //产品向导
+            return NSURL(string: serviceAgreementUrlStr)!
+        default:
+            return NSURL(string: serviceAgreementUrlStr)!
+        }
     }
     func settingAction(action: MLPushType, in viewController: UIViewController) {
         switch action {
         case .AboutUs:
             let controller = MLAboutUsViewController()
             controller.delegate = self
-            navigationController.pushViewController(controller, animated: false)
+            navigationController.pushViewController(controller, animated: true)
         case .Unit:
             session.tokensStorage.clearBalance()
             restart(for: session.account)
         case .MutiLanguage:
             session.tokensStorage.clearBalance()
             restart(for: session.account)
+        case .UseProtocol:
+            //使用协议
+            pushBrowserCoordinator(action: action)
+        case .PrivacyClause:
+            //隐私条款
+            pushBrowserCoordinator(action: action)
+        case .ProductGuide:
+            //产品向导
+//            pushBrowserCoordinator(action: action)
+            let controller = MLWelcomeViewController()
+            controller.delegate = self
+            navigationController.setNavigationBarHidden(true, animated: true)
+            navigationController.pushViewController(controller, animated: true)
+        case .DetectionUpdate:
+            //检测更新
+            MLCheckVersionManager(appId: MLAppId)
         default:
             break
         }
@@ -190,5 +223,20 @@ extension SettingsCoordinator: MLSettingsViewControllerDelegate {
 extension SettingsCoordinator: MLAboutUsViewControllerDelegate {
     func didAction(action: MLPushType, in viewController: MLAboutUsViewController) {
         settingAction(action: action, in: viewController)
+    }
+}
+
+extension SettingsCoordinator: MLBrowserCoordinatorDelegate {
+    func didCancel(in coordinator: MLBrowserCoordinator) {
+        navigationController.popViewController(animated: true)
+//        coordinator.navigationController.popViewController(animated: true)
+//        coordinator.navigationController.dismiss(animated: true)
+    }
+}
+
+extension SettingsCoordinator: MLWelcomeViewControllerDelegate {
+    func didPressDismiss(in viewController: MLWelcomeViewController) {
+        navigationController.popViewController(animated: true)
+        navigationController.setNavigationBarHidden(false, animated: true)
     }
 }

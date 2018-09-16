@@ -28,7 +28,8 @@ class WelcomeView: UIView {
         var subtitleLabel: UILabel
         subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        let str = NSLocalizedString("CreateWalletSettinglabelsubtitle", value: "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记", comment: "")
+        let str = "ML.CreateWalletSettinglabelsubtitle".localized()
+//            NSLocalizedString("CreateWalletSettinglabelsubtitle", value: "·密码用于保护私钥交易合交易授权，强度非常重要\n·我们不存储密码，也无法帮您找回，请务必牢记", comment: "")
         subtitleLabel.textAlignment = .center
         subtitleLabel.textColor = Colors.detailTextgraycolor
         subtitleLabel.numberOfLines = 4
@@ -41,7 +42,8 @@ class WelcomeView: UIView {
         createWalletField.isSecureTextEntry = false
         createWalletField.underLineColor = Colors.textgraycolor
         createWalletField.font = UIFont.init(name: "PingFang SC", size: 12)
-        createWalletField.placeholder = NSLocalizedString("CreateWalletSettingWalletName", value: "钱包名称", comment: "")
+        createWalletField.placeholder = "ML.CreateWalletSettingWalletName".localized()
+//            NSLocalizedString("CreateWalletSettingWalletName", value: "钱包名称", comment: "")
         createWalletField.delegate = self
         return createWalletField
     }()
@@ -61,7 +63,8 @@ class WelcomeView: UIView {
         //        repasswordField.frame.size.width = 30
         repasswordField.translatesAutoresizingMaskIntoConstraints = false
         repasswordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        repasswordField.placeholder = NSLocalizedString("CreateWalletRePassWord", value: "重复密码", comment: "")
+        repasswordField.placeholder = "ML.CreateWalletRePassWord".localized();//重复密码
+//            NSLocalizedString("CreateWalletRePassWord", value: "重复密码", comment: "")
         repasswordField.isSecureTextEntry = true
         repasswordField.delegate = self
         repasswordField.underLineColor = Colors.textgraycolor
@@ -71,7 +74,8 @@ class WelcomeView: UIView {
         let readProtocolLabel: UILabel
         readProtocolLabel = UILabel()
         readProtocolLabel.translatesAutoresizingMaskIntoConstraints = false
-        readProtocolLabel.text = NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
+        readProtocolLabel.text = "ML.CreateWalletSettingServicePrivacyClause1".localized()
+//            NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
         readProtocolLabel.textAlignment = .center
         readProtocolLabel.textColor = UIColor.black
         readProtocolLabel.numberOfLines = 0
@@ -82,7 +86,9 @@ class WelcomeView: UIView {
         //        let serviceBtn = Button(size: .normal, style: .border)
         let serviceBtn = UIButton.init(type: UIButtonType.custom)
         serviceBtn.translatesAutoresizingMaskIntoConstraints = false
-        serviceBtn.setTitle(NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: ""), for: .normal)
+//        serviceBtn.setTitle(NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: ""), for: .normal)
+    serviceBtn.setTitle("ML.CreateWalletSettingServicePrivacyClause".localized(), for: .normal)
+//        ML.CreateWalletSettingServicePrivacyClause
         serviceBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         serviceBtn.setTitleColor(UIColor.red, for: .normal)
         serviceBtn.addTarget(self, action: #selector(serviceAction(sender:)), for: .touchUpInside)
@@ -117,7 +123,7 @@ class WelcomeView: UIView {
         importBtn.translatesAutoresizingMaskIntoConstraints = false
         importBtn.backgroundColor = UIColor.white
         importBtn.setTitleColor(UIColor(hex: "F02E44"), for: .normal)
-        importBtn.setTitle(R.string.localizable.welcomeImportWalletButtonTitle(), for: .normal)
+        importBtn.setTitle("ML.ImportWallet.button.title".localized(), for: .normal)
         importBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
         importBtn.layer.cornerRadius = 5
         importBtn.layer.masksToBounds = true
@@ -192,7 +198,10 @@ class WelcomeView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let rectServce: CGRect = sizeWithText(text: NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: "") as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
+//
+
+        let rectServce: CGRect = sizeWithText(text: "ML.CreateWalletSettingServicePrivacyClause".localized() as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
+//        let rectServce: CGRect = sizeWithText(text: NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: "") as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
 
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),

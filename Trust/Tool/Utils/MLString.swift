@@ -10,7 +10,7 @@ extension String {
         return true
     }
     func isPhraseValid(value: String) -> Bool {
-        if (value.kStringIsEmpty(value)){
+        if (value.kStringIsEmpty(value)) {
             return false
         }
         return true

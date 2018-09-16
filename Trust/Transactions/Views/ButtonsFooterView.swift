@@ -9,7 +9,9 @@ final class ButtonsFooterView: UIView {
         let sendButton = UIButton(type: UIButtonType.custom)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.backgroundColor = Colors.bf2537color
-        sendButton.setTitle(NSLocalizedString("ML.Transaction.cell.tokenTransfer.title", value: "Transfer", comment: ""), for: .normal)
+//        sendButton.setTitle(NSLocalizedString("ML.Transaction.cell.tokenTransfer.title", value: "Transfer", comment: ""), for: .normal)
+        sendButton.setTitle("ML.Transaction.cell.tokenTransfer.title".localized(), for: .normal)
+
         sendButton.accessibilityIdentifier = "send-button"
 
         sendButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -20,8 +22,9 @@ final class ButtonsFooterView: UIView {
         let requestButton = UIButton(type: UIButtonType.custom)
         requestButton.translatesAutoresizingMaskIntoConstraints = false
         requestButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
-       requestButton.backgroundColor = Colors.f346075color
-    requestButton.setTitle(NSLocalizedString("ML.Transaction.cell.receivables.title", value: "Receivables", comment: ""), for: .normal)
+        requestButton.backgroundColor = Colors.f346075color
+//    requestButton.setTitle(NSLocalizedString("ML.Transaction.cell.receivables.title", value: "Receivables", comment: ""), for: .normal)
+        requestButton.setTitle("ML.Transaction.cell.receivables.title".localized(), for: .normal)
         return requestButton
     }()
 

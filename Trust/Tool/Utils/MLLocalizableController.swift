@@ -17,10 +17,10 @@ class MLLocalizableController: Bundle {
     }
 
     //获取文件路径
-    func initUserLanguage(){
+    func initUserLanguage() {
         let def = UserDefaults.standard
         var string: String = def.value(forKey: "userLanguage") as! String
-        if string.length == 0{
+        if string.length == 0 {
             //获取系统当前语言版本
             let languages: NSArray = def.object(forKey: "AppleLanguages") as! NSArray
             let current: String = languages.object(at: 0) as! String

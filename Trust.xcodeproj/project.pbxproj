@@ -256,7 +256,11 @@
 		4020688421311F1800BD3A19 /* ARLineChartContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687E21311F1800BD3A19 /* ARLineChartContentView.m */; };
 		4020688521311F1800BD3A19 /* ARLineChartCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4020687F21311F1800BD3A19 /* ARLineChartCommon.m */; };
 		402068882133D38800BD3A19 /* MLLocalizableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402068872133D38800BD3A19 /* MLLocalizableController.swift */; };
+		40230740214D8A83005002E5 /* MLCheckVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023073F214D8A83005002E5 /* MLCheckVersionManager.swift */; };
 		4035B206212BC35B00512F44 /* MLSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4035B205212BC35B00512F44 /* MLSettingsViewController.swift */; };
+		404125BB2142181E00526EDA /* MLConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404125BA2142181E00526EDA /* MLConfig.swift */; };
+		404125BD21421AE600526EDA /* MLBrowserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404125BC21421AE600526EDA /* MLBrowserCoordinator.swift */; };
+		404125BF21421B5B00526EDA /* MLBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404125BE21421B5B00526EDA /* MLBrowserViewController.swift */; };
 		40481D5521270D2A00DCBBA5 /* MLImportPrivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40481D5421270D2A00DCBBA5 /* MLImportPrivateView.swift */; };
 		405AB805212BC46E00157159 /* MLSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405AB804212BC46E00157159 /* MLSettingViewCell.swift */; };
 		405AB807212BC5EB00157159 /* MLSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405AB806212BC5EB00157159 /* MLSettingsViewModel.swift */; };
@@ -271,6 +275,11 @@
 		406B30602129BE83008DF2C5 /* MLScreenCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B305F2129BE83008DF2C5 /* MLScreenCaptureView.swift */; };
 		4078D83A21258FF800AB5B77 /* UnderLineTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4078D83921258FF800AB5B77 /* UnderLineTextFiled.swift */; };
 		407BCD35212C3450000C6931 /* MLTokensHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BCD34212C3450000C6931 /* MLTokensHeaderView.swift */; };
+		407F8CB4214E9C910078B665 /* MLGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8CB3214E9C910078B665 /* MLGuideView.swift */; };
+		407F8CB9214E9D380078B665 /* ml_launchScreen_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 407F8CB6214E9D370078B665 /* ml_launchScreen_0.jpg */; };
+		407F8CBA214E9D380078B665 /* ml_launchScreen_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 407F8CB7214E9D370078B665 /* ml_launchScreen_1.jpg */; };
+		407F8CBB214E9D380078B665 /* ml_launchScreen_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 407F8CB8214E9D380078B665 /* ml_launchScreen_2.jpg */; };
+		407F8CBF214EA89C0078B665 /* MLWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407F8CBE214EA89C0078B665 /* MLWelcomeViewController.swift */; };
 		4082EC6F213847A300FF7332 /* MLManageWalletViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC6E213847A300FF7332 /* MLManageWalletViewCell.swift */; };
 		4082EC7121385D7800FF7332 /* MLWalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC7021385D7800FF7332 /* MLWalletsViewModel.swift */; };
 		4082EC732138DDBD00FF7332 /* MLWalletInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082EC722138DDBD00FF7332 /* MLWalletInfoViewController.swift */; };
@@ -806,7 +815,11 @@
 		4020688221311F1800BD3A19 /* ARLineChartCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLineChartCommon.h; sourceTree = "<group>"; };
 		4020688621311F9E00BD3A19 /* HeaderSwift-OCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeaderSwift-OCBridge.h"; sourceTree = "<group>"; };
 		402068872133D38800BD3A19 /* MLLocalizableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLLocalizableController.swift; sourceTree = "<group>"; };
+		4023073F214D8A83005002E5 /* MLCheckVersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLCheckVersionManager.swift; sourceTree = "<group>"; };
 		4035B205212BC35B00512F44 /* MLSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSettingsViewController.swift; sourceTree = "<group>"; };
+		404125BA2142181E00526EDA /* MLConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLConfig.swift; sourceTree = "<group>"; };
+		404125BC21421AE600526EDA /* MLBrowserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBrowserCoordinator.swift; sourceTree = "<group>"; };
+		404125BE21421B5B00526EDA /* MLBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBrowserViewController.swift; sourceTree = "<group>"; };
 		40481D5421270D2A00DCBBA5 /* MLImportPrivateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLImportPrivateView.swift; sourceTree = "<group>"; };
 		405AB804212BC46E00157159 /* MLSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSettingViewCell.swift; sourceTree = "<group>"; };
 		405AB806212BC5EB00157159 /* MLSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -822,6 +835,11 @@
 		406B305F2129BE83008DF2C5 /* MLScreenCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLScreenCaptureView.swift; sourceTree = "<group>"; };
 		4078D83921258FF800AB5B77 /* UnderLineTextFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextFiled.swift; sourceTree = "<group>"; };
 		407BCD34212C3450000C6931 /* MLTokensHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokensHeaderView.swift; sourceTree = "<group>"; };
+		407F8CB3214E9C910078B665 /* MLGuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGuideView.swift; sourceTree = "<group>"; };
+		407F8CB6214E9D370078B665 /* ml_launchScreen_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ml_launchScreen_0.jpg; sourceTree = "<group>"; };
+		407F8CB7214E9D370078B665 /* ml_launchScreen_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ml_launchScreen_1.jpg; sourceTree = "<group>"; };
+		407F8CB8214E9D380078B665 /* ml_launchScreen_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ml_launchScreen_2.jpg; sourceTree = "<group>"; };
+		407F8CBE214EA89C0078B665 /* MLWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWelcomeViewController.swift; sourceTree = "<group>"; };
 		4082EC6E213847A300FF7332 /* MLManageWalletViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLManageWalletViewCell.swift; sourceTree = "<group>"; };
 		4082EC7021385D7800FF7332 /* MLWalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletsViewModel.swift; sourceTree = "<group>"; };
 		4082EC722138DDBD00FF7332 /* MLWalletInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWalletInfoViewController.swift; sourceTree = "<group>"; };
@@ -957,7 +975,6 @@
 		771DC9D420F36555003E2CE2 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		7721A6BD202A5677004DB16C /* DecryptError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptError.swift; sourceTree = "<group>"; };
 		7721A6BF202B1D3E004DB16C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7721A6C0202B1D43004DB16C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7721A6C7202EF81B004DB16C /* CustomRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRPC.swift; sourceTree = "<group>"; };
 		7721A6CB202EFBC5004DB16C /* AddCustomNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomNetworkViewController.swift; sourceTree = "<group>"; };
 		7721A6CD202EFC21004DB16C /* AddCustomNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomNetworkViewModel.swift; sourceTree = "<group>"; };
@@ -1178,6 +1195,7 @@
 				29A13E311F6B1B6C00E432A2 /* Style */,
 				2996F14B1F6CA725005C33AE /* Extensions */,
 				4069B6D221267CBF00178338 /* Tool */,
+				407F8CB5214E9D240078B665 /* Resource */,
 				2912CCF81F6A830700C6CBE3 /* AppDelegate.swift */,
 				29D72A291F6A8D1500CE9209 /* AppCoordinator.swift */,
 				293E626E1FA2ED1400CB0A66 /* InCoordinator.swift */,
@@ -1301,6 +1319,7 @@
 				40AB7384212D4DFC0092E89B /* MLSlider.swift */,
 				400BF4CB212D81E4008617A6 /* MLSimpleSlider.swift */,
 				4015B83E212ED3340069C0A8 /* MLConfirmInfoLabel.swift */,
+				407F8CB3214E9C910078B665 /* MLGuideView.swift */,
 				4020687C21311F1800BD3A19 /* ARLineChart */,
 			);
 			path = UI;
@@ -1472,6 +1491,7 @@
 			children = (
 				2912CD311F6A83EE00C6CBE3 /* WelcomeViewController.swift */,
 				615F105C1FCBF55E008A45AF /* OnboardingCollectionViewController.swift */,
+				407F8CBE214EA89C0078B665 /* MLWelcomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1958,6 +1978,7 @@
 			isa = PBXGroup;
 			children = (
 				29E6E06D1FE897EE0079265A /* BrowserViewController.swift */,
+				404125BE21421B5B00526EDA /* MLBrowserViewController.swift */,
 				903682F0204A6DB800013479 /* BookmarkViewController.swift */,
 				77B806A8207766DC005FDCBE /* MasterBrowserViewController.swift */,
 				77B806AA20776781005FDCBE /* HistoryViewController.swift */,
@@ -2202,6 +2223,7 @@
 			isa = PBXGroup;
 			children = (
 				4069B6D721267D0700178338 /* MLSystem.swift */,
+				404125BA2142181E00526EDA /* MLConfig.swift */,
 				4069B6D921267DA700178338 /* MLPublicMethods.swift */,
 				402068872133D38800BD3A19 /* MLLocalizableController.swift */,
 				40121FE121291FB4003049E0 /* MLError.swift */,
@@ -2209,6 +2231,7 @@
 				40691C5E2129467B00740182 /* MLString.swift */,
 				401F79C8212A505900B43D4C /* MLKeychain.swift */,
 				405AB80D212C0A7900157159 /* MLbundle.swift */,
+				4023073F214D8A83005002E5 /* MLCheckVersionManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2218,6 +2241,16 @@
 			children = (
 			);
 			path = Exec;
+			sourceTree = "<group>";
+		};
+		407F8CB5214E9D240078B665 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				407F8CB6214E9D370078B665 /* ml_launchScreen_0.jpg */,
+				407F8CB7214E9D370078B665 /* ml_launchScreen_1.jpg */,
+				407F8CB8214E9D380078B665 /* ml_launchScreen_2.jpg */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		615F10571FCBEF6A008A45AF /* Views */ = {
@@ -2462,6 +2495,7 @@
 			isa = PBXGroup;
 			children = (
 				771D536D2058BB0D00C79485 /* BrowserCoordinator.swift */,
+				404125BC21421AE600526EDA /* MLBrowserCoordinator.swift */,
 				77CB8397206B8E1C006F34A8 /* ScanQRCodeCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -2893,12 +2927,15 @@
 			files = (
 				902CAB592051818B00F96FFE /* BookmarkViewCell.xib in Resources */,
 				771AA966200D5F1900D25403 /* WordCollectionViewCell.xib in Resources */,
+				407F8CB9214E9D380078B665 /* ml_launchScreen_0.jpg in Resources */,
 				775DF43F203E38D3009CD082 /* NonFungibleTokenViewCell.xib in Resources */,
 				73DE7B3320987D8F00AE04E6 /* NonFungibleCollectionViewCell.xib in Resources */,
 				40D7FEB42137776900CA4EB5 /* Assets.xcassets in Resources */,
 				7704836C20FE99B600837735 /* CoinViewCell.xib in Resources */,
+				407F8CBA214E9D380078B665 /* ml_launchScreen_1.jpg in Resources */,
 				296106CE1F777E410006164B /* LaunchScreen.storyboard in Resources */,
 				290B2B541F8F50030053C83E /* Localizable.strings in Resources */,
+				407F8CBB214E9D380078B665 /* ml_launchScreen_2.jpg in Resources */,
 				73CBC75F2020CBF800374666 /* WalletViewCell.xib in Resources */,
 				29F1C8481FEB6664003780D8 /* EditTokenTableViewCell.xib in Resources */,
 			);
@@ -3118,6 +3155,7 @@
 				73ACEF0120163ED4003DD71D /* LockViewModel.swift in Sources */,
 				29AD8A041F93D6CD008E10E7 /* Constants.swift in Sources */,
 				29FF12FE1F75EA3F00AFD326 /* Keystore.swift in Sources */,
+				407F8CB4214E9C910078B665 /* MLGuideView.swift in Sources */,
 				4082EC7D21392CF500FF7332 /* MLChangePasswordViewController.swift in Sources */,
 				4015B83F212ED3340069C0A8 /* MLConfirmInfoLabel.swift in Sources */,
 				29AD3D4720EC443D007893C9 /* WalletCreatedController.swift in Sources */,
@@ -3226,6 +3264,7 @@
 				4082EC7B21390FC200FF7332 /* MLWalletInfoViewModel.swift in Sources */,
 				29F1C85D2003698A003780D8 /* WellDoneViewController.swift in Sources */,
 				29E9CFCF1FE7347200017744 /* ERC20Token.swift in Sources */,
+				40230740214D8A83005002E5 /* MLCheckVersionManager.swift in Sources */,
 				29C9F5FB1F720C050025C494 /* FloatLabelTextField.swift in Sources */,
 				73BD193F206097E600668673 /* TrustNetwork.swift in Sources */,
 				7391DC8C203715DF002C5ADE /* Pair.swift in Sources */,
@@ -3342,9 +3381,11 @@
 				293E626F1FA2ED1400CB0A66 /* InCoordinator.swift in Sources */,
 				77EAD88A20E4803D00D14AA2 /* PassphraseBackgroundShadow.swift in Sources */,
 				BBD4E416205654E4005545E9 /* EthTypedData.swift in Sources */,
+				404125BB2142181E00526EDA /* MLConfig.swift in Sources */,
 				29E9CFCB1FE70D5B00017744 /* TokensBalanceService.swift in Sources */,
 				2963A2881FC401490095447D /* ERC20Contract.swift in Sources */,
 				2928500C2096A34900EC5AFB /* AboutViewController.swift in Sources */,
+				404125BD21421AE600526EDA /* MLBrowserCoordinator.swift in Sources */,
 				777871362085D77000CF7303 /* BranchEventParser.swift in Sources */,
 				29C80D371FB2CD230037B1E0 /* PendingTransaction.swift in Sources */,
 				BB1CC27A203D061B0042E56C /* TrustDocumentPickerViewController.swift in Sources */,
@@ -3413,6 +3454,7 @@
 				296AF9A71F736EC70058AF78 /* RPCServer.swift in Sources */,
 				771A847A2032344D00528D28 /* PreferencesController.swift in Sources */,
 				407BCD35212C3450000C6931 /* MLTokensHeaderView.swift in Sources */,
+				407F8CBF214EA89C0078B665 /* MLWelcomeViewController.swift in Sources */,
 				296AF9A91F737F6F0058AF78 /* SendRawTransactionRequest.swift in Sources */,
 				293112121FC4F48400966EEA /* ServiceProvider.swift in Sources */,
 				400BF4CC212D81E4008617A6 /* MLSimpleSlider.swift in Sources */,
@@ -3476,6 +3518,7 @@
 				BB3E2A1020A12592000F8B76 /* ENSManager.swift in Sources */,
 				771DC9CF20EEC8AC003E2CE2 /* TokenInfoViewController.swift in Sources */,
 				40AB7381212D40C70092E89B /* MLSendViewController.swift in Sources */,
+				404125BF21421B5B00526EDA /* MLBrowserViewController.swift in Sources */,
 				29AD8A0C1F93FBBF008E10E7 /* Subscribable.swift in Sources */,
 				777871382085D7A600CF7303 /* BranchEvent.swift in Sources */,
 				295247DF1F8326EF007FDC31 /* WalletViewCell.swift in Sources */,
@@ -3658,7 +3701,6 @@
 			children = (
 				290B2B551F8F50030053C83E /* en */,
 				7721A6BF202B1D3E004DB16C /* zh-Hans */,
-				7721A6C0202B1D43004DB16C /* zh-Hant */,
 				779891EA207C10C7008890B8 /* ja */,
 				405AB80C212C04F100157159 /* ko */,
 			);

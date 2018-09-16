@@ -178,6 +178,15 @@ extension String {
 
         }
     }
-
-
+    //判断16进制
+    func judgeSixteenData(hex: String) -> Bool{
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        var dataSixValue: UInt64 = 0
+        scanner.scanHexInt64(&dataSixValue)
+        if dataSixValue < 0xffffffffffffffff && dataSixValue > 0x0{
+            return true
+        }
+        return false
+    }
 }

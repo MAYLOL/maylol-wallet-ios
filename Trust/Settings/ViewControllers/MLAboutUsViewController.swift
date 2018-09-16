@@ -16,7 +16,7 @@ class MLAboutUsViewController: UIViewController {
         titleLabel.textAlignment = .left
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 19)
-        titleLabel.text = NSLocalizedString("ML.Setting.cell.Aboutus", value: "About us", comment: "")
+        titleLabel.text = "ML.Setting.cell.Aboutus".localized()
         return titleLabel
     }()
     lazy var underDynamicLine: UIView = {
@@ -41,7 +41,7 @@ class MLAboutUsViewController: UIViewController {
         var subDetailTitleLabel: UILabel
         subDetailTitleLabel = UILabel()
         subDetailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        let str = NSLocalizedString("ML.Setting.cell.Aboutus.Currentversion", value: "Current Version", comment: "") + MLCurrentVersion
+        let str = "ML.Setting.cell.Aboutus.Currentversion".localized() + MLCurrentVersion
         subDetailTitleLabel.text = str
         subDetailTitleLabel.textAlignment = .center
         subDetailTitleLabel.textColor = Colors.detailTextgraycolor
@@ -77,7 +77,7 @@ class MLAboutUsViewController: UIViewController {
     }
 
     @objc func dismissViewController() {
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +98,7 @@ class MLAboutUsViewController: UIViewController {
             iconView.heightAnchor.constraint(equalToConstant: 40),
             subDetailTitleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 10),
             subDetailTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            settingView.topAnchor.constraint(equalTo: subDetailTitleLabel.bottomAnchor, constant: 24),
+            settingView.topAnchor.constraint(equalTo: subDetailTitleLabel.bottomAnchor, constant: 0),
             settingView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             settingView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
             settingView.heightAnchor.constraint(equalToConstant: 240),
@@ -113,10 +113,9 @@ class MLAboutUsViewController: UIViewController {
         self.view.addSubview(subDetailTitleLabel)
         self.view.addSubview(settingView)
     }
-
 }
 
-extension MLAboutUsViewController: UITableViewDelegate,UITableViewDataSource {
+extension MLAboutUsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MLSettingViewCell = tableView.dequeueReusableCell(withIdentifier: MLSettingViewCell.identifier, for: indexPath) as! MLSettingViewCell
         cell.settingModel = viewModel.getTitle(i: indexPath.row)
@@ -134,5 +133,7 @@ extension MLAboutUsViewController: UITableViewDelegate,UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.didAction(action: viewModel.pushTypes[indexPath.row], in: self)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
-

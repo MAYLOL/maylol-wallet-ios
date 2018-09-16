@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-protocol MLTokensHomeViewControllerDelegate : class {
+protocol MLTokensHomeViewControllerDelegate: class {
     func didPressCreateWallet(in viewController: MLTokensHomeViewController)
 
     func didPressImportWallet(in viewController: MLTokensHomeViewController)
@@ -34,7 +34,7 @@ class MLTokensHomeViewController: UIViewController {
         var subtitleLabel: UILabel
         subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        let str = NSLocalizedString("ML.Manager.tokens.noWallet", value: "你还没有钱包", comment: "")
+        let str = "ML.Manager.tokens.noWallet".localized()
         subtitleLabel.text = str
         subtitleLabel.textAlignment = .center
         subtitleLabel.textColor = Colors.titleBlackcolor
@@ -47,15 +47,12 @@ class MLTokensHomeViewController: UIViewController {
         var subDetailTitleLabel: UILabel
         subDetailTitleLabel = UILabel()
         subDetailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        let str = NSLocalizedString("ML.Manager.tokens.addWallet", value: "点击添加或创建钱包", comment: "")
+        let str = "ML.Manager.tokens.addWallet".localized()
         subDetailTitleLabel.text = str
         subDetailTitleLabel.textAlignment = .center
         subDetailTitleLabel.textColor = Colors.detailTextgraycolor
         subDetailTitleLabel.numberOfLines = 4
         subDetailTitleLabel.font = AppStyle.PingFangSC15.font
-
-
-
         return subDetailTitleLabel
     }()
     lazy var createBtn: UIButton = {
@@ -63,7 +60,7 @@ class MLTokensHomeViewController: UIViewController {
         createBtn.translatesAutoresizingMaskIntoConstraints = false
         createBtn.backgroundColor = UIColor(hex: "F02E44")
         createBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        createBtn.setTitle(R.string.localizable.welcomeCreateWalletButtonTitle(), for: .normal)
+        createBtn.setTitle("ML.CreateWallet.button.title".localized(), for: .normal)
         createBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 19)
         createBtn.layer.cornerRadius = 10
         createBtn.layer.masksToBounds = true
@@ -76,7 +73,8 @@ class MLTokensHomeViewController: UIViewController {
         importBtn.translatesAutoresizingMaskIntoConstraints = false
         importBtn.backgroundColor = UIColor(hex: "F02E44")
         importBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
-        importBtn.setTitle(R.string.localizable.welcomeImportWalletButtonTitle(), for: .normal)
+        importBtn.setTitle("ML.ImportWallet.button.title".localized(), for: .normal)
+
         importBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 19)
         importBtn.layer.cornerRadius = 10
         importBtn.layer.masksToBounds = true
@@ -85,20 +83,19 @@ class MLTokensHomeViewController: UIViewController {
         return importBtn
     }()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        setup()
+    }
+
+    func setup() {
         view.addSubview(titleLabel)
         view.addSubview(underDynamicLine)
         view.addSubview(subtitleLabel)
         view.addSubview(subDetailTitleLabel)
         view.addSubview(createBtn)
         view.addSubview(importBtn)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 105),
@@ -119,6 +116,11 @@ class MLTokensHomeViewController: UIViewController {
             importBtn.widthAnchor.constraint(equalToConstant: 175),
             importBtn.heightAnchor.constraint(equalToConstant: 40),
             ])
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
     }
 
     @objc func createWalletAction(sender: UIButton) {

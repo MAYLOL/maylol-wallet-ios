@@ -58,13 +58,14 @@ struct TransactionDetailsViewModel {
     }
 
     var title: String {
-        if transaction.state == .pending {
-            return R.string.localizable.pendingTransaction()
-        }
-        if transactionViewModel.direction == .incoming {
-            return R.string.localizable.incomingTransaction()
-        }
-        return R.string.localizable.outgoingTransaction()
+//        if transaction.state == .pending {
+//            return R.string.localizable.pendingTransaction()
+//        }
+//        if transactionViewModel.direction == .incoming {
+//            return R.string.localizable.incomingTransaction()
+//        }
+//        return R.string.localizable.outgoingTransaction()
+        return "ML.Transaction.Info".localized()
     }
 
     var backgroundColor: UIColor {
@@ -76,7 +77,8 @@ struct TransactionDetailsViewModel {
     }
 
     var createdAtLabelTitle: String {
-        return R.string.localizable.transactionTimeLabelTitle()
+//        return R.string.localizable.transactionTimeLabelTitle()
+        return "ML.Transaction.time.label.title".localized()
     }
 
     var detailsAvailable: Bool {
@@ -96,7 +98,8 @@ struct TransactionDetailsViewModel {
     }
 
     var transactionIDLabelTitle: String {
-        return R.string.localizable.transactionIdLabelTitle()
+//        return R.string.localizable.transactionIdLabelTitle()
+        return "ML.Transaction.ID".localized()
     }
 
     var address: String {
@@ -119,9 +122,11 @@ struct TransactionDetailsViewModel {
 
     var addressTitle: String {
         if transactionViewModel.direction == .incoming {
-            return R.string.localizable.transactionSenderLabelTitle()
+//            return R.string.localizable.transactionSenderLabelTitle()
+            return "ML.Transaction.sender".localized()
         } else {
-            return R.string.localizable.transactionSenderLabelTitle()
+//            return R.string.localizable.transactionSenderLabelTitle()
+            return "ML.Transaction.sender".localized()
         }
     }
 
@@ -153,7 +158,8 @@ struct TransactionDetailsViewModel {
     }
 
     var gasFeeLabelTitle: String {
-        return R.string.localizable.networkFee()
+//        return R.string.localizable.networkFee()
+        return "ML.NetworkFee".localized()
     }
 
     var confirmation: String {
@@ -164,7 +170,8 @@ struct TransactionDetailsViewModel {
     }
 
     var confirmationLabelTitle: String {
-        return NSLocalizedString("transaction.confirmation.label.title", value: "Confirmation", comment: "")
+//        return NSLocalizedString("transaction.confirmation.label.title", value: "Confirmation", comment: "")
+        return "ML.Sure".localized()
     }
 
     var amountString: String {

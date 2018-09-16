@@ -189,7 +189,7 @@ final class ImportWalletViewController: FormViewController {
         let name = nameRow?.value?.trimmed ?? ""
         let words = phraseInput.components(separatedBy: " ").map { $0.trimmed.lowercased() }
 
-        displayLoading(text: NSLocalizedString("importWallet.importingIndicator.label.title", value: "Importing wallet...", comment: ""), animated: false)
+        displayLoading(text: "ML.ImportWallet.button.title".localized() + "...", animated: false)
 
         let type = ImportSelectionType(title: segmentRow?.value)
         let importType: ImportType = {

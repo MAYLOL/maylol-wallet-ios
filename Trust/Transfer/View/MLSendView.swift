@@ -5,13 +5,25 @@ import UIKit
 import IBAnimatable
 import TrustCore
 
+protocol MLSendViewDelegate: class {
+    func didHowToSetAction()
+    func invideData()
+}
 class MLSendView: UIView {
 
+    weak var delegate: MLSendViewDelegate?
     var superSelect: Bool = false
     var viewModel: SendViewModel? {
         didSet {
             titleLabel.text = (viewModel?.symbol)! + " " + "ML.Transaction.cell.tokenTransfer.title".localized()
-
+            switch viewModel?.transfer.type {
+            case .ether?, .dapp?:
+                sixdataTV.isEditable = true
+            case .token?:
+                sixdataTV.isEditable = false
+            case .none:
+                sixdataTV.isEditable = false
+            }
             minerCostSlider.minimumValue = 1
             minerCostSlider.maximumValue = 60
         }
@@ -23,7 +35,8 @@ class MLSendView: UIView {
         titleLabel.textAlignment = .left
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.text = NSLocalizedString("ML.Transaction.cell.tokenTransfer.title", value: "转账", comment: "")
+        titleLabel.text = "ML.Transaction.cell.tokenTransfer.title".localized()
+
         return titleLabel
     }()
 
@@ -39,7 +52,8 @@ class MLSendView: UIView {
         payAddressField.translatesAutoresizingMaskIntoConstraints = false
         payAddressField.underLineColor = Colors.textgraycolor
         payAddressField.font = UIFont.init(name: "PingFang SC", size: 12)
-        payAddressField.placeholder = NSLocalizedString("ML.Transaction.cell.PayeeWalletAddress", value: "收款人钱包地址", comment: "")
+//        payAddressField.placeholder = NSLocalizedString("ML.Transaction.cell.PayeeWalletAddress", value: "收款人钱包地址", comment: "")
+        payAddressField.placeholder = "ML.Transaction.cell.PayeeWalletAddress".localized()
         payAddressField.textColor = Colors.detailTextgraycolor
         payAddressField.delegate = self
 
@@ -51,7 +65,8 @@ class MLSendView: UIView {
         transferAmountField.translatesAutoresizingMaskIntoConstraints = false
         transferAmountField.underLineColor = Colors.textgraycolor
         transferAmountField.font = UIFont.init(name: "PingFang SC", size: 12)
-        transferAmountField.placeholder = NSLocalizedString("ML.Transaction.cell.TransferAmount", value: "转账金额", comment: "")
+//        transferAmountField.placeholder = NSLocalizedString("ML.Transaction.cell.TransferAmount", value: "转账金额", comment: "")
+        transferAmountField.placeholder = "ML.Transaction.cell.TransferAmount".localized()
         transferAmountField.keyboardType = .decimalPad
         transferAmountField.textColor = Colors.detailTextgraycolor
         transferAmountField.delegate = self
@@ -62,7 +77,8 @@ class MLSendView: UIView {
         remarksField.translatesAutoresizingMaskIntoConstraints = false
         remarksField.underLineColor = Colors.textgraycolor
         remarksField.font = UIFont.init(name: "PingFang SC", size: 12)
-        remarksField.placeholder = NSLocalizedString("ML.Transaction.cell.Remarks", value: "备注", comment: "")
+//        remarksField.placeholder = NSLocalizedString("ML.Transaction.cell.Remarks", value: "备注", comment: "")
+        remarksField.placeholder = "ML.Transaction.cell.Remarks".localized()
         remarksField.textColor = Colors.detailTextgraycolor
         remarksField.delegate = self
         return remarksField
@@ -73,7 +89,7 @@ class MLSendView: UIView {
             payAddressField,
             transferAmountField,
             remarksField]
-        )
+            )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -85,7 +101,7 @@ class MLSendView: UIView {
         let customGasStackView = UIStackView(arrangedSubviews: [
             customGasPriceField,
             customGasField]
-        )
+            )
         customGasStackView.translatesAutoresizingMaskIntoConstraints = false
         customGasStackView.axis = .vertical
         customGasStackView.distribution = .fillEqually
@@ -97,7 +113,8 @@ class MLSendView: UIView {
         superSelectLabel.translatesAutoresizingMaskIntoConstraints = false
         superSelectLabel.textColor = Colors.textgraycolor
         superSelectLabel.font = UIFont.systemFont(ofSize: 12)
-        superSelectLabel.text = NSLocalizedString("ML.Transaction.cell.Advancedoptions", value: "高级选项", comment: "")
+//        superSelectLabel.text = NSLocalizedString("ML.Transaction.cell.Advancedoptions", value: "高级选项", comment: "")
+        superSelectLabel.text = "ML.Transaction.cell.Advancedoptions".localized()
         return superSelectLabel
     }()
 
@@ -111,10 +128,6 @@ class MLSendView: UIView {
     lazy var superSelectControl: UISlider = {
         let superSelectControl = UISlider()
         superSelectControl.translatesAutoresizingMaskIntoConstraints = false
-        //        superSelectControl.addTarget(self, action: #selector(sliderTouchDown(sender:)), for:
-        //            UIControlEvents.touchDown)
-        //        superSelectControl.addTarget(self, action: #selector(tapAction(sender:)),for:UIControlEvents.touchUpInside)
-        //        superSelectControl.isEnabled = false
         superSelectControl.minimumValue = 0
         superSelectControl.maximumValue = 1
         superSelectControl.thumbTintColor = Colors.f02e44color
@@ -123,22 +136,6 @@ class MLSendView: UIView {
         //        superSelectControl.isEnabled = false
         return superSelectControl
     }()
-    
-
-    //    lazy var tap: UITapGestureRecognizer = {
-    //        var tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
-    //        //        tap.delegate = self as! UIGestureRecognizerDelegate
-    //        return tap
-    //    }()
-
-    //    @objc func superSelectAction(sender: UISlider) {
-    //        superSelect = !superSelect
-    //        if superSelect {
-    //            superSelectControl.value = 1
-    //        } else {
-    //            superSelectControl.value = 0
-    //        }
-    //    }
     //下一步
     lazy var nextBtn: UIButton = {
         let nextBtn = UIButton.init(type: UIButtonType.custom)
@@ -146,7 +143,8 @@ class MLSendView: UIView {
         nextBtn.backgroundColor = Colors.f02e44color
         nextBtn.setTitleColor(Colors.fffffgraycolor, for: .normal)
         nextBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 15)
-        nextBtn.setTitle(R.string.localizable.next(), for: UIControlState.normal)
+//        nextBtn.setTitle(R.string.localizable.next(), for: UIControlState.normal)
+        nextBtn.setTitle("ML.Next".localized(), for: UIControlState.normal)
         nextBtn.layer.cornerRadius = 5
         nextBtn.layer.masksToBounds = true
         return nextBtn
@@ -158,7 +156,7 @@ class MLSendView: UIView {
         minerCostLabel.textAlignment = .left
         minerCostLabel.textColor = Colors.detailTextgraycolor
         minerCostLabel.font = UIFont.init(name: "PingFang SC", size: 12)
-        minerCostLabel.text = NSLocalizedString("ML.Transaction.cell.MinerCost", value: "矿工费用", comment: "")
+        minerCostLabel.text = "ML.Transaction.cell.MinerCost".localized()
         return minerCostLabel
     }()
 
@@ -174,12 +172,6 @@ class MLSendView: UIView {
         minerCostSlider.thumbTintColor = Colors.f02e44color
         minerCostSlider.minimumValue = 1
         minerCostSlider.maximumValue = 60
-//        minerCostSlider.addTarget(self, action: #selector(costSlider(sender:)), for: UIControlEvents.valueChanged)
-        //        minerCostSlider.addTarget(self, action: #selector(costSliderDragInside(sender:)), for: UIControlEvents.touchDragInside)
-        //        minerCostSlider.addTarget(self, action: #selector(costSliderDragExit(sender:)), for: UIControlEvents.touchDragExit)
-        //            minerCostSlider.addTarget(self, action: #selector(costSliderTap(sender:)), for: UIControlEvents.touchUpInside)
-
-        //        minerCostSlider.thumbRect(forBounds: CGRect(x: 25, y: minerCostLabel.frame.origin.y + minerCostLabel.frame.size.height , width: kScreenW - kAutoLayoutWidth(50), height: 1), trackRect: CGRect(x: 0, y: 0, width: 1, height: 1), value: 0)
         minerCostSlider.isUserInteractionEnabled = true
         minerCostSlider.maximumTrackTintColor = Colors.ccccccolor
         minerCostSlider.minimumTrackTintColor = Colors.f02e44color
@@ -190,7 +182,8 @@ class MLSendView: UIView {
         let lowLabel = UILabel()
         lowLabel.translatesAutoresizingMaskIntoConstraints = false
         lowLabel.textColor = Colors.detailTextgraycolor
-        lowLabel.text = NSLocalizedString("ML.Transaction.cell.slow", value: "慢", comment: "")
+//        lowLabel.text = NSLocalizedString("ML.Transaction.cell.slow", value: "慢", comment: "")
+        lowLabel.text = "ML.Transaction.cell.slow".localized()
         lowLabel.font = UIFont.init(name: "PingFang SC", size: 12)
         return lowLabel
     }()
@@ -198,7 +191,7 @@ class MLSendView: UIView {
         let fastLabel = UILabel()
         fastLabel.translatesAutoresizingMaskIntoConstraints = false
         fastLabel.textColor = Colors.detailTextgraycolor
-        fastLabel.text = NSLocalizedString("ML.Transaction.cell.fast", value: "快", comment: "")
+        fastLabel.text = "ML.Transaction.cell.fast".localized()
         fastLabel.font = UIFont.init(name: "PingFang SC", size: 12)
         return fastLabel
     }()
@@ -215,7 +208,8 @@ class MLSendView: UIView {
         customGasPriceField.translatesAutoresizingMaskIntoConstraints = false
         customGasPriceField.underLineColor = Colors.textgraycolor
         customGasPriceField.font = UIFont.systemFont(ofSize: 12)
-        customGasPriceField.placeholder = NSLocalizedString("ML.Transaction.cell.CustomGasPrice", value: "Custom Gas Price", comment: "")
+//        customGasPriceField.placeholder = NSLocalizedString("ML.Transaction.cell.CustomGasPrice", value: "Custom Gas Price", comment: "")
+        customGasPriceField.placeholder = "ML.Transaction.cell.CustomGasPrice".localized()
         customGasPriceField.textColor = Colors.detailTextgraycolor
         customGasPriceField.delegate = self
         return customGasPriceField
@@ -225,12 +219,13 @@ class MLSendView: UIView {
         customGasField.translatesAutoresizingMaskIntoConstraints = false
         customGasField.underLineColor = Colors.textgraycolor
         customGasField.font = UIFont.systemFont(ofSize: 12)
-        customGasField.placeholder = NSLocalizedString("ML.Transaction.cell.CustomGas", value: "Custom Gas", comment: "")
+//        customGasField.placeholder = NSLocalizedString("ML.Transaction.cell.CustomGas", value: "Custom Gas", comment: "")
+        customGasField.placeholder = "ML.Transaction.cell.CustomGas".localized()
         customGasField.textColor = Colors.detailTextgraycolor
         customGasField.delegate = self
         return customGasField
     }()
-    lazy var placeholderLabel : UILabel = {
+    lazy var placeholderLabel: UILabel = {
         var placeholderLabel = UILabel()
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         return placeholderLabel
@@ -238,12 +233,14 @@ class MLSendView: UIView {
     lazy var sixdataTV: AnimatableTextView = {
         var sixdataTV = AnimatableTextView(frame: .zero)
         sixdataTV.translatesAutoresizingMaskIntoConstraints = false
-        sixdataTV.placeholderText = NSLocalizedString("ML.Transaction.cell.Sixteenbinarydata", value: "Sixteen binary data", comment: "")
+//        sixdataTV.placeholderText = NSLocalizedString("ML.Transaction.cell.Sixteenbinarydata", value: "Sixteen binary data", comment: "")
+        sixdataTV.placeholderText = "ML.Transaction.cell.Sixteenbinarydata".localized()
         sixdataTV.placeholderColor = AppStyle.PingFangSC10.textColor
         sixdataTV.font = AppStyle.PingFangSC12.font
         var placeholderLabelConstraints = [NSLayoutConstraint]()
         sixdataTV.configure(placeholderLabel: placeholderLabel, placeholderLabelConstraints: &placeholderLabelConstraints)
         sixdataTV.delegate = self
+        sixdataTV.isEditable = false
         sixdataTV.textColor = AppStyle.PingFangSC12.textColor
         sixdataTV.textAlignment = .left
         //        privateTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: -5, right: -5)
@@ -272,12 +269,14 @@ class MLSendView: UIView {
         howToSetBtn.translatesAutoresizingMaskIntoConstraints = false
         howToSetBtn.backgroundColor = UIColor.white
         howToSetBtn.setTitleColor(UIColor(hex: "F02E44"), for: .normal)
-        howToSetBtn.setTitle(NSLocalizedString("ML.Transaction.cell.HowToSetParameters？", value: "How to set parameters？", comment: ""), for: .normal)
+//        howToSetBtn.setTitle(NSLocalizedString("ML.Transaction.cell.HowToSetParameters？", value: "How to set parameters？", comment: ""), for: .normal)
+        howToSetBtn.setTitle("ML.Transaction.cell.HowToSetParameters".localized(), for: .normal)
         howToSetBtn.titleLabel?.font = UIFont.init(name: "PingFang SC", size: 9)
         howToSetBtn.isHidden = true
-        //        howToSetBtn.addTarget(self, action: #selector(importWalletAction(sender:)), for: .touchUpInside)
+        howToSetBtn.addTarget(self, action: #selector(howToSetAction(sender:)), for: .touchUpInside)
         return howToSetBtn
     }()
+//    advanceTransferUrlStr
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -323,8 +322,7 @@ class MLSendView: UIView {
     override func layoutSubviews() {
 
         super.layoutSubviews()
-        var controRec: CGRect = sizeWithText(text: NSLocalizedString("ML.Transaction.cell.HowToSetParameters？", value: "How to set parameters？", comment: "") as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize(width: 200, height: 20))
-
+        let controRec: CGRect = sizeWithText(text: "ML.Transaction.cell.HowToSetParameters".localized() as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize(width: 200, height: 20))
         NSLayoutConstraint.activate([
 
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
@@ -420,8 +418,6 @@ class MLSendView: UIView {
 
             ])
     }
-
-
     @objc func selectControlAction(sender: UIControl) {
         superSelect = !superSelect
 
@@ -436,11 +432,12 @@ class MLSendView: UIView {
         howToSetBtn.isHidden = !superSelect
     }
 
+    @objc func howToSetAction(sender: UIButton) {
+        delegate?.didHowToSetAction()
+    }
     func validate() -> NSError? {
-
         let addressString = payAddressField.text ?? ""
-
-        guard let address = EthereumAddress(string: addressString) else {
+        guard EthereumAddress(string: addressString) != nil else {
             let addressErr = MLErrorType.invalidAddress
             MLProgressHud.showError(error: addressErr as NSError)
             return addressErr as NSError
@@ -452,19 +449,16 @@ class MLSendView: UIView {
         }
         return nil
     }
-
-    func updateSliderCostStr(gasLimit:Double) {
-        let gasPrice: String = (viewModel?.gasPrice?.description)!
-        var gasPriceDouble:Double = Double(gasPrice)!
-        let gasLimit = gasLimit
-        var gasPriceString = gasLimit * gasPriceDouble
-        costAmound.text = NSString.init(format: "%f", gasPriceString) as String
-    }
-
+//    func updateSliderCostStr(gasLimit: Double) {
+//        let gasPrice: String = (viewModel?.gasPrice?.description)!
+//        var gasPriceDouble: Double = Double(gasPrice)!
+//        let gasLimit = gasLimit
+//        var gasPriceString = gasLimit * gasPriceDouble
+//        costAmound.text = NSString.init(format: "%f", gasPriceString) as String
+//    }
 //    @objc func costSlider(sender: UISlider) {
 //        updateSliderCostStr(gasLimit: Double(sender.value))
 //    }
-
     @objc func costSliderDragInside(sender: UISlider) {
         print("costSliderDragInside:%d", sender.value)
     }
@@ -503,6 +497,10 @@ extension MLSendView: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
 
+        guard "".judgeSixteenData(hex: textView.text ?? "") else {
+            delegate?.invideData()
+            return
+        }
     }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         textView.text = ""
@@ -510,5 +508,4 @@ extension MLSendView: UITextViewDelegate {
     }
 }
 extension MLSendView: UIGestureRecognizerDelegate {
-    
 }

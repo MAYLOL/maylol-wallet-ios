@@ -37,7 +37,7 @@ class MLWalletSettingCell: UITableViewCell {
     }
 
     var settingModel: MLWalletSettingModel? {
-        didSet {  
+        didSet {
             titleLabel.text = settingModel?.settingText
             iconView.image = settingModel?.settingIcon
         }

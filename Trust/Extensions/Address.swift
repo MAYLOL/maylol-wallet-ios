@@ -10,9 +10,9 @@ enum Errors: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidAddress:
-            return NSLocalizedString("send.error.invalidAddress", value: "Invalid Address", comment: "")
+            return "ML.Send.error.invalidAddress.Error".localized()
         case .invalidAmount:
-            return NSLocalizedString("send.error.invalidAmount", value: "Invalid Amount", comment: "")
+            return "ML.Send.error.invalidAmount.Error".localized()
         }
     }
 }

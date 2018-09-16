@@ -19,7 +19,7 @@ class MLWalletInfoWalletNameCell: UITableViewCell {
         nameField.translatesAutoresizingMaskIntoConstraints = false
         nameField.isSecureTextEntry = false
         nameField.underLineColor = Colors.textgraycolor
-        nameField.placeholder = "钱包名"
+        nameField.placeholder = "ML.Wallet.Name".localized()
         nameField.font = UIFont.init(name: "PingFang SC", size: 12)
         nameField.delegate = self
         return nameField

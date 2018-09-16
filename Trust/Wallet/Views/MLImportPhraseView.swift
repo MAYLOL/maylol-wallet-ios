@@ -8,19 +8,17 @@ protocol MLImportPhraseViewDelegate: class {
     func didPressServise()
 }
 class MLImportPhraseView: UIView {
-
     weak var delegate: MLImportPhraseViewDelegate?
-
     lazy var placeholderLabel : UILabel = {
        var placeholderLabel = UILabel()
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         return placeholderLabel
     }()
-
     lazy var phraseTextView: AnimatableTextView = {
         var phraseTextView = AnimatableTextView(frame: .zero)
         phraseTextView.translatesAutoresizingMaskIntoConstraints = false
-        phraseTextView.placeholderText = "助记词，按空格分隔"
+        phraseTextView.placeholderText = "ML.PhrasebySpaces".localized()
+//        "助记词，按空格分隔"
         phraseTextView.placeholderColor = AppStyle.PingFangSC10.textColor
         phraseTextView.font = AppStyle.PingFangSC12.font
         var placeholderLabelConstraints = [NSLayoutConstraint]()
@@ -37,10 +35,11 @@ class MLImportPhraseView: UIView {
         let passwordField = UnderLineTextFiled(frame: .zero)
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        passwordField.placeholder =  R.string.localizable.password()
+        passwordField.placeholder = "ML.Password".localized()
+//            R.string.localizable.password()
         passwordField.isSecureTextEntry = true
         passwordField.underLineColor = Colors.textgraycolor
-        passwordField.delegate = self;
+        passwordField.delegate = self
         return passwordField
     }()
     lazy var repasswordField: UnderLineTextFiled = {
@@ -48,16 +47,15 @@ class MLImportPhraseView: UIView {
         //        repasswordField.frame.size.width = 30
         repasswordField.translatesAutoresizingMaskIntoConstraints = false
         repasswordField.font = UIFont.init(name: "PingFang SC", size: 12)
-        repasswordField.placeholder = NSLocalizedString("CreateWalletRePassWord", value: "重复密码", comment: "")
+        repasswordField.placeholder = "ML.CreateWalletRePassWord".localized();//重复密码
         repasswordField.isSecureTextEntry = true
-        repasswordField.delegate = self;
+        repasswordField.delegate = self
         repasswordField.underLineColor = Colors.textgraycolor
         return repasswordField
     }()
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
-            passwordField,
-            repasswordField]
+            passwordField, repasswordField]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -69,7 +67,8 @@ class MLImportPhraseView: UIView {
         let readProtocolLabel: UILabel
         readProtocolLabel = UILabel()
         readProtocolLabel.translatesAutoresizingMaskIntoConstraints = false
-        readProtocolLabel.text = NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
+        readProtocolLabel.text = "ML.CreateWalletSettingServicePrivacyClause1".localized()
+//            NSLocalizedString("CreateWalletSettingServicePrivacyClause1", value: "我已经仔细阅读并同意", comment: "")
         readProtocolLabel.textAlignment = .center
         readProtocolLabel.textColor = UIColor.black
         readProtocolLabel.numberOfLines = 0
@@ -80,7 +79,7 @@ class MLImportPhraseView: UIView {
         //        let serviceBtn = Button(size: .normal, style: .border)
         let serviceBtn = UIButton.init(type: UIButtonType.custom)
         serviceBtn.translatesAutoresizingMaskIntoConstraints = false
-        serviceBtn.setTitle(NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: ""), for: .normal)
+        serviceBtn.setTitle("ML.CreateWalletSettingServicePrivacyClause".localized(), for: .normal)
         serviceBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         serviceBtn.setTitleColor(UIColor.red, for: .normal)
         serviceBtn.addTarget(self, action: #selector(serviceAction(sender:)), for: .touchUpInside)
@@ -110,19 +109,19 @@ class MLImportPhraseView: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let rectServce: CGRect = sizeWithText(text: NSLocalizedString("CreateWalletSettingServicePrivacyClause", value: "服务隐私条款", comment: "") as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
+        let rectServce: CGRect = sizeWithText(text: "ML.CreateWalletSettingServicePrivacyClause".localized() as NSString, font: UIFont.systemFont(ofSize: 11), size: CGSize.init(width: 100, height: 20))
         NSLayoutConstraint.activate([
             phraseTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             phraseTextView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             phraseTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-            phraseTextView.heightAnchor.constraint(equalToConstant: 70),
+            phraseTextView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(70)),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            stackView.topAnchor.constraint(equalTo: phraseTextView.bottomAnchor, constant: 32),
+            stackView.topAnchor.constraint(equalTo: phraseTextView.bottomAnchor, constant: kAutoLayoutHeigth(32)),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            stackView.heightAnchor.constraint(equalToConstant: 92),
+            stackView.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(92)),
 
             detailBtn.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 25),
-            detailBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 25),
+            detailBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: kAutoLayoutHeigth(25)),
             detailBtn.heightAnchor.constraint(equalToConstant: 20),
             detailBtn.widthAnchor.constraint(equalToConstant: 20),
 
@@ -180,7 +179,7 @@ class MLImportPhraseView: UIView {
         repasswordField.resignFirstResponder()
     }
     func calculationheight() -> CGFloat {
-        return  70 + 32 + 92 + 45 + 20
+        return  kAutoLayoutHeigth(70 + 32 + 92 + 45 + 20)
     }
     func getPhraseWord() -> String{
         return phraseTextView.text
@@ -189,12 +188,9 @@ class MLImportPhraseView: UIView {
         return passwordField.text!
     }
 }
-
 extension MLImportPhraseView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-
         placeholderLabel.isHidden = !textView.text.kStringIsEmpty(textView.text)
-
     }
     func textViewDidEndEditing(_ textView: UITextView) {
 

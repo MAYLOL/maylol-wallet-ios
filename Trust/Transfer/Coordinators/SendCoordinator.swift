@@ -83,6 +83,12 @@ final class SendCoordinator: RootCoordinator {
         addCoordinator(coordinator)
         navigationController.present(coordinator.qrcodeController, animated: true, completion: nil)
     }
+    func pushBrowserCoordinator(url: URL) {
+        let browserCoordinator = MLBrowserCoordinator()
+        browserCoordinator.delegate = self
+        browserCoordinator.openURL(url)
+        navigationController.pushCoordinator(coordinator: browserCoordinator, animated: true)
+    }
 }
 
 extension SendCoordinator: MLSendViewControllerDelegate {
@@ -116,6 +122,9 @@ extension SendCoordinator: MLSendViewControllerDelegate {
     func didPressScan() {
         presentQRCodeReader()
     }
+    func didHowToSet() {
+        pushBrowserCoordinator(url: NSURL(string: advanceTransferUrlStr)! as URL)
+    }
 }
 
 extension SendCoordinator: ScanQRCodeCoordinatorDelegate {
@@ -140,3 +149,8 @@ extension SendCoordinator: ScanQRCodeCoordinatorDelegate {
 //        }
 //    }
 //}
+extension SendCoordinator: MLBrowserCoordinatorDelegate {
+    func didCancel(in coordinator: MLBrowserCoordinator) {
+        navigationController.popViewController(animated: true)
+    }
+}

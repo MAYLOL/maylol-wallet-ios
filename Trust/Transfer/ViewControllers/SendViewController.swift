@@ -68,7 +68,7 @@ class SendViewController: FormViewController {
         view.backgroundColor = viewModel.backgroundColor
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: R.string.localizable.next(),
+            title: "ML.Next".localized(),
             style: .done,
             target: self,
             action: #selector(send)

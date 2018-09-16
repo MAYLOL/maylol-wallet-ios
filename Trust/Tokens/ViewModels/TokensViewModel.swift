@@ -62,7 +62,7 @@ final class TokensViewModel: NSObject {
     }
 
     var title: String {
-        return NSLocalizedString("wallet.navigation.title", value: "Wallet", comment: "")
+        return "wallet.navigation.title".localized()
     }
 
     var backgroundColor: UIColor {

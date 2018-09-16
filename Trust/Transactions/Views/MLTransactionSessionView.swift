@@ -12,7 +12,7 @@ class MLTransactionSessionView: UIView {
         titleLabel.textAlignment = .left
         titleLabel.textColor = Colors.titleBlackcolor
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titleLabel.text = NSLocalizedString("ML.Transaction.Recentrecords", value: "Recent Transaction Records", comment: "")
+        titleLabel.text = "ML.Transaction.Recentrecords".localized()
         return titleLabel
     }()
         lazy var grayLine: UIView = {

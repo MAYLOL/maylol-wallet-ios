@@ -7,7 +7,7 @@ protocol MLCreateWalletViewControllerDelegate: class {
     func didPressCreateWallet(in viewController: MLCreateWalletViewController, createWalletViewModel: CreateWalletViewModel)
 
     func didPressImportWallet(in viewController: MLCreateWalletViewController)
-
+    func didPressServise()
 }
 
 final class MLCreateWalletViewController: UIViewController {
@@ -82,9 +82,7 @@ extension MLCreateWalletViewController: MLCreateWalletViewDelegate {
     }
 
     func didPressServise() {
-        //        hud.show(animated: true)
-        //        print("hud",hud)
-        //        MLProgressHud.ShowPrintScreenTips(view: screenCaptureView)
+        delegate?.didPressServise()
     }
 }
 

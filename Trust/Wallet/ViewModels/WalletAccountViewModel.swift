@@ -34,7 +34,7 @@ struct WalletAccountViewModel {
         guard wallet.multiWallet else {
              return account.address.description
         }
-        return R.string.localizable.multiCoinWallet()
+        return "MultiCoinWallet".localized()
     }
 
     var balance: String {
