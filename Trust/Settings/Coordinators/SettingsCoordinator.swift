@@ -235,6 +235,10 @@ extension SettingsCoordinator: MLBrowserCoordinatorDelegate {
 }
 
 extension SettingsCoordinator: MLWelcomeViewControllerDelegate {
+    func didDismiss(in viewController: MLWelcomeViewController) {
+        navigationController.setNavigationBarHidden(false, animated: true)
+    }
+
     func didPressDismiss(in viewController: MLWelcomeViewController) {
         navigationController.popViewController(animated: true)
         navigationController.setNavigationBarHidden(false, animated: true)

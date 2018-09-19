@@ -520,47 +520,47 @@
 
 
 //add
-"ML.export.backup.button.Howtotitle" = "지갑을 백업하는 방법";//如何备份钱包
+"ML.export.backup.button.Howtotitle" = "지갑 백업 방법";//如何备份钱包
 "ML.MainWallet" = "메인 지갑";//主钱包
-"ML.Wallet" = "월렛";//钱包
-"ML.Recive" = "수신";//接收
-"ML.Password.Forget" = "비밀번호를 잊으셨습니까? 비밀 번호를 재설정하려면 니모닉 또는 개인 키를 가져옵니다.";//忘记密码？导入助记词或私钥可重置密码。
-"ML.Password.ChangeSuccess" = "비밀번호를 변경하십시오!";//修改密码成功！
+"ML.Wallet" = "지갑";//钱包
+"ML.Recive" = "수락";//接收
+"ML.Password.Forget" = "비밀번호를 잊으셨나요? 연상 단어 키 또는 프라이빗 키를 이용하셔서 비밀번호를 재설정할 수 있습니다.";//忘记密码？导入助记词或私钥可重置密码。
+"ML.Password.ChangeSuccess" = "비밀번호 수정 성공!";//修改密码成功！
 "ML.Deleting" = "삭제";//删除
-"ML.Wallet.exist" = "지갑이 이미 있습니다. 새 암호로 설정되어 있습니까? (지갑의 새 비밀번호를 기억하십시오)";//钱包已存在，是否设置为新密码？（请牢记钱包新密码）
-"ML.Wallet.Sure" = "결정";//确定
-"ML.Transaction.cell.Sure" = "결정";//确定
-"ML.Send" = "보내기";//发送
-"ML.Approve" = "승인하다";//批准
+"ML.Wallet.exist" = "기존 지갑이 있습니다. 비밀번호를 재설정 하시겠습니까? (지갑의 새로운 비밀번호를 꼭 메모하시기 바랍니다.)";//钱包已存在，是否设置为新密码？（请牢记钱包新密码）
+"ML.Wallet.Sure" = "확인";//确定
+"ML.Transaction.cell.Sure" = "확인";//确定
+"ML.Send" = "전송";//发送
+"ML.Approve" = "승인 완료";//批准
 
-"ML.App.Update.Tip" = "버전 업데이트 됨";//版本更新了
-"ML.App.Update.SubTitle" = "업데이트로 이동할지 여부";//是否前往更新
-"ML.App.Update.Go" = "업데이트로 이동";//去更新
-"ML.App.Update.Next" = "다음에 말하기";//下次再说
+"ML.App.Update.Tip" = "새로운 버전으로 업데이트 되었습니다.";//版本更新了
+"ML.App.Update.SubTitle" = "지금 업데이트 하겠습니까?";//是否前往更新
+"ML.App.Update.Go" = "지금 하러 가기";//去更新
+"ML.App.Update.Next" = "나중에 하기";//下次再说
 "ML.App.Update.IsNew" = "현재 최신 버전입니다!";//当前已经是最新版本！
-"ML.App.Update.NoTips" = "더 이상 묻지 않음";//不再提示
+"ML.App.Update.NoTips" = "다시 알리지 않음";//不再提示
 
 "ML.Transaction.time.label.title" = "거래 시간";//交易时间
 "ML.Transaction.cell.error.title" = "오류";//错误
-"ML.Transaction.cell.received.title" = "받은";//已收到
-"ML.Transaction.cell.receiving.title" = "수신";//接收中
-"ML.Transaction.cell.sending.title" = "보내는 중";//发送中
-"ML.Transaction.cell.sent.title" = "발송 완료";//已发送
-"ML.Transaction.cell.tokenTransfer%@.title" = "전송 %@";//转账 %@
+"ML.Transaction.cell.received.title" = "수령 완료";//已收到
+"ML.Transaction.cell.receiving.title" = "수령 중";//接收中
+"ML.Transaction.cell.sending.title" = "전송 중";//发送中
+"ML.Transaction.cell.sent.title" = "전송 완료";//已发送
+"ML.Transaction.cell.tokenTransfer%@.title" = "이체 %@";//转账 %@
 "ML.Transaction.cell.failed.title" = "실패";//失败
-"ML.Transaction.cell.pending.title" = "대기 중";//等待
+"ML.Transaction.cell.pending.title" = "대기";//等待
 "ML.Transaction.cell.unknown.title" = "알 수 없음";//未知
 
-"ML.Loading" = "読み込み中";//加载中
-"ML.Export.warning.private.key" = "위험을 감수하면서 위험을 내 보냅니다!";//导出风险自负！
-"ML.Export.warningTwo.private.key" = "개인 키를 가진 사람은 누구나 지갑에 완전히 액세스 할 수 있습니다.";
+"ML.Loading" = "로드 중";//加载中
+"ML.Export.warning.private.key" = "프라이빗 키 가져오기로 발생한 모든 결과는 사용자가 책임 진다.";//导出风险自负！
+"ML.Export.warningTwo.private.key" = "프라이빗 키를 소지한 임의의 사람들이 나의 지갑을 방문 할 수 있다.";
 //任何拥有私钥的人都可以完全访问你的钱包
 
-"ML.Lanuch.Page1.Title" = "재산의 자기 통제";//自我掌控财产
-"ML.Lanuch.Page2.Title" = "지점 간 무료 전송";//点对点自由转账
-"ML.Lanuch.Page3.Button" = "오픈 MAYLOL 지갑";//开启魅乐钱包
-"ML.Lanuch.Page1.detail" = "Blockchain 지갑, 모두에게 \ n 개인 키를주는 자산은 이중 백업을하십시오.";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
-"ML.Lanuch.Page2.detail" = "타사 조정이 필요 없음 \ n 지구의 양 끝단, 즉석에서 완료";//无需第三方中介\n地球两端，瞬间完成
+"ML.Lanuch.Page1.Title" = "나의 재산 통제";//自我掌控财产
+"ML.Lanuch.Page2.Title" = "노드 간의 자유 이체";//点对点自由转账
+"ML.Lanuch.Page3.Button" = "비즈롤 지갑 생성";//开启魅乐钱包
+"ML.Lanuch.Page1.detail" = "블록 체인 지갑은 모든 사용자에게 권리를 부여한다. \n 프라이빗 키는 자산과 동일 시 되므로 꼭 이중 백업을 진행하시기 바랍니다.";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
+"ML.Lanuch.Page2.detail" = "제3의 중개 업자가 필요 없다. \n 거리에 구애 받지 않고 모든 거래는 순식간에 완료 할 수 있다.";//无需第三方中介\n地球两端，瞬间完成
 
 
 

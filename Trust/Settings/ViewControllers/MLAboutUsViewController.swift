@@ -98,7 +98,7 @@ class MLAboutUsViewController: UIViewController {
             iconView.heightAnchor.constraint(equalToConstant: 40),
             subDetailTitleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 10),
             subDetailTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            settingView.topAnchor.constraint(equalTo: subDetailTitleLabel.bottomAnchor, constant: 0),
+            settingView.topAnchor.constraint(equalTo: subDetailTitleLabel.bottomAnchor, constant: 24),
             settingView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
             settingView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25),
             settingView.heightAnchor.constraint(equalToConstant: 240),

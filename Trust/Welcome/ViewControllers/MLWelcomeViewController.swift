@@ -6,6 +6,7 @@ import Localize_Swift
 protocol MLWelcomeViewControllerDelegate: class {
 
     func didPressDismiss(in viewController: MLWelcomeViewController)
+    func didDismiss(in viewController: MLWelcomeViewController)
 }
 class MLWelcomeViewController: UIViewController {
 
@@ -16,6 +17,13 @@ class MLWelcomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         view.addSubview(guideView)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if delegate != nil {
+            delegate?.didDismiss(in: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
