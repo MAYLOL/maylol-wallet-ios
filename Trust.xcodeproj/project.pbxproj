@@ -855,7 +855,7 @@
 		40AB737C212D02B30092E89B /* MLTransactionSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTransactionSessionView.swift; sourceTree = "<group>"; };
 		40AB737E212D05BA0092E89B /* MLTokenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLTokenHeaderView.swift; sourceTree = "<group>"; };
 		40AB7380212D40C70092E89B /* MLSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSendViewController.swift; sourceTree = "<group>"; };
-		40AB7382212D41490092E89B /* MLSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSendView.swift; sourceTree = "<group>"; };
+		40AB7382212D41490092E89B /* MLSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSendView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		40AB7384212D4DFC0092E89B /* MLSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLSlider.swift; sourceTree = "<group>"; };
 		40B6C9332126C90000E1FF3B /* MLBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBackButton.swift; sourceTree = "<group>"; };
 		40B6C9352126DD1200E1FF3B /* ImportNewMainWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportNewMainWalletViewController.swift; sourceTree = "<group>"; };

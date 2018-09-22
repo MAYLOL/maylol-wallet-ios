@@ -43,11 +43,7 @@ struct TransactionCellViewModel {
         switch operation.operationType {
         case .tokenTransfer:
             return String(
-                format: NSLocalizedString(
-                    "transaction.cell.tokenTransfer.title",
-                    value: "Transfer %@",
-                    comment: "Transfer token title. Example: Transfer OMG"
-                ),
+                format: "ML.Transaction.cell.tokenTransfer%@.title".localized(),
                 operation.symbol ?? ""
             )
         case .unknown:

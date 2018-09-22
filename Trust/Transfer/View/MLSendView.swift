@@ -322,7 +322,7 @@ class MLSendView: UIView {
     override func layoutSubviews() {
 
         super.layoutSubviews()
-        let controRec: CGRect = sizeWithText(text: "ML.Transaction.cell.HowToSetParameters".localized() as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize(width: 200, height: 20))
+        let controWidth: CGFloat = sizeWithText(text: "ML.Transaction.cell.HowToSetParameters".localized() as NSString, font: UIFont.systemFont(ofSize: 9), size: CGSize(width: 200, height: 20)).size.width + 20
         NSLayoutConstraint.activate([
 
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
@@ -359,7 +359,7 @@ class MLSendView: UIView {
             howToSetBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
             howToSetBtn.centerYAnchor.constraint(equalTo: superSelectControl.centerYAnchor, constant: 0),
             howToSetBtn.heightAnchor.constraint(equalToConstant: kAutoLayoutHeigth(20)),
-            howToSetBtn.widthAnchor.constraint(equalToConstant: controRec.size.width),
+            howToSetBtn.widthAnchor.constraint(equalToConstant: controWidth),
             ])
 
         NSLayoutConstraint.activate([
