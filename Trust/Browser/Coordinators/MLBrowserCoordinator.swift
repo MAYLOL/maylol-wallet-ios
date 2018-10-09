@@ -68,29 +68,37 @@ final class MLBrowserCoordinator: NSObject, RootCoordinator {
         browserViewController.goTo(url: url)
     }
     func returnTitle(url: URL) {
-        if url.absoluteString == advanceTransferUrlStr{
+//        advancedtransfer
+        if url.absoluteString.contains("advancedtransfer") {
             //            self.navigationController.title =
             browserViewController.navigationItem.title = "ML.Transaction.cell.HowToSetParameters".localized()
         }
-        if url.absoluteString == backupsPurseUrlStr {
+//        backupsPurseUrlStr
+        if url.absoluteString.contains("backups") {
             browserViewController.navigationItem.title = "ML.export.backup.button.Howtotitle".localized()
         }
-        if url.absoluteString == gasPriseUrlStr {
-            browserViewController.navigationItem.title = "什么是矿工费"
+//        gasPriseUrlStr
+        if url.absoluteString.contains("gascost") {
+            browserViewController.navigationItem.title = "ML.Url.MinerCost.What".localized()
         }
-        if url.absoluteString == memoryWordsUrlStr {
-            browserViewController.navigationItem.title = "什么是助记词"
+//        memoryWordsUrlStr
+        if url.absoluteString.contains("memorizingwords") {
+            browserViewController.navigationItem.title = "ML.PhraseIntroduce".localized()
         }
-        if url.absoluteString == privacyClauseUrlStr {
+//        privacyClauseUrlStr
+        if url.absoluteString.contains("privacyclause") {
             browserViewController.navigationItem.title = "ML.Setting.cell.Aboutus.PrivacyClause".localized()
         }
-        if url.absoluteString == privateKeyUrlStr {
-            browserViewController.navigationItem.title = "什么是明文私钥"
+//        privateKeyUrlStr
+        if url.absoluteString.contains("privatekey") {
+            browserViewController.navigationItem.title = "ML.Url.PrivateKey.What".localized()
         }
-        if url.absoluteString == serviceAgreementUrlStr {
+//        serviceAgreementUrlStr
+        if url.absoluteString.contains("serviceagreement") {
             browserViewController.navigationItem.title = "ML.Setting.cell.Aboutus.ProductGuide".localized()
         }
-        if url.absoluteString == useProtocolUrlStr {
+//        useProtocolUrlStr
+        if url.absoluteString.contains("useprotocol") {
             browserViewController.navigationItem.title = "ML.Setting.cell.Aboutus.UseProtocol".localized()
         }
     }

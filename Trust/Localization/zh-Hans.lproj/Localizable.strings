@@ -562,3 +562,6 @@
 "ML.Lanuch.Page3.Button" = "开启魅乐钱包";//开启魅乐钱包
 "ML.Lanuch.Page1.detail" = "区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
 "ML.Lanuch.Page2.detail" = "无需第三方中介\n地球两端，瞬间完成";//无需第三方中介\n地球两端，瞬间完成
+//add
+"ML.Url.MinerCost.What" = "什么是矿工费";//什么是矿工费
+"ML.Url.PrivateKey.What" = "什么是明文私钥";//什么是明文私钥

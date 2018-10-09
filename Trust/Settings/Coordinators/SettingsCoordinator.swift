@@ -109,15 +109,15 @@ final class SettingsCoordinator: Coordinator {
         switch action {
         case .UseProtocol:
             //使用协议
-            return NSURL(string: useProtocolUrlStr)!
+            return NSURL(string: currentLanguagesWithUrl(url: useProtocolUrlStr))!
         case .PrivacyClause:
             //隐私条款
-            return NSURL(string: privacyClauseUrlStr)!
+            return NSURL(string: currentLanguagesWithUrl(url: privacyClauseUrlStr))!
         case .ProductGuide:
             //产品向导
-            return NSURL(string: serviceAgreementUrlStr)!
+            return NSURL(string: currentLanguagesWithUrl(url: serviceAgreementUrlStr))!
         default:
-            return NSURL(string: serviceAgreementUrlStr)!
+            return NSURL(string: currentLanguagesWithUrl(url: serviceAgreementUrlStr))!
         }
     }
     func settingAction(action: MLPushType, in viewController: UIViewController) {

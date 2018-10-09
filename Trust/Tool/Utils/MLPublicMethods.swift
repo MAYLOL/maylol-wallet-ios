@@ -3,6 +3,23 @@
 import Foundation
 import CoreGraphics
 import UIKit
+import Localize_Swift
+
+func currentLanguagesWithUrl(url: String) -> String {
+    let lanStr = Localize.currentLanguage()
+    switch lanStr {
+    case "zh-Hans":
+        return url + ".html"
+    case "en":
+        return url + "-en.html"
+    case "ja":
+        return url + "-ja.html"
+    case "ko":
+        return url + "-ko.html"
+    default:
+        return url + "-en.html"
+    }
+}
 
 ///// 计算文字高度
 //public func MLTextHeight(text:NSString,width:CGFloat,fontSize:CGFloat) -> CGFloat {

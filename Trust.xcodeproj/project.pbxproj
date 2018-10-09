@@ -66,7 +66,6 @@
 		294DFB981FDF8CBB004CEB56 /* CrashReportInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFB971FDF8CBB004CEB56 /* CrashReportInitializer.swift */; };
 		294DFBA01FE0CADE004CEB56 /* TransactionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFB9F1FE0CADD004CEB56 /* TransactionDetailsViewModel.swift */; };
 		294DFBA31FE0E2EA004CEB56 /* TransactionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFBA21FE0E2EA004CEB56 /* TransactionValue.swift */; };
-		294DFBA61FE11CAE004CEB56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 290B2B561F8F50030053C83E /* Localizable.strings */; };
 		294DFBA91FE6EBFB004CEB56 /* NewTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFBA81FE6EBFB004CEB56 /* NewTokenViewController.swift */; };
 		294DFBAE1FE6F254004CEB56 /* TokenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DFBAD1FE6F254004CEB56 /* TokenObject.swift */; };
 		294EC1D81FD7FBAB0065EB20 /* BiometryAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EC1D71FD7FBAB0065EB20 /* BiometryAuthenticationType.swift */; };
@@ -2952,7 +2951,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				294DFBA61FE11CAE004CEB56 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

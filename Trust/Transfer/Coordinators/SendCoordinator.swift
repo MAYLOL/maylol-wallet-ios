@@ -123,7 +123,8 @@ extension SendCoordinator: MLSendViewControllerDelegate {
         presentQRCodeReader()
     }
     func didHowToSet() {
-        pushBrowserCoordinator(url: NSURL(string: advanceTransferUrlStr)! as URL)
+
+        pushBrowserCoordinator(url: NSURL(string: currentLanguagesWithUrl(url: advanceTransferUrlStr))! as URL)
     }
 }
 

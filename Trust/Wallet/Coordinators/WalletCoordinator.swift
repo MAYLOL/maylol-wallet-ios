@@ -433,7 +433,7 @@ extension WalletCoordinator: ImportNewMainWalletViewControllerDelegate {
 }
 extension WalletCoordinator: MLCreateWalletViewControllerDelegate {
     func didPressServise() {
-        pushBrowserCoordinator(url: NSURL(string: privacyClauseUrlStr)! as URL)
+        pushBrowserCoordinator(url: NSURL(string: currentLanguagesWithUrl(url: privacyClauseUrlStr))! as URL)
     }
     func didPressCreateWallet(in viewController: MLCreateWalletViewController, createWalletViewModel: CreateWalletViewModel) {
         createInstantWallet(createWalletViewModel: createWalletViewModel)

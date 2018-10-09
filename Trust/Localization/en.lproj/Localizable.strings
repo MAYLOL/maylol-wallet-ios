@@ -560,8 +560,9 @@
 "ML.Lanuch.Page1.detail" = "Block chain wallet ensures everyone’s interest\n Private key is property, please make double backup";//区块链钱包，赋予人人得权利\n私钥即资产，请做好双重备份
 "ML.Lanuch.Page2.detail" = "No need for third party agency\n Connect both ends of the earth in a minute";//无需第三方中介\n地球两端，瞬间完成
 
-
-
+//add
+"ML.Url.MinerCost.What" = "What is the miner fee";//什么是矿工费
+"ML.Url.PrivateKey.What" = "What is a plaintext private key";//什么是明文私钥
 
 
 

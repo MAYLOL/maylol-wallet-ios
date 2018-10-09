@@ -138,15 +138,15 @@ class ImportNewMainWalletViewController: UIViewController {
     }
     @objc private func introduceAction(sender: UIButton) {
         if sender.titleLabel?.text == "ML.PhraseIntroduce".localized() {
-            delegate?.didPressServise(url: NSURL(string: memoryWordsUrlStr)!)
+            delegate?.didPressServise(url: NSURL(string: currentLanguagesWithUrl(url: memoryWordsUrlStr))!)
 //            print("什么是助记词？")
         } else {
 //            print("什么是私钥？")
-            delegate?.didPressServise(url: NSURL(string: privateKeyUrlStr)!)
+            delegate?.didPressServise(url: NSURL(string: currentLanguagesWithUrl(url: privateKeyUrlStr))!)
         }
     }
     private func pressServise() {
-        delegate?.didPressServise(url: NSURL(string: privacyClauseUrlStr)!)
+        delegate?.didPressServise(url: NSURL(string: currentLanguagesWithUrl(url: privacyClauseUrlStr))!)
     }
     @objc private func importWalletAction(sender: UIButton) {
         let initialName = WalletInfo.initialName(index: keystore.wallets.count)
